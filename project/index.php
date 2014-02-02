@@ -1,5 +1,6 @@
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
+<?php include 'include/connect_database.php';?>
     <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Hello, world!</h1>
