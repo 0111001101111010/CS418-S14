@@ -4,7 +4,7 @@
 /* 
 vagrant/local version 
 */ 
-$username = "vagrant";
+$username = "";
 $password = "";
 $localhost = "127.0.0.1"; 
 
@@ -21,18 +21,21 @@ mysql_connect($localhost, $username, $password) or die('Could not connect: ' . m
  
 # Choose a database
 mysql_select_db('test') or die('Could not select database');
- 
+ /*
 # Perform database query
 $query = "SELECT * from users";
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
  
 # Filter through rows and echo desired information
 if ($result){
+echo '<ul>';
 while ($row = mysql_fetch_object($result)) {
-    echo $row->FirstName."<br>" ;
+    echo '<li>'.$row->FirstName."</li><br>";
 }
+echo '</ul>';
 }
 else {
     echo "crud";
 }
+*/
 ?>
