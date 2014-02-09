@@ -9,7 +9,7 @@ session_unset();
 </head>
 
 <body>
-<form method="post" action="movie1.php">
+<form method="post" action="index.php">
   <p>Enter your username: 
     <input type="text" name="user">
   </p>

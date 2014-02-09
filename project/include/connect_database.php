@@ -18,9 +18,18 @@ production version
  
 # Connect
 mysql_connect($localhost, $username, $password) or die('Could not connect: ' . mysql_error());
+/*	try{	
+		$conn = new PDO('mysql:host=127.0.0.1;dbname= test;', $username, $password);
+	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	} catch(PDOException $e) {
+	    echo 'ERROR: ' . $e->getMessage();
+	}*/
  
 # Choose a database
 mysql_select_db('test') or die('Could not select database');
+
+
+
  /*
 # Perform database query
 $query = "SELECT * from users";

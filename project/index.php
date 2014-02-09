@@ -7,7 +7,7 @@ $_SESSION['username'] = $_POST['user'];
 $_SESSION['userpass'] = $_POST['pass'];
 $_SESSION['authuser'] = 0;
 
-if (($_SESSION['username'] == 'test') and
+if (($_SESSION['username'] == 'test' || 'mweigle' || 'TA') and
     ($_SESSION['userpass'] == 'test')) {
  	 $_SESSION['authuser'] = 1;
 } else {
@@ -33,38 +33,82 @@ include 'include/footer.php';
 exit();
 }
 ?>
-?> 
-    <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
+
+<br>
+<br>
+<br>
+
+<!-- Needs to spit these out --> 
+<!-- Main unit for the board -->
+      <div class="thread_view">
+
+        <div class="wrapper wrapper_thread_1">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="view/holder_80_80.png" class="img-circle" style="float:left;padding-right:25px">
+                <h1>The Original Internet Forum</h1>
+                <p>Description of the said board</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <a href="messeges.html">
+          <div class="wrapper wrapper_thread">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10">
+                  <h1>Share Your Cats</h1>
+                  <p>Feline animals only</p>
+                </div>
+
+                <div class="col-md-1">100 Messages</div>
+                <div class="col-md-1">502 Viewers</div>
+              </div>	
+            </div>
+          </div>
+        </a>
+   </div>
 <?php 
+echo 'Welcome to this forum,'.$_SESSION['username'];
+/*
+$thread = 10;
 for ($i=0; $i < 5; $i++) { 
 	# code...
+
 	echo '<p>Forum Item '.$i.'</p>';
+  	echo "<a href='thread.php?thread=$thread'>$i</a>";
 }
-/*
+*/
 # Perform database query
-$query = "SELECT * from users";
+$query = "SELECT * from thread";
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+
+//$stmt = $conn->prepare('SELECT * from thread');
+//$stmt->execute();
+
  
 # Filter through rows and echo desired information
 if ($result){
 echo '<ul>';
 while ($row = mysql_fetch_object($result)) {
-    echo '<li>'.$row->FirstName."</li><br>";
+    echo '<li>';//thread='.$row->thread_name.
+    echo '<a href=replies.php?&thread='
+         .urlencode($row->thread_name).
+         '&id='.$row->thread_id.'>'
+         .$row->thread_name.
+         '</a> posted at: '.$row->thread_date.'
+          <br>';
+    echo '</li>';
 }
 echo '</ul>';
 }
 else {
     echo "crud";
 }
-*/
+
 ?>
-
-
 
 <?php include 'include/footer.php'; ?>
 </body>
