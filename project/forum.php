@@ -12,6 +12,7 @@ if (($_SESSION['username'] == 'test' || 'mweigle' || 'TA') and
     ($_SESSION['userpass'] == 'test')) {
  	 $_SESSION['authuser'] = 1;
 } else {
+/*
   echo "<br>
 <br>
 <br>
@@ -22,7 +23,7 @@ echo '<div class="wrapper wrapper_login">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <h2>Log in</h2>
-      <form role="form" method="post" action="index.php">
+      <form role="form" method="post" action="forum.php">
         <div class="form-group">
           <label for="text">Username</label>
           <input type="text" class="form-control" id="text" placeholder="Enter your username" name="user">
@@ -41,6 +42,7 @@ echo '<div class="wrapper wrapper_login">
 </div>';
 include 'include/footer.php';
 exit();
+*/
 }
 ?>
 

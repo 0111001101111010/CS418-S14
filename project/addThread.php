@@ -1,11 +1,6 @@
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
-<?php 
-$_SESSION['username'] = $_POST['user'];
-$_SESSION['userpass'] = $_POST['pass'];
-$_SESSION['authuser'] = 1;
-?>
      <div class="thread_view">
 
         <div class="wrapper wrapper_thread_1">
