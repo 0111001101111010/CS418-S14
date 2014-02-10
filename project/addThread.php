@@ -2,11 +2,10 @@
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
 <?php 
-$query = "SELECT * from reply where reply_thread_id =". $_REQUEST['id'];
-$result = mysql_query($query) or die('Query failed: ' . mysql_error());
- 
+$_SESSION['username'] = $_POST['user'];
+$_SESSION['userpass'] = $_POST['pass'];
+$_SESSION['authuser'] = 1;
 ?>
-
      <div class="thread_view">
 
         <div class="wrapper wrapper_thread_1">
@@ -20,14 +19,14 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 //print_r($_GET); 
 echo "<br>";
 //print_r($_POST);
-$query ="
-INSERT INTO reply(reply_id,reply_user,reply_thread_id,reply_title,reply_post,reply_date) 
-  values (null,'test',".$_GET[id].",'".$_REQUEST['reply_title']."','".$_REQUEST['reply']."',NOW());";
+$query = 'INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_description, thread_date) values (null,0,"'
+          .$_REQUEST['thread_name'].'","'.$_REQUEST['thread_description'].'",NOW());';
 
+
+echo $query;
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 echo "<h2> your post was successful</h2>";
 var_dump($_SESSION);
-var_dump($query);
 var_dump($_SESSION['username']);
 /*echo '<form method="post" action="replies.php?thread='.urldecode($_GET[thread]).'&id='.$_GET[id].'">
   <p>Enter your reply title: 
@@ -40,8 +39,10 @@ var_dump($_SESSION['username']);
     <input type="submit" name="Submit" value="Submit">
   </p>
 </form>'; */
+ Print_r ($_SESSION);
 
-echo "<a href=replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id].">Return to Post</a>";
+
+echo "<a href=forum.php>Return to Post</a>";
 ?>
 
 <?php include 'include/footer.php';?>
