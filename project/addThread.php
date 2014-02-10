@@ -20,7 +20,7 @@ $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_des
 
 echo $query;
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-echo "<h2> your post was successful</h2>";
+echo "<h2> your thread was successfully added</h2>";
 var_dump($_SESSION);
 var_dump($_SESSION['username']);
 /*echo '<form method="post" action="replies.php?thread='.urldecode($_GET[thread]).'&id='.$_GET[id].'">

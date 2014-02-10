@@ -62,22 +62,6 @@ exit();
             </div>
           </div>
         </div>
-        <a href="messeges.html">
-          <div class="wrapper wrapper_thread">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-10">
-                  <h1>Share Your Cats</h1>
-                  <p>Feline animals only</p>
-                </div>
-
-                <div class="col-md-1">100 Messages</div>
-                <div class="col-md-1">502 Viewers</div>
-              </div>	
-            </div>
-          </div>
-        </a>
-   </div>
 
 <?php 
 echo 'Welcome to this forum,'.$_SESSION['username'];
@@ -97,37 +81,56 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 //$stmt = $conn->prepare('SELECT * from thread');
 //$stmt->execute();
 
+
+
  
 # Filter through rows and echo desired information
 if ($result){
-echo '<ul>';
-while ($row = mysql_fetch_object($result)) {
-    echo '<li>';//thread='.$row->thread_name.
-    echo '<a href=replies.php?&thread='
-         .urlencode($row->thread_name).
-         '&id='.$row->thread_id.'>'
-         .$row->thread_name.
-         '</a> posted at: '.$row->thread_date.'
-          <br>';
-    echo '</li>';
-}
-echo '</ul>';
+  while ($row = mysql_fetch_object($result)) {
+      echo $thread=<<<EOD
+        <a href="replies.php?&thread=$row->thread_name&id=$row->thread_id">
+          <div class="wrapper wrapper_thread">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10">
+                  <h1>$row->thread_name</h1>
+                  <p><b>posted at: $row->thread_date</b><br>
+                      $row->thread_description</p>
+                </div>
+
+                <div class="col-md-1">100 Messages</div>
+                <div class="col-md-1">502 Viewers</div>
+              </div>  
+            </div>
+          </div>
+        </a>
+EOD;
+  }
 }
 else {
     echo "crud";
 }
 
-echo '<form method="post" action="addThread.php">
-  <p>Enter your reply title: 
-    <input type="text" name="thread_name">
-  </p>
-  <p>Enter your reply: 
-  <textarea name="thread_description"></textarea>
-  </p>
-  <p>
-    <input type="submit" name="Submit" value="Submit">
-  </p>
-</form>'; 
+echo '<div class="wrapper wrapper_thread_1">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <form method="post" action="addThread.php">
+                  <h3>Response Title: </h3>
+                    <input type="text" name="thread_name">
+                  
+                  <h3>Message</h3>
+                  <textarea name="thread_description" rows="5"></textarea><br><br>
+                    <input type="submit" name="Submit" value="Submit">
+                  
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>';
+
+
 
 ?>
 
