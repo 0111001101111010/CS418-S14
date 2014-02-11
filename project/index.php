@@ -1,4 +1,5 @@
 <?php //login 
+session_start();
 $_SESSION['username'] = $_POST['user'];
 $_SESSION['userpass'] = $_POST['pass'];
 $_SESSION['authuser'] = 0;

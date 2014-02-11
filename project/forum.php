@@ -12,12 +12,18 @@ if (($_SESSION['username'] == 'test' || 'mweigle' || 'TA') and
     ($_SESSION['userpass'] == 'test')) {
  	 $_SESSION['authuser'] = 1;
 } else {
-/*
+
   echo "<br>
 <br>
 <br>
-<br><h1>Sorry, but you don't have permission to view this Forum!<br>
-please login</h1>";
+<br>
+
+<div class='row'>
+    <div class='col-md-12'>
+<center><h1 style='color:white;'>Sorry, we're going to need you to authenticate!<br>
+please login</h1></center>
+</div>
+</div>";
 
 echo '<div class="wrapper wrapper_login">
   <div class="row">
@@ -42,7 +48,7 @@ echo '<div class="wrapper wrapper_login">
 </div>';
 include 'include/footer.php';
 exit();
-*/
+
 }
 ?>
 
@@ -53,18 +59,19 @@ exit();
         <div class="wrapper wrapper_thread_1">
           <div class="container">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-10">
                 <img src="view/holder_80_80.png" class="img-circle" style="float:left;padding-right:25px">
                 <h1>The Original Internet Forum</h1>
                 <p>Description of the said board</p>
               </div>
-
+              <div class="col=md-12">
+                <h3><?php echo 'Welcome to the forum,'.$_SESSION['username']?>;</h3>
+              </div>
             </div>
           </div>
         </div>
 
 <?php 
-echo 'Welcome to this forum,'.$_SESSION['username'];
 /*
 $thread = 10;
 for ($i=0; $i < 5; $i++) { 
@@ -116,10 +123,10 @@ echo '<div class="wrapper wrapper_thread_1">
             <div class="row">
               <div class="col-md-12">
                 <form method="post" action="addThread.php">
-                  <h3>Response Title: </h3>
+                  <h3>Thread Title: </h3>
                     <input type="text" name="thread_name">
                   
-                  <h3>Message</h3>
+                  <h3>Thread Description</h3>
                   <textarea name="thread_description" rows="5"></textarea><br><br>
                     <input type="submit" name="Submit" value="Submit">
                   

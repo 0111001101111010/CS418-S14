@@ -16,7 +16,7 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="login.php"><i class="fa fa-cog fa-fw"></i> Log In</a></li>
+              <li><a href="index.php"><i class="fa fa-cog fa-fw"></i> Log In</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
