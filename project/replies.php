@@ -46,8 +46,14 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 //print_r($_GET); 
 //print_r($_POST);
+$js = <<< EOD
 
-    
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+<script>
+        tinymce.init({selector:'textarea'});
+</script>
+EOD;
+echo $js; 
 
   echo '<div class="wrapper wrapper_post" style="padding-bottom:50px">
       <div class="container">

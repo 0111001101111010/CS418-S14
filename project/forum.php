@@ -82,7 +82,7 @@ for ($i=0; $i < 5; $i++) {
 }
 */
 # Perform database query
-$query = "SELECT * from thread";
+$query = "SELECT * from thread order by thread_id DESC";
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 //$stmt = $conn->prepare('SELECT * from thread');
@@ -105,8 +105,8 @@ if ($result){
                       $row->thread_description</p>
                 </div>
 
-                <div class="col-md-1">100 Messages</div>
-                <div class="col-md-1">502 Viewers</div>
+                <div class="col-md-1">0 Messages</div>
+                <div class="col-md-1">0 Viewers</div>
               </div>  
             </div>
           </div>
