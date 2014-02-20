@@ -82,7 +82,7 @@ for ($i=0; $i < 5; $i++) {
 }
 */
 # Perform database query
-$query = "SELECT * from thread";
+$query = "SELECT * from thread order by thread_id DESC";
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 //$stmt = $conn->prepare('SELECT * from thread');
