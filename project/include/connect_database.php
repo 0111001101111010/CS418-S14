@@ -4,9 +4,9 @@
 /* 
 vagrant/local version 
 */ 
-$username = "";
-$password = "";
-$localhost = "127.0.0.1"; 
+$username = "szheng";
+$password = "dontsqlinjectmebro";
+$localhost = "localhost"; 
 
 /*
 production version
@@ -26,7 +26,7 @@ mysql_connect($localhost, $username, $password) or die('Could not connect: ' . m
 	}*/
  
 # Choose a database
-mysql_select_db('test') or die('Could not select database');
+mysql_select_db('szheng') or die('Could not select database');
 
 
 

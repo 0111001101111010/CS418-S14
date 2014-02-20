@@ -105,8 +105,8 @@ if ($result){
                       $row->thread_description</p>
                 </div>
 
-                <div class="col-md-1">100 Messages</div>
-                <div class="col-md-1">502 Viewers</div>
+                <div class="col-md-1">0 Messages</div>
+                <div class="col-md-1">0 Viewers</div>
               </div>  
             </div>
           </div>
