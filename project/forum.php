@@ -3,7 +3,7 @@
 <?php include 'include/nav.php';?>
 <?php //include connection
 //Check username and password information
-
+session_start();
 $_SESSION['username'] = $_POST['user'];
 $_SESSION['userpass'] = $_POST['pass'];
 $_SESSION['authuser'] = 0;
@@ -38,10 +38,10 @@ echo '<div class="wrapper wrapper_login">
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pass">
         </div>
-        
+
         <button type="submit" class="btn btn-default" name="submit">Submit</button>
       </form>
-      
+
     </div>
 
   </div>
@@ -52,7 +52,7 @@ exit();
 }
 ?>
 
-<!-- Needs to spit these out --> 
+<!-- Needs to spit these out -->
 <!-- Main unit for the board -->
       <div class="thread_view">
 
@@ -71,10 +71,10 @@ exit();
           </div>
         </div>
 
-<?php 
+<?php
 /*
 $thread = 10;
-for ($i=0; $i < 5; $i++) { 
+for ($i=0; $i < 5; $i++) {
 	# code...
 
 	echo '<p>Forum Item '.$i.'</p>';
@@ -90,7 +90,7 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 
 
- 
+
 # Filter through rows and echo desired information
 if ($result){
   while ($row = mysql_fetch_object($result)) {
@@ -107,7 +107,7 @@ if ($result){
 
                 <div class="col-md-1">0 Messages</div>
                 <div class="col-md-1">0 Viewers</div>
-              </div>  
+              </div>
             </div>
           </div>
         </a>
@@ -125,11 +125,11 @@ echo '<div class="wrapper wrapper_thread_1">
                 <form method="post" action="addThread.php">
                   <h3>Thread Title: </h3>
                     <input type="text" name="thread_name">
-                  
+
                   <h3>Thread Description</h3>
                   <textarea name="thread_description" rows="5"></textarea><br><br>
                     <input type="submit" name="Submit" value="Submit">
-                  
+
                 </form>
               </div>
 
