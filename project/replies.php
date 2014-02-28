@@ -7,39 +7,27 @@ $query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id'];
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 ?>
 
-     <div class="thread_view">
+  <div class="content">
+    <div class="container">
 
-        <div class="wrapper wrapper_thread_1">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <h1><?php echo $_REQUEST['thread']?></h1>
-              </div>
-            </div>
-        </div>
+      <div class="post">
+        <h3><?php echo $_REQUEST['thread']?></h3>
+        <h6>OP: <a href="profile.html">username</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on mmm d, yyyy</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
 
+      <hr>
 
 
 
 <?php
     # Filter through rows and echo desired information
     if ($result){
-    while ($row = mysql_fetch_object($result)) {
-        echo '<div class="wrapper wrapper_post">
-               <div class="container">
-                 <div class="row">
-                    <div class="col-md-3"><img src="view/holder_150_150.png"><br><h3>'.
-                    $row->reply_user.'</h3>'.' Posted at: '
-             .$row->reply_date.'</div>
-                      <div class="col-md-9">';//thread='.$row->thread_name.
-        echo  '<h3>'.$row->reply_title.'</h3>'
-             .' '
-             .$row->reply_post;
-        echo '</div>
-            </div>
-          </div>
-        </div>';
-    }
+      while ($row = mysql_fetch_object($result)) {
+          echo '<div class="post"><h3>'.$row->reply_title.'</h3><h6>OP: <a href="profile.html">'.$row->reply_user.'</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on '.$row->reply_date.'</h6>
+    <p>'.$row->reply_post.'</p></div>';
+          
+      }
     }
     else {
         echo "crud";
