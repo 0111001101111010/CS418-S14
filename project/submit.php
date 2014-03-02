@@ -20,10 +20,11 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 <?php
 //print_r($_GET);
 echo "<br>";
+$user = $_SESSION['myusername'];
 //print_r($_POST); //0,0
 $query ="
 INSERT INTO reply(reply_id,reply_user,reply_thread_id,reply_reply_id,reply_reply_to_id,reply_title,reply_post,reply_date)
-  values (null,'test',".$_GET[id].",0,0,'".$_REQUEST['reply_title']."','".$_REQUEST['reply']."',NOW());";
+  values (null,'".$user."',".$_GET[id].",0,0,'".$_REQUEST['reply_title']."','".$_REQUEST['reply']."',NOW());";
 //var_dump($query);
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 echo "<h2> Your post was successfully added</h2>";
