@@ -1,7 +1,11 @@
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
-<?php session_start();?>
+<?php session_start();
+$_SESSION['username'] = $_POST['user'];
+$_SESSION['userpass'] = $_POST['pass'];
+$_SESSION['authuser'] = 0;
+?>
 
      <div class="thread_view">
 

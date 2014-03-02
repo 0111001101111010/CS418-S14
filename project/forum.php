@@ -1,24 +1,24 @@
-<?php include 'include/header.php';?>
-<?php include 'include/connect_database.php';?>
 <?php include 'include/nav.php';?>
+<?php include 'include/connect_database.php';?>
+<?php include 'include/header.php';?>
 <?php //include connection
 //Check username and password information
-session_start();
-$_SESSION['username'] = $_POST['user'];
-$_SESSION['userpass'] = $_POST['pass'];
-$_SESSION['authuser'] = 0;
+//$_SESSION['myusername']; //= $_POST['myusername'];
+//$_SESSION['myuserpass']; //= $_POST['myuserpass'];
+//$_SESSION['authuser'] = 0;
+var_dump($_SESSION);
+var_dump($_POST);
+//die();
 
-if (($_SESSION['username'] == 'test' || 'mweigle' || 'TA') and
-    ($_SESSION['userpass'] == 'test')) {
- 	 $_SESSION['authuser'] = 1;
-} else {
+if ( isset( $_SESSION['myusername'] ) ){
+
+}else {
 
   echo '<div class="content"><div class="container">You must be logged in to access the forum. <br>
   <h6>Click <a href="index.php">here</a> if you are not redirected.</h6></div></div>';
 
 include 'include/footer.php';
 exit();
-
 }
 ?>
 
@@ -71,4 +71,3 @@ else {
 </body>
 <p> built by stanley zheng and lookmai rattana </p>
 </html>
-

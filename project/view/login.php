@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>CS418 - Project 1</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="dist/css/bootstrap.css" rel="stylesheet">
         <link href="dist/css/extra.css" rel="stylesheet">
-        
+
         <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -23,7 +23,7 @@
 
 
     </head>
-    
+
     <body>
       <div class="navbar my_navbar navbar-fixed-top">
         <div class="container">
@@ -52,35 +52,35 @@
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
             <h2>Log in</h2>
-            <form role="form">
+            <form role="form" method="post" action="loginCheck.php">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                <input type="email" class="form-control" id="myusername" placeholder="Enter email">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="mypassword" placeholder="Password">
               </div>
-              
+
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
-            
+
           </div>
 
         </div>
       </div>
 
-      
+
 
 
       <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
       <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-      
+
       <script type='text/javascript'>
         $(document).ready(function() {
           });
       </script>
-        
+
     </body>
 </html>

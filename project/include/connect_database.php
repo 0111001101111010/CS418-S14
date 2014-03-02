@@ -8,6 +8,14 @@ $username = "root";
 $password = "root";
 $localhost = "localhost:8888";
 
+
+/*
+vagrant/local version
+*/
+$username = "";
+$password = "";
+$localhost = "127.0.0.1";
+
 /*
 production version
 *
