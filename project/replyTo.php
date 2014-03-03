@@ -24,9 +24,8 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
     # Filter through rows and echo desired information
     if ($result){
       while ($row = mysql_fetch_object($result)) {
-          echo '<div class="post"><h3>'.$row->reply_title.'</h3><h6>OP: <a href="profile.html">'.$row->reply_user.'</a></h6> <h6>Comments: # of comments</h6>         <h6>Posted on '.$row->reply_date.'</h6>
-    <p>'.$row->reply_post.'</p></div>'.
-    '<p><a href="replyTo.php?foo=bar&bar=foo">Reply To</a>';
+          echo '<div class="post"><h3>'.$row->reply_title.'</h3><h6>OP: <a href="profile.html">'.$row->reply_user.'</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on '.$row->reply_date.'</h6>
+    <p>'.$row->reply_post.'</p></div>';
 
       }
     }

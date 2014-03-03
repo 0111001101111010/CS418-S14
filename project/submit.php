@@ -18,8 +18,12 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
               </div>
             </div>
 <?php
+/*
+
+*/
 //print_r($_GET);
 echo "<br>";
+
 $user = $_SESSION['myusername'];
 //print_r($_POST); //0,0
 $query ="
