@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <title>CS418 - Project 1</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="dist/css/bootstrap.css" rel="stylesheet">
-        <link href="dist/css/extra.css" rel="stylesheet">
-
-        <!--[if lt IE 9]>
-          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
-        <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
-
-
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
-        <script src="dist/js/jquery-1.10.2.min.js" type="text/javascript"></script>
-
-
-    </head>
+<?php include 'include/header.php';?>
+<?php include 'include/nav.php';?>
+<?php include 'include/connect_database.php';?>
 
     <body>
       <div class="navbar my_navbar navbar-fixed-top">
@@ -81,6 +59,4 @@
         $(document).ready(function() {
           });
       </script>
-
-    </body>
-</html>
+<?php include 'include/footer.php';?>

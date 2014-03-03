@@ -33,7 +33,7 @@ $_SESSION['myusername']=$myusername;
 $_SESSION['myuserpass']=$mypassword;
 $_POST['myusername']=$myusername;
 $_POST['myuserpass']=$mypassword;
-header("location:forum.php");
+header("location:index.php");
 }
 else {
 echo "Wrong Username or Password";
