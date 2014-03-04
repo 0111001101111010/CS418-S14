@@ -46,10 +46,11 @@ header("location:index.php");
 else if($count==1){
 //dont remember me
 session_start();
-setcookie("TestCookie","cookie", time()+20);
-ini_set('session.gc_maxlifetime', 10); //30 secondsh
-//echo ini_get("session.gc_maxlifetime");
-//die();
+//setcookie("TestCookie","fuck", time()+10);
+//echo $_COOKIE["TestCookie"];
+//ini_set('session.gc_maxlifetime', 10); //30 secondsh
+//-echo ini_get("session.gc_maxlifetime");
+ini_set("session.cookie_lifetime","10");
 $_SESSION['myusername']=$myusername;
 $_SESSION['myuserpass']=$mypassword;
 $_POST['myusername']=$myusername;
@@ -58,6 +59,10 @@ header("location:index.php");
 
 }
 else {
+header( "refresh:5;url=login.php" );
+include 'include/nav.php';
+include 'include/connect_database.php';
+include 'include/header.php';
 echo "Wrong Username or Password";
 echo '<div class="content"><div class="container">You must be logged in to access the forum. <br>
 <h6>Click <a href="index.php">here</a> if you are not redirected.</h6></div></div>';

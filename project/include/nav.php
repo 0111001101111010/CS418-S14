@@ -1,5 +1,15 @@
 <?php
 session_start();
+//echo __FILE__;
+
+//echo preg_replace('/\.php$/', '', $_SERVER['REQUEST_URI']);
+//echo $_SERVER['REDIRECT_URI'];
+//var_dump($_SERVER);
+//die();
+if (!isset($_SESSION['id'])&&($_SERVER['REQUEST_URI']!=$_SERVER['SCRIPT_NAME'])) {
+    session_destroy();
+    Header("Location: login.php");
+}
 ?>
 <html>
 <html lang="en">
