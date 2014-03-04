@@ -1,6 +1,10 @@
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
+
+<div class="content">
+  <div class="container">
+
 <?php
 # Perform database query
 $query = "SELECT * from board";
@@ -17,9 +21,9 @@ if ($result){
   while ($row = mysql_fetch_object($result)) {
       echo $thread=<<<EOD
         <div class="board">
+          <h2><a href="replies.php?&board=$row->board_id">$row->board_title</a></h2>
           <p>$row->board_description<p>
-          <h3><a href="replies.php?&board=$row->board_id"</a></h3>
-          <h6>OP: <a href="profile.html">username</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
+          <div class="info"><b>Moderators</b>: name, name</div>
         </div>
 EOD;
   }
@@ -30,29 +34,33 @@ else {
 
 
 ?>
-      <div class="content">
-        <div class="container">
-          <div class="board">
-            <h2><a href="board.html">Programming Shit</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-            <div class="info"><b>Moderators</b>: mweigle, szheng</div>
-          </div>
 
-          <div class="board">
-            <h2><a href="board.html">UX/UI Shit</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >Create Board <i class="fa fa-plus-square"></i></button>
 
-            <div class="info"><b>Moderators</b>: mweigle, szheng</div>
-          </div>
 
-          <div class="board">
-            <h2><a href="board.html">Ideas Shit</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-            <div class="info"><b>Moderators</b>: mweigle, szheng</div>
-          </div>
-
+  <!-- Modal -->
+  <div class="modal fade" id="newboard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">New Board</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <input type="text" placeholder="Enter Board Title"></input><br>
+            <textarea placeholder="Enter Description"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-blue">Create</a>
         </div>
       </div>
+    </div>
+  </div>
+
+
+  </div>
+</div>
 <?php include 'include/footer.php';?>
