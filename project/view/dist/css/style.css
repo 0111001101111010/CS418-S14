@@ -108,7 +108,7 @@ a:hover, a:focus, a:active{
 	min-height:40px;
 }
 
-#newboard input{
+#newboard input[type=text]{
 	background-color:#fff;
 	border:1px solid #efefef;
 	height:40px;
@@ -124,6 +124,8 @@ a:hover, a:focus, a:active{
 	width:100%;
 	padding-left:10px;
 }
+
+
 
 
 /* ====================  THREADS SHIT ========================== */
@@ -159,6 +161,15 @@ a:hover, a:focus, a:active{
 	margin-bottom:10px;
 }
 
+
+.response input[type=text]{
+	background-color:#fff;
+	border:1px solid #ccc;
+	height:40px;
+	width:100%;
+	padding-left:10px;
+	margin-bottom:10px;
+}
 
 
 .users {
