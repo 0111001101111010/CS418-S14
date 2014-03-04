@@ -1,7 +1,35 @@
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
+<?php
+# Perform database query
+$query = "SELECT * from board";
+$result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
+//$stmt = $conn->prepare('SELECT * from thread');
+//$stmt->execute();
+
+
+
+
+# Filter through rows and echo desired information
+if ($result){
+  while ($row = mysql_fetch_object($result)) {
+      echo $thread=<<<EOD
+        <div class="board">
+          <p>$row->board_description<p>
+          <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id">$row->thread_name</a></h3>
+          <h6>OP: <a href="profile.html">username</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
+        </div>
+EOD;
+  }
+}
+else {
+    echo "crud";
+}
+
+
+?>
       <div class="content">
         <div class="container">
           <div class="board">
