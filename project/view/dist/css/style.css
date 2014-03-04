@@ -105,9 +105,25 @@ a:hover, a:focus, a:active{
 }
 
 .board p{
-	min-height:100px;
+	min-height:40px;
 }
 
+#newboard input{
+	background-color:#fff;
+	border:1px solid #efefef;
+	height:40px;
+	width:100%;
+	padding-left:10px;
+	margin-bottom:10px;
+}
+
+#newboard textarea{
+	background-color:#fff;
+	border:1px solid #efefef;
+	min-height:200px;
+	width:100%;
+	padding-left:10px;
+}
 
 
 /* ====================  THREADS SHIT ========================== */

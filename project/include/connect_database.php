@@ -4,15 +4,15 @@
 /*
 vagrant/local version
 */
-/*
+
 $username = "root";
 $password = "root";
 $localhost = "localhost:8888";
-*/
+
 
 /*
 vagrant/local version
-*/
+
 STWANLEY
 $username = "";
 $password = "";
