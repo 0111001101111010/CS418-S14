@@ -18,7 +18,7 @@ if ($result){
       echo $thread=<<<EOD
         <div class="board">
           <p>$row->board_description<p>
-          <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id">$row->thread_name</a></h3>
+          <h3><a href="replies.php?&board=$row->board_id"</a></h3>
           <h6>OP: <a href="profile.html">username</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
         </div>
 EOD;
