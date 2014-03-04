@@ -24,7 +24,7 @@ session_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">HackChat</a>
+        <a class="navbar-brand" href="index.php"><img src="view/logo_white_30.png"> HackChat</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -36,8 +36,7 @@ session_start();
         if ( isset( $_SESSION['myusername'] ) ){
           $user = $_SESSION['myusername'];
           echo '<ul class="nav navbar-nav navbar-right">
-                    <a href="index.php">Welcome '. $user .'</a>
-                    <p>
+                    <a href="index.php">Welcome '. $user .'</a><br>
                     <a href="Logout.php">Logout</a>
                   </ul>
             </div>';
