@@ -9,7 +9,7 @@
 //var_dump($_SESSION);
 //var_dump($_POST);
 //die();
-
+$board_id = $_GET['board_id'];
 if ( isset( $_SESSION['myusername'] ) ){
 
 }else {
@@ -38,13 +38,16 @@ for ($i=0; $i < 5; $i++) {
 }
 */
 # Perform database query
-$query = "SELECT * from thread order by thread_id DESC";
+$query = "SELECT * from thread where thread_board_id=".$board_id." order by thread_id DESC";
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 //$stmt = $conn->prepare('SELECT * from thread');
 //$stmt->execute();
+$query2 = "SELECT * from board where board_id=".$board_id;
+$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
+$result2 = mysql_fetch_object($result2);
 
-
+echo "<h1>".$result2->board_description."</h1>";
 
 
 # Filter through rows and echo desired information
