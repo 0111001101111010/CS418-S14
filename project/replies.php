@@ -35,6 +35,9 @@ $url = "replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id];
 //var_dump(mysql_fetch_object($result));
 //die();
 //if it has been specified reset these points
+/*
+#TODO some crazy ass shit
+*/
 if (isset($_GET['page'])){
   $start = 0+$_GET['page']*5;
   $end = 5+ $_GET['page']*5;
