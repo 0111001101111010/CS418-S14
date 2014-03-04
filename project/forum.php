@@ -85,7 +85,7 @@ else {
             <input id="thread_name" type="text" placeholder="Enter Title"></input><br>
             <textarea id="thread_description" placeholder="Enter Description"></textarea>
             <div class="modal-footer">
-              <input type="submit" class="btn btn-blue" input type="submit" >Create</a>
+              <input type="submit" class="btn btn-blue" value="Create"></a>
             </div>
           </form>
         </div>
