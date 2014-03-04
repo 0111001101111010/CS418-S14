@@ -47,6 +47,13 @@ echo "<h2> Your post was successfully added</h2>";
   </p>
 </form>'; */
 
+$url = "replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id];
+/*
+var_dump("\"location:replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id]."\"");
+$test= ("\"refresh:5, url=:replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id]."\"");
+//die();
+header($test);
+*/
 echo "<h2><a href=replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id].">Return to Post</a></h2>";
 ?>
 

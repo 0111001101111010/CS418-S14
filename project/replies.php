@@ -34,6 +34,20 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
         echo "There are no replies yet, Add one now!g";
     }
 
+echo $pagination = <<<EOD
+<div class="row">
+<ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+</div>
+EOD;
+
 //print_r($_GET);
 //print_r($_POST);
 $js = <<< EOD

@@ -6,10 +6,13 @@ session_start();
 //echo $_SERVER['REDIRECT_URI'];
 //var_dump($_SERVER);
 //die();
-if (!isset($_SESSION['id'])&&($_SERVER['REQUEST_URI']!=$_SERVER['SCRIPT_NAME'])) {
+//var_dump( $_SESSION);
+//die();
+/*
+if (isset($_SESSION['username'])&&($_SERVER['REQUEST_URI']!=$_SERVER['SCRIPT_NAME'])) {
     session_destroy();
     Header("Location: login.php");
-}
+}*/
 ?>
 <html>
 <html lang="en">

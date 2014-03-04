@@ -1,7 +1,8 @@
 <?php
 //the most evil php file ever
 //deletings anything that is passed into thread_id
-if(){
+if(isset($_GET['board_id'])){
+
 }
 else if(){
 }
