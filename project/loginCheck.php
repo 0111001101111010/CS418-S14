@@ -27,15 +27,15 @@ $count=mysql_num_rows($result);
 if(($count==1 )&&(isset($_POST['checkbox']))){
       //rememberme
       $_SESSION['myusername']=$myusername;
-      setcookie("remember", 1, time()+3600)
-      setcookie("user", $myusername, time()+3600)
+      setcookie("remember", 1, time()+3600);
+      setcookie("user", $myusername, time()+3600);
       header("location:index.php");
       }
 else if($count==1){
       //dont remember me
       session_start();
-      setcookie("remember", 1, time()+360)
-      setcookie("user", $myusername, time()+360)
+      setcookie("remember", 1, time()+360);
+      setcookie("user", $myusername, time()+360);
       $_SESSION['myusername']=$myusername;
       header("location:index.php");
 
