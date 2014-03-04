@@ -158,3 +158,24 @@ a:hover, a:focus, a:active{
 	margin-left:30px;
 	margin-bottom:10px;
 }
+
+
+
+.users {
+	padding:0;
+	margin:0;
+	list-style: none;
+}
+
+.users span{
+	padding-right:15px;
+}
+
+.users i{
+	color:#5CCDCC;
+}
+.users i:hover,.users i:active, .users i:focus{
+	cursor:pointer;
+	color:#333;
+
+}
