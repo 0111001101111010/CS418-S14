@@ -21,7 +21,7 @@ if ($result){
   while ($row = mysql_fetch_object($result)) {
       echo $thread=<<<EOD
         <div class="board">
-          <h2><a href="replies.php?&board=$row->board_id">$row->board_title</a></h2>
+          <h2><a href="forum.php?&board_id=$row->board_id">$row->board_title</a></h2>
           <p>$row->board_description<p>
           <div class="info"><b>Moderators</b>: name, name</div>
         </div>
