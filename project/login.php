@@ -13,21 +13,19 @@ $_SESSION['authuser'] = 0;
 <div class="content">
 	<div class="container">
 		<div class="login">
-			<div class="inputs">
-				<form role="form" method="post" action="loginCheck.php">
-					<div class="form-group">
-						<label for="text">Username</label>
-						<input type="text" class="form-control" id="username" placeholder="Enter your username" name="username">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control" id="password" placeholder="Password" name="password">
-					</div>
-					<a class="btn btn-blue" name="signup" href="index2.html">Sign Up</a>
-					<button type="submit" class="btn btn-blue" name="submit">Submit</button>
-				</form>
-			</div>
-			<div class="checkbox"><input type="checkbox" value=""> Remember Me</div>
+			<form role="form" method="post" action="loginCheck.php">
+				<div class="centerthing">
+					<input type="text" id="username" placeholder="Enter your username" name="username">
+					<input type="password" id="password" placeholder="Password" name="password">
+				</div>
+				<div class="checkbox"><input type="checkbox" value=""> Remember Me</div>
+				<hr>
+				<div class="centerthing">
+				<a class="btn btn-blue" name="signup" href="index2.html">Sign Up</a>
+				<button type="submit" class="btn btn-blue" name="submit">Submit</button></div>
+			</form>
+		</div>
+			
 	</div>
 </div>
 <?php

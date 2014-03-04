@@ -1,8 +1,13 @@
 <?php
-
+/*
 $host="127.0.0.1"; // Host name
 $username=""; // Mysql username
 $password=""; // Mysql password
+$db_name="test"; // Database name
+$tbl_name="users"; // Table name
+*/
+
+include 'include/connect_database.php';
 $db_name="test"; // Database name
 $tbl_name="users"; // Table name
 

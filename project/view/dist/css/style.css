@@ -31,8 +31,15 @@ a:hover, a:focus, a:active{
 	color:#fff;
 }
 
+.navbar-brand{
+	padding: 10px;
+}
+
+.navbar-brand img{
+	padding-right:5px;
+}
+
 .content .container{
-	height:100%;
 	background-color:#efefef;
 	padding:90px 50px;
 
@@ -48,7 +55,7 @@ a:hover, a:focus, a:active{
 	height:500px;
 }
 
-.login .inputs{
+.login .centerthing{
 	text-align:center;
 }
 
