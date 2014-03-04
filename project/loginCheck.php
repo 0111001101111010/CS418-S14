@@ -12,12 +12,14 @@ $db_name="test"; // Database name
 $tbl_name="users"; // Table name
 
 // Connect to server and select databse.
-mysql_connect("$host", "$username", "$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
+//mysql_connect("$host", "$username", "$password")or die("cannot connect");
+//mysql_select_db("$db_name")or die("cannot select DB");
 
 // username and password sent from form
 $myusername=$_POST['username'];
 $mypassword=$_POST['password'];
+$remember=$_POST['checkbox'];
+//if (isset($_POST['checkbox']) && is_array($_POST['checkbox'])) { echo implode(' ', $_POST['checkbox']); }
 
 // To protect MySQL injection (more detail about MySQL injection)
 $myusername = stripslashes($myusername);
@@ -31,14 +33,29 @@ $result=mysql_query($sql);
 $count=mysql_num_rows($result);
 
 // If result matched $myusername and $mypassword, table row must be 1 row
-if($count==1){
+if(($count==1 )&&(isset($_POST['checkbox']))){
 // Register $myusername, $mypassword and redirect to file "login_success.php"
+//rememberme
 session_start();
 $_SESSION['myusername']=$myusername;
 $_SESSION['myuserpass']=$mypassword;
 $_POST['myusername']=$myusername;
 $_POST['myuserpass']=$mypassword;
 header("location:index.php");
+}
+else if($count==1){
+//dont remember me
+session_start();
+setcookie("TestCookie","cookie", time()+20);
+ini_set('session.gc_maxlifetime', 10); //30 secondsh
+//echo ini_get("session.gc_maxlifetime");
+//die();
+$_SESSION['myusername']=$myusername;
+$_SESSION['myuserpass']=$mypassword;
+$_POST['myusername']=$myusername;
+$_POST['myuserpass']=$mypassword;
+header("location:index.php");
+
 }
 else {
 echo "Wrong Username or Password";

@@ -6,6 +6,6 @@ PRIMARY KEY 	(board_id)
 );
 INSERT into board (board_id,board_title,board_description) values (null,"Idea Board", "IPSUMLOREMIPSUMLOREM");
 INSERT into board (board_id,board_title,board_description) values (null,"Skill Share", "IPSUMLOREMIPSUMOLOREM");
-INSERT into board (board_id,board_title,board_description) values (null,"Upcoming Events", m.
-INSERT into board (board_id,board_title,board_description) values (null,"Find a friend
-INSERT into board (board_id,board_title,board_description) values (null, "Missed Connection","IPSUM")
+INSERT into board (board_id,board_title,board_description) values (null,"Upcoming Events","IPSUMLOREMIPSUMOLOREM");
+INSERT into board (board_id,board_title,board_description) values (null,"Find a friend", "IPSUMLOREMIPSUMOLOREM");
+INSERT into board (board_id,board_title,board_description) values (null, "Missed Connection","IPSUM");

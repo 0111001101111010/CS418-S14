@@ -18,14 +18,14 @@ $_SESSION['authuser'] = 0;
 					<input type="text" id="username" placeholder="Enter your username" name="username">
 					<input type="password" id="password" placeholder="Password" name="password">
 				</div>
-				<div class="checkbox"><input type="checkbox" value=""> Remember Me</div>
+				<div class="checkbox"><input type="checkbox" value=1 name="checkbox" id="checkbox"> Remember Me</div>
 				<hr>
 				<div class="centerthing">
 				<a class="btn btn-blue" name="signup" href="index2.html">Sign Up</a>
 				<button type="submit" class="btn btn-blue" name="submit">Submit</button></div>
 			</form>
 		</div>
-			
+
 	</div>
 </div>
 <?php
