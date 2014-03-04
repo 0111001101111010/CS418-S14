@@ -5,6 +5,8 @@
 session_start();
 $query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id'];
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+$query2 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
+$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 ?>
 
   <div class="content">
@@ -12,8 +14,8 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
       <div class="post">
         <h3><?php echo $_REQUEST['thread']?></h3>
-        <h6>OP: <a href="profile.html">username</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on mmm d, yyyy</h6>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <h6>OP: <a href="profile.html">anonymous</a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
+        <p><?php echo mysql_fetch_object($result2)->thread_description;?> </p>
       </div>
 
       <hr>
@@ -33,10 +35,23 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
     else {
         echo "There are no replies yet, Add one now!g";
     }
+$count = mysql_num_rows($result);
 
+
+
+echo'<div class="row"> <ul class="pagination">
+  <li><a href="#">
+    &laquo;
+  </a></li>';
+for ($i = 0; $i < ($count/5); $i++) {
+echo '<li><a href="#">'.$i.'</a></li>';
+  }
+echo '<li><a href="#">&raquo;</a></li></ul></div>';
+/*
 echo $pagination = <<<EOD
 <div class="row">
 <ul class="pagination">
+
   <li><a href="#">&laquo;</a></li>
   <li><a href="#">1</a></li>
   <li><a href="#">2</a></li>
@@ -44,10 +59,11 @@ echo $pagination = <<<EOD
   <li><a href="#">4</a></li>
   <li><a href="#">5</a></li>
   <li><a href="#">&raquo;</a></li>
+
 </ul>
 </div>
 EOD;
-
+*/
 //print_r($_GET);
 //print_r($_POST);
 $js = <<< EOD
