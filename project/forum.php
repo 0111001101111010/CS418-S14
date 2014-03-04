@@ -81,13 +81,13 @@ else {
           <h4 class="modal-title" id="myModalLabel">New Thread</h4>
         </div>
         <div class="modal-body">
-          <form>
-            <input type="text" placeholder="Enter Title"></input><br>
-            <textarea placeholder="Enter Description"></textarea>
+          <form method="post" action="submitThread.php?boardid="<?php echo $board_id;?>>
+            <input id="thread_name" type="text" placeholder="Enter Title"></input><br>
+            <textarea id="thread_description" placeholder="Enter Description"></textarea>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-blue" input type="submit" >Create</a>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-blue">Create</a>
         </div>
       </div>
     </div>
