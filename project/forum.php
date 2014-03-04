@@ -47,7 +47,7 @@ $query2 = "SELECT * from board where board_id=".$board_id;
 $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 $result2 = mysql_fetch_object($result2);
 
-echo "<h1>".$result2->board_description."</h1>";
+echo "<h1>".$result2->board_title."</h1>";
 
 
 # Filter through rows and echo desired information
