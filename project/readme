@@ -1,5 +1,19 @@
 Quick Chat Forums
 -----------
+Flow
+----
+index -> forum -> replies -> replyTo -> replies
+
+
+Files
+---
+- Index is boards
+- forum is threads associated with board
+- replies are replies associated with forum
+- submit only supports replies right now, must support replies to replies
+
+note
+-addThread for adding threads
 
 
 Dependencies Typahead.js &  Mention.js
