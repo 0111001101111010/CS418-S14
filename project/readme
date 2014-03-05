@@ -19,3 +19,19 @@ note
 
 Dependencies Typahead.js &  Mention.js
 http://stackoverflow.com/questions/19179033/populating-a-mentions-array-from-mysql
+
+// Query for moderator privillages
+$query2 = "SELECT * from moderator where moderator_name_id=\"".$myusername.'"';
+$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
+//$result2 = mysql_fetch_object($result2);
+//var_dump( $result2);
+
+while ($row = mysql_fetch_object($result2)) {
+  //echo $row->moderator_board_id;
+  setcookie('"'.$row->moderator_board_id.'"',$row->moderator_board_id,time(0+3600));
+//  ifset($_COOKIE[$board_id])   $_COOKIE['2']
+}
+echo $_COOKIE['1'];
+die();
+
+is moderator flag

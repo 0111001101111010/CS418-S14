@@ -48,13 +48,13 @@ if (isset($_GET['page'])){
       $row = mysql_fetch_array($result);
       //while ($row = mysql_fetch_object($result)) {
           echo '<div class="post"><h3>'.$row["reply_title"].'</h3><h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6> <h6>Comments:# '. $num .' of   '.$count.'</h6>         <h6>Posted on '.$row["reply_date"].'</h6>
-    <p>'.$row["reply_post"].'</p></div>'.
+    <p>'.$row["reply_id"].'<=>'.$row["reply_post"].'</p></div>'.
     '<p><a href="replyTo.php?foo=bar&bar=foo">Reply To</a>';
 
       }
     }
     else {
-        echo "There are no replies yet, Add one now!g";
+        echo "<h1>There are no replies yet, Add one now!</h1>";
     }
 
 echo'<div class="row"> <ul class="pagination">
