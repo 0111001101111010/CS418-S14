@@ -10,16 +10,6 @@
 //var_dump($_POST);
 //die();
 $board_id = $_GET['board_id'];
-if ( isset( $_SESSION['myusername'] ) ){
-
-}else {
-
-  echo '<div class="content"><div class="container">You must be logged in to access the forum. <br>
-  <h6>Click <a href="index.php">here</a> if you are not redirected.</h6></div></div>';
-
-include 'include/footer.php';
-exit();
-}
 ?>
 
 <!-- Needs to spit these out -->

@@ -46,8 +46,8 @@ if (isset($_SESSION['username'])&&($_SERVER['REQUEST_URI']!=$_SERVER['SCRIPT_NAM
           <li><a href="#contact">Contact</a></li>
         </ul>
         <?php
-        if ( isset( $_SESSION['myusername'] ) ){
-          $user = $_SESSION['myusername'];
+        if ( isset( $_COOKIE['user']) ){
+          $user = $_COOKIE["user"];
           echo '<ul class="nav navbar-nav navbar-right">
                     <a href="index.php">Welcome '. $user .'</a><br>
                     <a href="Logout.php">Logout</a>

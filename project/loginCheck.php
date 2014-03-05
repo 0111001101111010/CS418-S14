@@ -34,11 +34,12 @@ if(($count==1 )&&(isset($_POST['checkbox']))){
 else if($count==1){
       //dont remember me
       session_start();
-      setcookie("remember", 1, time()+360);
-      setcookie("user", $myusername, time()+360);
+      setcookie("remember", 1, time()+60);
+      setcookie("user", $myusername, time()+60);
       $_SESSION['myusername']=$myusername;
+      //var_dump($_COOKIE["user"]);
+      //die();
       header("location:index.php");
-
 }
 else {
       header( "refresh:5;url=login.php" );
