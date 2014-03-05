@@ -9,12 +9,34 @@ $_SESSION['authuser'] = 0;
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
+<?php
+	# Perform database query
+	$query = "SELECT * from users";
+	$result = mysql_query($query) or die('Query failed: ' . mysql_error());
+
+?>
 
 <div class="content">
 	<div class="container">
 		<h1>Admin Page</h1><hr>
-		
-		<h3>Users:</h3>
+
+<?php
+
+# Filter through rows and echo desired information
+if ($result){
+echo '<h3>Users:</h3>
+	<ul class="users">';
+while ($row = mysql_fetch_object($result)) {
+		echo '<li><span>'.$row->user_name.'<i class="fa fa-pencil" data-toggle="modal" data-target="#edituser"></i></li>';
+}
+echo '</ul></div></div>';
+}
+else {
+		echo "crud";
+}
+?>
+<!--
+	<h3>Users:</h3>
 		<ul class="users">
 			<li><span>Username</span><i class="fa fa-pencil" data-toggle="modal" data-target="#edituser"></i></li>
 			<li><span>Username</span><i class="fa fa-pencil"></i></li>
@@ -25,10 +47,10 @@ $_SESSION['authuser'] = 0;
 			<li><span>Username</span><i class="fa fa-pencil"></i></li>
 		</ul>
 
-			
+
 	</div>
 </div>
-
+-->
   <!-- Modal -->
   <div class="modal fade" id="edituser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
