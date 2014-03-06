@@ -14,6 +14,10 @@ $_SESSION['authuser'] = 0;
 	$query = "SELECT * from users";
 	$result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
+	# Perform database query
+	$query2 = "SELECT * from board";
+	$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
+
 ?>
 
 <div class="content">
@@ -23,11 +27,12 @@ $_SESSION['authuser'] = 0;
 <?php
 
 # Filter through rows and echo desired information
-if ($result){
+if ($result && $result2){
 echo '<h3>Users:</h3>
 	<ul class="users">';
 while ($row = mysql_fetch_object($result)) {
-		echo '<li><span>'.$row->user_name.'<i class="fa fa-pencil" data-toggle="modal" data-target="#edituser"></i></li>';
+	echo '';
+	echo '<li><span>'.$row->user_name.'</span><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i></li>';
 }
 echo '</ul></div></div>';
 }
@@ -52,20 +57,36 @@ else {
 </div>
 -->
   <!-- Modal -->
+<script>
+  $(document).on("click", ".edituser", function () {
+     var username = $(this).data('id');
+     //$(".modal-body #myModalLabel").val( username );
+     document.getElementById("myModalLabel").innerHTML = "User Role: " + username;
+});
+</script>
+
+
+
   <div class="modal fade" id="edituser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">User Role</h4>
+          <h4 class="modal-title" id="myModalLabel" value=""></h4>
         </div>
         <div class="modal-body">
           <h4>Board:</h4>
           <form>
             <select class="form-control">
-			  <option value="1">Board 1</option>
-			  <option value="2">Board 2</option>
-			  <option value="3">Board 3</option>
+				<?php
+					# Filter through rows and echo desired information
+					if ($result2){
+						while ($row = mysql_fetch_object($result2)) {
+							echo '<option value="'.$row->board_id.'">'.$row->board_title.'</option>';	
+
+						}
+					}
+				?>
 			</select>
           </form>
 

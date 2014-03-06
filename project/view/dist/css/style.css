@@ -102,10 +102,21 @@ a:hover, a:focus, a:active{
 .board h2{
 	margin-top:0;
 	font-weight:normal;
+	display:inline-block;
 }
 
 .board p{
 	min-height:40px;
+}
+
+.setting {
+	display:inline-block;
+	color:#5CCDCC;
+}
+
+.setting i:hover, .setting i:focus, .setting i:active{
+	cursor:pointer;
+	color:#333;
 }
 
 #newboard input[type=text]{
