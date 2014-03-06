@@ -46,14 +46,24 @@ if (isset($_SESSION['username'])&&($_SERVER['REQUEST_URI']!=$_SERVER['SCRIPT_NAM
           <li><a href="#contact">Contact</a></li>
         </ul>
         <?php
-        if ( isset( $_COOKIE['user']) ){
+        if ( isset( $_COOKIE['user'])&& $_COOKIE["user"]=="admin" ){
+          $user = $_COOKIE["user"];
+          echo '<ul class="nav navbar-nav navbar-right">
+                    <a href="index.php">Welcome '. $user .'</a><br>
+                    <a href="adminpage.php" style="color:yellow">Admin Panel</a><br>
+                    <a href="Logout.php">Logout</a>
+                  </ul>
+            </div>';
+        }
+        else if ( isset( $_COOKIE['user']) ){
           $user = $_COOKIE["user"];
           echo '<ul class="nav navbar-nav navbar-right">
                     <a href="index.php">Welcome '. $user .'</a><br>
                     <a href="Logout.php">Logout</a>
                   </ul>
             </div>';
-        }else {
+        }
+        else {
           echo '<ul class="nav navbar-nav navbar-right">
             <a href="login.php">Log In</a>
                </ul>';
