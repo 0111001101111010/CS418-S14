@@ -5,7 +5,15 @@ moderator_board_id   	INT(5) NOT NULL,
 moderator_user_level   INT(5) NOT NULL,
 PRIMARY KEY 	(moderator_id)
 );
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",0,10);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",1,10);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",2,10);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",3,10);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",4,10);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",5,10);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",6,10);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"mweigle",1,5);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"mweigle",1,5);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"test",1,10);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",2,5);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",3,5);
