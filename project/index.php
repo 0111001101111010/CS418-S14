@@ -20,6 +20,7 @@ if ($result){
     echo $thread=<<<EOD
         <div class="board">
           <h2><a href="forum.php?&board_id=$row->board_id">$row->board_title</a></h2>
+          <div class="setting pull-right"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-times"></i></a></div>
           <p>$row->board_description<p>
           <div class="info"><b>Moderators</b>
 EOD;
@@ -40,6 +41,7 @@ else {
 
 
 ?>
+
 
 
   <button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >Create Board <i class="fa fa-plus-square"></i></button>
