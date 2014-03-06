@@ -37,6 +37,19 @@ $query2 = "SELECT * from board where board_id=".$board_id;
 $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 $result2 = mysql_fetch_object($result2);
 
+
+//Am I a moderator?
+if ( isset( $_COOKIE['user']) ){
+$query3 = "SELECT * from moderator where moderator_name_id=".'"'.$_COOKIE['user'].'" and moderator_board_id ='.$board_id;
+
+$result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
+//$result3 = mysql_fetch_object($result3);
+// Mysql_num_row is counting table row
+$count=mysql_num_rows($result3);
+    if($count==1)
+        $moderator=true;
+}
+
 echo "<h1>".$result2->board_title."</h1>";
 
 
@@ -59,8 +72,11 @@ else {
 
 
 ?>
-<button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >New Thread <i class="fa fa-plus-square"></i></button>
+<?php
 
+  if ($moderator)
+    echo '<button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >New Thread <i class="fa fa-plus-square"></i></button>';
+?>
 
   <!-- Modal -->
   <div class="modal fade" id="newboard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
