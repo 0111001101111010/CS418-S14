@@ -10,3 +10,4 @@ INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moder
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",2,5);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",3,5);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"orattana",2,5);
+update moderator SET moderator_user_level=10 where moderator_name_id ="orattana" and moderator_board_id =1;
