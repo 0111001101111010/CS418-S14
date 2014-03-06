@@ -9,7 +9,8 @@ $query2 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 $query3 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
-
+$query4 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
+$result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
 //var_dump($query2);
 //die();
 ?>
@@ -19,7 +20,7 @@ $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
 
       <div class="post">
         <h3><?php echo $_REQUEST['thread']?></h3>
-        <h6>OP: <a href="profile.html">anonymous</a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
+        <h6>OP: <a href="profile.html"><?php echo mysql_fetch_object($result4)->thread_user;?></a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
         <h2><?echo mysql_fetch_object($result3)->thread_description;
         ?> </h2>
       </div>

@@ -13,8 +13,8 @@ include 'include/connect_database.php';
 
     //thread insert
     $tbl_name = "reply";
-    $query="INSERT into thread (thread_id,thread_board_id,thread_name,thread_description,thread_date) values (null,".$_GET[board_id].",'".$_POST['thread_name']."', '".$_POST['thread_description']."',"."NOW()".")";
-    var_dump($query);
+    $query="INSERT into thread (thread_id,thread_board_id,thread_user,thread_name,thread_description,thread_date) values (null,".$_GET[board_id].",\"{$_COOKIE['user']}\",'".$_POST['thread_name']."', '".$_POST['thread_description']."',"."NOW()".")";
+    //var_dump($query);
     //$query="DELETE FROM reply WHERE reply_id={$_GET['reply_id']}";
     //var_dump($query);
     //die();
