@@ -20,7 +20,6 @@ if ($result){
     echo $thread=<<<EOD
         <div class="board">
           <h2><a href="forum.php?&board_id=$row->board_id">$row->board_title</a></h2>
-          <div class="setting pull-right"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-times"></i></a></div>
           <p>$row->board_description<p>
           <div class="info"><b>Moderators</b>
 EOD;
@@ -32,7 +31,7 @@ $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 while ($record = mysql_fetch_object($result2)) {
 echo " ". $record->moderator_name_id." ";
 }
-echo "</div></div>";
+echo '<div class="setting pull-right"><a href=""><i class="fa fa-pencil"></i></a> <a href=delete.php?board_id="'.$row->board_id.'"><i class="fa fa-times"></i></a></div></div></div>';
   }
 }
 else {
