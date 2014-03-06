@@ -1,6 +1,6 @@
 CREATE TABLE moderator (
 moderator_id     	    INT(5) NOT NULL AUTO_INCREMENT,
-moderator_name_id   	VARCHAR(30) NOT NULL,
+moderator_name_id   	 VARCHAR(30) NOT NULL,
 moderator_board_id   	INT(5) NOT NULL,
 moderator_user_level   INT(5) NOT NULL,
 PRIMARY KEY 	(moderator_id)
