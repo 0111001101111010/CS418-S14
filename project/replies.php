@@ -112,6 +112,7 @@ $js = <<< EOD
 EOD;
 echo $js;
 
+if (isset($_COOKIE['user'])){
   echo '<hr>
         <form method="post" action="submit.php?thread='.urldecode($_GET[thread]).'&id='.$_GET[id].'" class="response">
           <h3>Reply title: </h3>
@@ -125,7 +126,7 @@ echo $js;
 
       </div>
     </div>';
-
+}
 
 
 ?>
