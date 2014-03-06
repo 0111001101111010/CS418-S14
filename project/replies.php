@@ -53,8 +53,21 @@ if (isset($_GET['page'])){
       for($num=$start; $num<$end;$num++) {
       $row = mysql_fetch_array($result);
       if ($row!=null){
-          echo '<div class="post"><h3>'.$row["reply_title"].'</h3><h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6> <h6>Comments:# '. $num  .' of   '.$count.'</h6>         <h6>Posted on '.$row["reply_date"].'</h6>
-    <p>'.$row["reply_post"].'<a href="replyTo.php?foo=bar&bar=foo"><br><br><i class="fa fa-reply"></i></a></p></div>';
+          $id = $row['reply_id'];
+          echo '<div class="post">
+            <h3>'.$row["reply_title"].'</h3>
+            <h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6> <h6>Comments:# '. $num  .' of   '.$count.'</h6>
+            <h6>Posted on '.$row["reply_date"].'</h6>
+        <p>'.$row["reply_post"].'</p>
+        <br>
+        <div class="pull-right" style="font-size:20px">
+          <a href="#"><i class="fa fa-reply"></i></a>';
+echo $buttons = <<<EOD
+<a href=""><i class="fa fa-pencil"></i></a>
+<a href=delete.php?reply_id="$id"><i class="fa fa-times"></i></a>
+    </div>
+</div>
+EOD;
 }
 
       }
