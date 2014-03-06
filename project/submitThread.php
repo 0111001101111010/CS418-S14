@@ -17,7 +17,6 @@ echo "<br>";
 $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_description, thread_date) values (null,0,"'
           .$_REQUEST['thread_name'].'","'.$_REQUEST['thread_description'].'",NOW());';
 
-
 //echo $query;
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 echo "<h2> your thread was successfully added</h2>";
@@ -37,7 +36,7 @@ echo "<h2> your thread was successfully added</h2>";
 // Print_r ($_SESSION);
 
 
-echo "<h1><a href=forum.php>Click to Return to Threads</a></h1>";
+echo "<h1><a href=forum.php?board_id=".$_GET['BOARD_ID'].">Click to Return to Threads</a></h1>";
 ?>
 
 <?php include 'include/footer.php';?>

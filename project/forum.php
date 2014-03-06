@@ -88,7 +88,7 @@ else {
           <h4 class="modal-title" id="myModalLabel">New Thread</h4>
         </div>
         <div class="modal-body">
-          <form method="post" action="submitThread.php?boardid="<?php echo $board_id;?>>
+          <form method="post" action="<?php echo 'insert.php?board_id='.$_GET["board_id"]; ?>">
             <input name="thread_name" type="text" placeholder="Enter Title"></input><br>
             <textarea name="thread_description" placeholder="Enter Description"></textarea>
             <div class="modal-footer">
