@@ -9,3 +9,4 @@ INSERT into board (board_id,board_title,board_description) values (null,"Skill S
 INSERT into board (board_id,board_title,board_description) values (null,"Upcoming Events","IPSUMLOREMIPSUMOLOREM");
 INSERT into board (board_id,board_title,board_description) values (null,"Find a friend", "IPSUMLOREMIPSUMOLOREM");
 INSERT into board (board_id,board_title,board_description) values (null, "Missed Connection","IPSUM");
+INSERT into board (board_id,board_title,board_description) values (null,"General Discussion", "IPSUMLOREMIPSUMLOREM");

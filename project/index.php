@@ -55,13 +55,14 @@ if ($_COOKIE['user']=='admin'){
           <h4 class="modal-title" id="myModalLabel">New Board</h4>
         </div>
         <div class="modal-body">
-          <form>
-            <input type="text" placeholder="Enter Board Title"></input><br>
-            <textarea placeholder="Enter Description"></textarea>
-          </form>
-        </div>
+          <form method="post" action="insert.php">
+            <input name="board" type="text" placeholder="Enter Board Title"></input><br>
+            <textarea name="board_info" placeholder="Enter Description"></textarea>
+
         <div class="modal-footer">
-          <a href="#" class="btn btn-blue">Create</a>
+              <input type="submit" name="Submit" value="Create" class="btn btn-blue pull-right">
+        </div>
+        </form>
         </div>
       </div>
     </div>

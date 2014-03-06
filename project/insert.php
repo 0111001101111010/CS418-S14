@@ -3,10 +3,13 @@ ob_start();
 //the most evil php file ever
 //deletings anything that is passed into thread_id
 include 'include/connect_database.php';
-    if(isset($_GET['board_id'])){
-
+    if(isset($_POST['board_info'])){
+//INSERT into board (board_id,board_title,board_description) values (null,"General Discussion", "IPSUMLOREMIPSUMLOREM");
     $tbl_name = "board";
-    $query="DELETE FROM $tbl_name WHERE board_id={$_GET['board_id']}";
+    $query="INSERT into board (board_id,board_title,board_description) values (null,'".$_POST['board']."', '".$_POST['board_info']."')";
+    //var_dump($query);
+    //die();
+    //$query="DELETE FROM $tbl_name WHERE board_id={$_GET['board_id']}";
     $result=mysql_query($query);
     }
     else if(isset($_GET['reply_id'])){
