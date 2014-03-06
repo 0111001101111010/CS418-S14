@@ -39,10 +39,12 @@ else {
 }
 
 
+if ($_COOKIE['user']=='admin'){
+ echo '<button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >Create Board <i class="fa fa-plus-square"></i></button>
+';
+}
+
 ?>
-
-
-  <button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >Create Board <i class="fa fa-plus-square"></i></button>
 
 
   <!-- Modal -->

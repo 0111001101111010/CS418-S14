@@ -10,6 +10,7 @@
 //var_dump($_POST);
 //die();
 $board_id = $_GET['board_id'];
+
 ?>
 
 <!-- Needs to spit these out -->
@@ -38,7 +39,7 @@ $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 $result2 = mysql_fetch_object($result2);
 
 
-//Am I a moderator?
+//Am I a moderator or admin?
 if ( isset( $_COOKIE['user']) ){
 $query3 = "SELECT * from moderator where moderator_name_id=".'"'.$_COOKIE['user'].'" and moderator_board_id ='.$board_id;
 
