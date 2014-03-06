@@ -7,4 +7,4 @@ thread_date   		DATETIME NOT NULL,
 PRIMARY KEY 		(thread_id)
 );
 INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_description, thread_date)
-values (null, 0, "Do you like to break dance", "show us your dance move in ascii art", NOW());
+values (null, 1, "Do you like to break dance", "show us your dance move in ascii art", NOW());

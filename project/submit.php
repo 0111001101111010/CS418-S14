@@ -24,14 +24,16 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 //print_r($_GET);
 echo "<br>";
 
-$user = $_SESSION['myusername'];
+$user = $_COOKIE['user'];
 //print_r($_POST); //0,0
 $query ="
 INSERT INTO reply(reply_id,reply_user,reply_thread_id,reply_reply_id,reply_reply_to_id,reply_title,reply_post,reply_date)
   values (null,'".$user."',".$_GET[id].",0,0,'".$_REQUEST['reply_title']."','".$_REQUEST['reply']."',NOW());";
 //var_dump($query);
+//die();
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 echo "<h2> Your post was successfully added</h2>";
+
 //var_dump($_SESSION);
 //var_dump($query);
 //var_dump($_SESSION['username']);
