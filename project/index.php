@@ -13,12 +13,6 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 //$stmt = $conn->prepare('SELECT * from thread');
 //$stmt->execute();
 
-$query2 = "SELECT * from moderator where moderator_board_id=3 and moderator_user_level=5";//.$row->board_id;
-$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
-$result2 = mysql_fetch_object($result2);
-var_dump($result2);
-die();
-
 # Filter through rows and echo desired information
 if ($result){
   while ($row = mysql_fetch_object($result)) {
@@ -27,9 +21,17 @@ if ($result){
         <div class="board">
           <h2><a href="forum.php?&board_id=$row->board_id">$row->board_title</a></h2>
           <p>$row->board_description<p>
-          <div class="info"><b>Moderators</b>: name, name</div>
-        </div>
+          <div class="info"><b>Moderators</b>
 EOD;
+//print the moderators
+$query2 = "SELECT * from moderator where moderator_board_id=". $row->board_id." and moderator_user_level=5";//.$row->board_id;
+$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
+
+
+while ($record = mysql_fetch_object($result2)) {
+echo " ". $record->moderator_name_id." ";
+}
+echo "</div></div>";
   }
 }
 else {
