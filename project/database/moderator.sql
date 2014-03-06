@@ -8,4 +8,5 @@ PRIMARY KEY 	(moderator_id)
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",1,10);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"test",1,10);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",2,5);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",3,5);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"orattana",2,5);
