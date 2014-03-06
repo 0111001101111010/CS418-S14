@@ -63,7 +63,7 @@ if ($result){
           <h6>OP: <a href="profile.html">$row->thread_user</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
 EOD;
     if ($moderator){
-      echo'<div class="setting pull-right"><a href=""><i class="fa fa-pencil"></i></a> <a href=delete.php?thread_id="$row->thread_id"><i class="fa fa-times"></i></a></div>';
+      echo'<div class="setting pull-right"><a href=><i class="fa fa-pencil"></i></a> <a href=delete.php?thread_id="'.$row->thread_id.'"><i class="fa fa-times"></i></a></div>';
     }
 echo'</div>';
 
