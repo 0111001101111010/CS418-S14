@@ -35,3 +35,8 @@ echo $_COOKIE['1'];
 die();
 
 is moderator flag
+
+
+adapt it to the insert/delete schema.
+
+right now thats how it works... magic
