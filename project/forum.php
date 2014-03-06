@@ -89,8 +89,8 @@ else {
         </div>
         <div class="modal-body">
           <form method="post" action="submitThread.php?boardid="<?php echo $board_id;?>>
-            <input id="thread_name" type="text" placeholder="Enter Title"></input><br>
-            <textarea id="thread_description" placeholder="Enter Description"></textarea>
+            <input name="thread_name" type="text" placeholder="Enter Title"></input><br>
+            <textarea name="thread_description" placeholder="Enter Description"></textarea>
             <div class="modal-footer">
               <input type="submit" class="btn btn-blue" value="Create"></a>
             </div>
