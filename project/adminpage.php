@@ -40,28 +40,14 @@ else {
 		echo "crud";
 }
 ?>
-<!--
-	<h3>Users:</h3>
-		<ul class="users">
-			<li><span>Username</span><i class="fa fa-pencil" data-toggle="modal" data-target="#edituser"></i></li>
-			<li><span>Username</span><i class="fa fa-pencil"></i></li>
-			<li><span>Username</span><i class="fa fa-pencil"></i></li>
-			<li><span>Username</span><i class="fa fa-pencil"></i></li>
-			<li><span>Username</span><i class="fa fa-pencil"></i></li>
-			<li><span>Username</span><i class="fa fa-pencil"></i></li>
-			<li><span>Username</span><i class="fa fa-pencil"></i></li>
-		</ul>
-
-
-	</div>
-</div>
--->
-  <!-- Modal -->
+<!-- Modal -->
 <script>
   $(document).on("click", ".edituser", function () {
      var username = $(this).data('id');
      //$(".modal-body #myModalLabel").val( username );
      document.getElementById("myModalLabel").innerHTML = "User Role: " + username;
+		 $('input#user').val(username);
+		console.log($('input#user').val());
 });
 </script>
 
@@ -76,31 +62,29 @@ else {
         </div>
         <div class="modal-body">
           <h4>Board:</h4>
-          <form>
-            <select class="form-control">
+			<form  method="post" action="updateadmin.php">
+      <input id="user" type="hidden" name="user" value="2" />
+			<select name="board" class="form-control">
 				<?php
 					# Filter through rows and echo desired information
 					if ($result2){
 						while ($row = mysql_fetch_object($result2)) {
-							echo '<option value="'.$row->board_id.'">'.$row->board_title.'</option>';	
+							echo '<option name="board" value="'.$row->board_id.'">'.$row->board_title.'</option>';
 
 						}
 					}
 				?>
 			</select>
-          </form>
-
           <h4>Role:</h4>
-          <form>
-            <select class="form-control">
-			  <option value="1">Normal User</option>
-			  <option value="2">Moderator</option>
-			  <option value="3">Admin</option>
+      <select name="level" class="form-control">
+			  <option value="0">Normal User</option>
+			  <option value="5">Moderator</option>
+			  <option value="10">Admin</option>
 			</select>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-blue" value="Update"></a>
+					</div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-blue">Save</a>
         </div>
       </div>
     </div>
