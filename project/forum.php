@@ -61,10 +61,14 @@ if ($result){
         <div class="thread">
           <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id">$row->thread_name</a></h3>
           <h6>OP: <a href="profile.html">$row->thread_user</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
-          <div class="setting pull-right"><a href=""><i class="fa fa-pencil"></i></a> <a href=delete.php?thread_id="$row->thread_id"><i class="fa fa-times"></i></a></div>
-        </div>
 EOD;
-  }
+    if ($moderator){
+      echo'<div class="setting pull-right"><a href=""><i class="fa fa-pencil"></i></a> <a href=delete.php?thread_id="$row->thread_id"><i class="fa fa-times"></i></a></div>';
+    }
+echo'</div>';
+
+
+}
 }
 else {
     echo "crud";
