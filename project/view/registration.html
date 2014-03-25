@@ -46,21 +46,25 @@
 
       <div class="content">
         <div class="container">
-          <div class="login">
-            <div class="inputs">
-              <input type="text" placeholder="Username" id="myusername"></input><br>
-              <input type="password" placeholder="Password" =myuserid></input>
-            </div>
-
-            <div class="checkbox"><input type="checkbox" value=""> Remember Me</div>
+          <div class="board">
+            <h2>New User Registration:</h2><br>
+            *Please fill out every field. We only accept ODU's CS email at this time.
             <hr>
-            <center>
-            <a href="#" class="btn btn-blue" style="margin-right:20px">Sign up</a> <a href="index2.html" class="btn btn-blue">Log In</a>
+            <form class="form-horizontal" role="form" style="width:70%;">
+              <input type="text" class="form-control" id="inputEmail3" placeholder="User Name"><br>
+              <input type="text" class="form-control" id="inputEmail3" placeholder="Your Name"><br>
+              <input type="email" class="form-control" id="inputEmail3" placeholder="CS Email"><br>
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Password"><br>
 
-            <br><br>
-              <a href="">Forgot your password?</a>
-            </center>
+                <input type="radio" name="emailOptions" value="email1"> Recieve email as text/html<br>
+                <input type="radio" name="emailOptions" value="email2"> Recieve email as text/plain<br>
+              
+              <hr>
+              <button type="submit" class="btn btn-blue">Submit</button>
+            </form>
           </div>
+
+
         </div>
       </div>
 
