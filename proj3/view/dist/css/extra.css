@@ -1,0 +1,106 @@
+body{
+	background-image:url('../../bg.png');
+}
+.my_navbar{
+	height:80px;
+	background-color:#fff;
+	border-bottom:7px solid #eee;
+
+}
+
+.navbar-header, .navbar-nav{
+	padding-top:12px;
+}
+
+.wrapper_1 {
+	margin-top:100px;
+}
+
+.wrapper_last{
+	margin-bottom:20px;
+}
+
+.wrapper_login{
+	margin-top:100px;
+}
+
+.wrapper_login h2{
+	margin:0 0 20px;
+}
+
+.wrapper_login .col-md-4{
+	background-color:#fefefe;
+	padding:50px;
+}
+
+.wrapper_thread_1{
+	margin-top:100px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.wrapper_thread_last{
+	margin-bottom:20px;
+}
+
+.wrapper_thread_1 .container{
+	padding-left:25px;
+}
+
+.wrapper_post .container{
+	padding-right:25px;
+}
+
+.wrapper_post .col-md-3, .wrapper_thread_1 .col-md-3, .wrapper_post_last .col-md-3{
+	text-align:center;
+}
+
+.wrapper_post_last{
+	padding-bottom:25px;
+}
+
+.wrapper [class*="col-"]{
+	padding-top:25px;
+	padding-bottom:25px;
+}
+
+.wrapper_thread [class*="col-"], .wrapper_thread_1 [class*="col-"], .wrapper_thread_last [class*="col-"]{
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.wrapper_thread .col-md-1{
+	min-height:120px;
+}
+
+.wrapper_reply{
+	padding-bottom:30px;
+}
+
+.wrapper_reply .container{
+	padding:0 25px;
+}
+
+.wrapper .container{
+	background-color:#fefefe;
+	border-bottom:1px solid #ddd;
+}
+
+.wrapper .col-md-10{
+	padding-left:25px;
+}
+
+.wrapper h1{
+	margin:0;
+}
+
+.wrapper .col-md-1{
+	border-left:1px solid #ddd;
+	min-height:130px;
+	
+}
+/*
+.wrapper > .container:hover,.wrapper > .container:active, .wrapper  >.container:focus{
+	background-color:#eee;
+	cursor:pointer;
+} */

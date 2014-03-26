@@ -1,0 +1,203 @@
+
+@import url(http://fonts.googleapis.com/css?family=Maven+Pro:700,400);
+
+body, html{
+	margin:0;
+	padding:0;
+	min-height:100%;
+	height:auto !important;
+}
+
+body{
+	font-family: 'Maven Pro', sans-serif;
+	font-size:15px;
+}
+
+a{
+	color:#5CCDCC;
+}
+
+a:hover, a:focus, a:active{
+	text-decoration:none;
+	color:#39BFBD;
+}
+
+.navbarBlue{
+	background-color:#5CCDCC;
+	border-bottom:5px solid #39BFBD;
+}
+
+.navbarBlue a{
+	color:#fff;
+}
+
+.navbar-brand{
+	padding: 10px;
+}
+
+.navbar-brand img{
+	padding-right:5px;
+}
+
+.content .container{
+	background-color:#efefef;
+	padding:90px 50px;
+
+}
+
+/* ====================  LOG IN SHIT ========================== */
+
+.login{
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:130px;
+	width:500px;
+	height:500px;
+}
+
+.login .centerthing{
+	text-align:center;
+}
+
+.login .checkbox{
+	margin-left:306px;
+}
+
+.login input[type=text], .login input[type=password]{
+	background-color:#fff;
+	border:none;
+	height:40px;
+	width:350px;
+	padding-left:10px;
+}
+
+.login input[type=text]{
+	margin-bottom:20px;
+}
+
+.btn-blue{
+	border-radius:0;
+	padding-top:11px;
+	font-size:17px;
+	height:50px;
+	width:160px;
+	background-color:#5CCDCC;
+	border-bottom:5px solid #39BFBD;
+	color:#fff;
+}
+
+.btn-blue:hover, .btn-blue:active, .btn-blue:focus{
+	cursor:pointer;
+	background-color:#39BFBD;
+}
+
+/* ====================  BOARDS SHIT ========================== */
+.board{
+	width:100%;
+	background-color:#fff;
+	padding:20px;
+	margin-bottom:25px;
+}
+
+.board h2{
+	margin-top:0;
+	font-weight:normal;
+	display:inline-block;
+}
+
+.board p{
+	min-height:40px;
+}
+
+.setting {
+	display:inline-block;
+	color:#5CCDCC;
+}
+
+.setting i:hover, .setting i:focus, .setting i:active{
+	cursor:pointer;
+	color:#333;
+}
+
+#newboard input[type=text]{
+	background-color:#fff;
+	border:1px solid #efefef;
+	height:40px;
+	width:100%;
+	padding-left:10px;
+	margin-bottom:10px;
+}
+
+#newboard textarea{
+	background-color:#fff;
+	border:1px solid #efefef;
+	min-height:200px;
+	width:100%;
+	padding-left:10px;
+}
+
+
+
+
+/* ====================  THREADS SHIT ========================== */
+.thread{
+	padding:10px;
+	background-color:#fff;
+	margin-bottom:10px;
+}
+
+.thread h3, .post h3{
+	margin-top:0;
+	margin-bottom:0;
+}
+
+.thread h6, .post h6{
+	color:#777;
+	margin-top:0;
+	margin-bottom:0;
+	display:inline-block;
+	margin-right:20px;
+}
+
+
+/* ====================  POSTS SHIT ========================== */
+.post{
+	padding:10px;
+	background-color:#fff;
+	margin-bottom:10px;
+}
+
+.reply{
+	margin-left:30px;
+	margin-bottom:10px;
+}
+
+
+.response input[type=text]{
+	background-color:#fff;
+	border:1px solid #ccc;
+	height:40px;
+	width:100%;
+	padding-left:10px;
+	margin-bottom:10px;
+}
+
+
+.users {
+	padding:0;
+	margin:0;
+	list-style: none;
+}
+
+.users span{
+	padding-right:15px;
+}
+
+.users i{
+	color:#5CCDCC;
+}
+.users i:hover,.users i:active, .users i:focus{
+	cursor:pointer;
+	color:#333;
+
+}
