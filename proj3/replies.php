@@ -56,7 +56,7 @@ if (isset($_GET['page'])){
           echo '<div class="post">
             <h3>'.$row["reply_title"].'</h3>
             <h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6>
-            <h6>Posted on '.$row["reply_date"].'</h6>
+            <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>
         <p>'.$row["reply_post"].'</p>
         <br>
         <div class="pull-right" style="font-size:20px">

@@ -9,7 +9,7 @@ $username = "root";
 $password = "root";
 $localhost = "localhost:8888";
 
-
+date_default_timezone_set("UTC");
 /*
 vagrant/local version
 */
