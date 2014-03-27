@@ -11,8 +11,6 @@ $query3 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
 $query4 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
-//var_dump($query2);
-//die();
 ?>
 
   <div class="content">
@@ -57,7 +55,7 @@ if (isset($_GET['page'])){
           $id = $row['reply_id'];
           echo '<div class="post">
             <h3>'.$row["reply_title"].'</h3>
-            <h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6> <h6>Comments:# '. $num  .' of   '.$count.'</h6>
+            <h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6>
             <h6>Posted on '.$row["reply_date"].'</h6>
         <p>'.$row["reply_post"].'</p>
         <br>
