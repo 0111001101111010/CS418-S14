@@ -2,6 +2,8 @@
 ob_start();
 //the most evil php file ever
 //deletings anything that is passed into thread_id
+//remember to delete the attached threads,replies, to each result
+
 include 'include/connect_database.php';
     if(isset($_GET['board_id'])){
 
