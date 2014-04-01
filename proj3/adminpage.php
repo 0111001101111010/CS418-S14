@@ -44,7 +44,21 @@ while ($row = mysql_fetch_object($result)) {
 	$result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
 	$threads = mysql_num_rows($result4);
 
-	echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>Last Posted</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i><i class="fa fa-ban edituser"></i><i class="fa fa-trash-o edituser"></i></td></tr>';
+	//date last time
+	$query5 = "select * from reply where reply_user ='".$row->user_name."' "."ORDER BY reply_date DESC;";
+	$result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
+	$lastTime = mysql_fetch_array($result5);
+
+	// var_dump($query5);
+	// var_dump($result5);
+	// var_dump($lastTime["reply_date"]);
+	//die();
+	if ($lastTime["reply_date"] !=NULL)
+		$time = $lastTime["reply_date"];
+	else
+		$time = "Not avaliable";
+
+	echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>'.$time.'</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i><i class="fa fa-ban edituser"></i><i class="fa fa-trash-o edituser"></i></td></tr>';
 }
 echo '</table></div></div>';
 }
