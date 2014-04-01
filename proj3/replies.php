@@ -7,10 +7,20 @@ $query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id'];
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 $query2 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
+//get id agains
 $query3 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
+//get thread ID
 $query4 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
+//get settings
+$query5 = "SELECT * from settings";
+$result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
+$row5 = mysql_fetch_array($result5);
+$page_setting = $row5["setting_value"];
+// var_dump($row5);
+// var_dump($page_setting);
+// die();
 $user = $_COOKIE['user'];
 ?>
 
@@ -31,7 +41,7 @@ $user = $_COOKIE['user'];
 <?php
 //to and from
 $start =0;
-$end   =5;
+$end   = $page_setting;
 $count = mysql_num_rows($result);
 
 //print_r(mysql_fetch_array($result));
@@ -45,8 +55,8 @@ $url = "replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id];
 #TODO some crazy ass shit
 */
 if (isset($_GET['page'])){
-  $start = 0+$_GET['page']*5;
-  $end = 5+ $_GET['page']*5;
+  $start = 0+$_GET['page']*$page_setting;
+  $end = $page_setting+ $_GET['page']*$page_setting;
 }
 # Filter through rows and echo desired information
     if ($result){
@@ -90,7 +100,7 @@ echo'<div class="row"> <ul class="pagination">
   <li><a href="#">
     &laquo;
   </a></li>';
-for ($i = 0; $i < ($count/5); $i++) {
+for ($i = 0; $i < ($count/$page_setting); $i++) {
 echo '<li><a href="'.$url.'&page='.$i.'">'.$i.'</a></li>';
   }
 echo '<li><a href="#">&raquo;</a></li></ul></div>';
