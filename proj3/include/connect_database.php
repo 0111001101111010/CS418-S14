@@ -7,7 +7,7 @@ vagrant/local version
 
 $username = "root";
 $password = "root";
-$localhost = "localhost:8888";
+$localhost = "localhost:5432";
 
 date_default_timezone_set("UTC");
 /*
@@ -15,9 +15,9 @@ vagrant/local version
 */
 //STWANLEY
 
-$username = "";
-$password = "";
-$localhost = "127.0.0.1:3306";
+// $username = "";
+// $password = "";
+// $localhost = "127.0.0.1:3306";
 
 /*
 production version

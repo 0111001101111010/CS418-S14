@@ -75,6 +75,14 @@ a:hover, a:focus, a:active{
 	margin-bottom:20px;
 }
 
+#forgotpassword input[type=email]{
+	background-color:#fff;
+	border:1px solid #ddd;
+	height:40px;
+	width:100%;
+	padding-left:10px;
+}
+
 .btn-blue{
 	border-radius:0;
 	padding-top:11px;
