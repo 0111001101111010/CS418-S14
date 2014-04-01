@@ -29,14 +29,16 @@ include 'include/connect_database.php';
 // var_dump($result);
 //die();
     }
-    else if(isset($_GET['thread_id'])){
+    else if(isset($_GET['board_id'])){
 
     $tbl_name = "thread";
 //    $query="DELETE FROM thread WHERE thread_id={$_GET['thread_id']}";
     $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_description, thread_date) values (null,'.$_REQUEST['board_id'].',"'
           .$_REQUEST['thread_name'].'","'.$_REQUEST['thread_description'].'",NOW());';
-echo($query);
-die();
+    $result = mysql_query($query);
+// echo($query);
+// echo($result);
+// die();
 }
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 header('refresh:5;url= ' . $_SERVER['HTTP_REFERER']);

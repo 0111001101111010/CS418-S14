@@ -3,8 +3,22 @@
 <?php include 'include/connect_database.php';?>
 <?php
 session_start();
+
+//get settings for pagination first
+$query5 = "SELECT * from settings";
+$result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
+$row5 = mysql_fetch_array($result5);
+$page_setting = $row5["setting_value"];
+
 $query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id'];
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+
+//calculate num pages;
+//to and from
+$start =0;
+$end   = $page_setting;
+$count = mysql_num_rows($result);
+
 $query2 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 //get id agains
@@ -13,11 +27,6 @@ $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
 //get thread ID
 $query4 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
-//get settings
-$query5 = "SELECT * from settings";
-$result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
-$row5 = mysql_fetch_array($result5);
-$page_setting = $row5["setting_value"];
 // var_dump($row5);
 // var_dump($page_setting);
 // die();
@@ -39,10 +48,6 @@ $user = $_COOKIE['user'];
 
 
 <?php
-//to and from
-$start =0;
-$end   = $page_setting;
-$count = mysql_num_rows($result);
 
 //print_r(mysql_fetch_array($result));
 //die();
