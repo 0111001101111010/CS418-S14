@@ -60,7 +60,7 @@ $_SESSION['authuser'] = 0;
           <h4 class="modal-title" id="myModalLabel">Forgot Password?</h4>
         </div>
         <div class="modal-body">
-          <form method="post" action="<?php echo 'insert.php?board_id='.$_GET["board_id"]; ?>">
+          <form method="post" action="emailme.php">
             <input name="user_email" type="email" placeholder="Enter Your Email"></input><br>
             <div class="modal-footer">
               <input type="submit" class="btn btn-blue" value="Send"></a>
