@@ -5,14 +5,29 @@ ob_start();
 include 'include/connect_database.php';
     if(isset($_POST['level'])){
 $tbl_name = "moderator";
+$level = $_POST['level'];
 
 //delete it
+if (isset($_POST["adminTrue"])){
+//actually go to user and adjust their boolean user.user_admin = true;
+    $query="UPDATE users SET user_admin=true WHERE user_id='{$_POST['user']}'";
+    $result=mysql_query($query);
+    var_dump($result);
+}
+else if (isset($_POST["adminFalse"])){
+//update to false
+    $query="UPDATE users SET user_admin=false WHERE user_name='{$_POST['user']}'";
+    $result=mysql_query($query);
+}
+else{
+//set your levelness
 $query = "delete from $tbl_name where moderator_board_id={$_POST['board']} and moderator_name_id='{$_POST['user']}'";
 $result=mysql_query($query);
 //insert it
 $query2 = "insert into $tbl_name (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,'{$_POST['user']}',{$_POST['board']},{$_POST['level']})";
 $result2=mysql_query($query2);
-
+}
+die();
 //update
 /*
     $query="UPDATE $tbl_name SET moderator_user_level={$_POST['level']} WHERE       moderator_board_id={$_POST['board']} and moderator_name_id='{$_POST['user']}'";

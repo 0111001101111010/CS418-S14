@@ -89,7 +89,8 @@ else {
         <div class="modal-body">
           <h4>Board:</h4>
 			<form  method="post" action="updateadmin.php">
-      		<input id="user" type="hidden" name="user" value="2" />
+			<!-- THIS IS YOUR USER -->
+			<input id="user" type="hidden" name="user" value="2" />
 			<select name="board" class="form-control">
 				<?php
 					# Filter through rows and echo desired information
@@ -105,11 +106,13 @@ else {
       <select name="level" class="form-control">
 			  <option value="0">Normal User</option>
 			  <option value="5">Moderator</option>
-			  <option value="10">Admin</option>
-			</select>
-					<div class="modal-footer">
-						<input type="submit" class="btn btn-blue" value="Update"></a>
-					</div>
+	  </select>
+	  <br>
+        <input type="radio" name="adminTrue" value="true" checked="checked"> Administrator Status:<b>True</b><br>
+        <input type="radio" name="adminFalse" value="false"> Administrator Status:<b>False</b><br>
+		<div class="modal-footer">
+			<input type="submit" class="btn btn-blue" value="Update"></a>
+		</div>
           </form>
         </div>
       </div>
