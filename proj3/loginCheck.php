@@ -34,9 +34,10 @@ if(($count==1 )&&(isset($_POST['checkbox']))){
       }
 else if($count==1){
       //dont remember me
+      //keep me logged in for 10 minutes
       session_start();
-      setcookie("remember", 1, time()+60);
-      setcookie("user", $myusername, time()+60);
+      setcookie("remember", 1, time()+600);
+      setcookie("user", $myusername, time()+600);
       $_SESSION['myusername']=$myusername;
       //var_dump($_COOKIE["user"]);
       //die();
