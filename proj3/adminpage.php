@@ -10,11 +10,11 @@ $_SESSION['authuser'] = 0;
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
 <?php
-	# Perform database query
+	# Perform database query for users
 	$query = "SELECT * from users";
 	$result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
-	# Perform database query
+	# Perform database query boards
 	$query2 = "SELECT * from board";
 	$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
 
@@ -28,11 +28,23 @@ $_SESSION['authuser'] = 0;
 
 # Filter through rows and echo desired information
 if ($result && $result2){
+
 echo '<h3>Users:</h3>
-	<table class="users table table-striped"><tr><th>Username</th><th>Date Joined</th><th># Posts</th><th># Threads Created</th><th>Last Posted</th><th>Action</th></tr>';
+	<table class="users table table-striped"><tr><th>Username</th><th>
+	Date Joined
+	</th><th style="text-align:center"># Posts</th><th style="text-align:center"># Threads Created</th><th>Last Posted</th><th>Action</th></tr>';
 while ($row = mysql_fetch_object($result)) {
-	echo '';
-	echo '<tr><td><span>'.$row->user_name.'</span></td><td>Date Joined</td><td># Posts</td><td># Threads Created</td><td>Last Posted</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i><i class="fa fa-ban edituser"></i><i class="fa fa-trash-o edituser"></i></td></tr>';
+	# Perform database user boards
+	$query3 = "select * from reply where reply_user ='".$row->user_name."';";
+	$result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
+	$posts = mysql_num_rows($result3);
+
+	//threads
+	$query4 = "select * from thread where thread_user ='".$row->user_name."';";
+	$result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
+	$threads = mysql_num_rows($result4);
+
+	echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>Last Posted</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i><i class="fa fa-ban edituser"></i><i class="fa fa-trash-o edituser"></i></td></tr>';
 }
 echo '</table></div></div>';
 }
