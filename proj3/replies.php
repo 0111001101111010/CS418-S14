@@ -42,32 +42,32 @@ $user = $_COOKIE['user'];
 
       <div class="post">
         <h3><?php echo $_REQUEST['thread']?></h3>
-        <h6>OP: 
-          <?php 
-            // if not admin or mod
-            if(){
-              // if # of post is less than 10 -- user
-              if (){
-                echo '<i class="fa fa-user"></i> ';
-              }
-              // if # of post is between 10 and 50 -- coffee
-              else if(){
-                echo '<i class="fa fa-coffee"></i> ';
-              }
-              // if # of post is greater than 50 -- check
-              else if(){
-                echo '<i class="fa fa-check-circle"></i> ';
-              }
-            }
-            // if admin -- star
-            else if (){ 
-              echo '<i class="fa fa-star"></i> '; 
-            }
-            // if moderator -- bookmark
-            else if (){
-              echo '<i class="fa fa-bookmark"></i> ';
-            }
-            
+        <h6>OP:
+          <?php
+            // // if not admin or mod
+            // if(){
+            //   // if # of post is less than 10 -- user
+            //   if (){
+            //     echo '<i class="fa fa-user"></i> ';
+            //   }
+            //   // if # of post is between 10 and 50 -- coffee
+            //   else if(){
+            //     echo '<i class="fa fa-coffee"></i> ';
+            //   }
+            //   // if # of post is greater than 50 -- check
+            //   else if(){
+            //     echo '<i class="fa fa-check-circle"></i> ';
+            //   }
+            // }
+            // // if admin -- star
+            // else if (){
+            //   echo '<i class="fa fa-star"></i> ';
+            // }
+            // // if moderator -- bookmark
+            // else if (){
+            //   echo '<i class="fa fa-bookmark"></i> ';
+            // }
+
           ?>
           <?php echo mysql_fetch_object($result4)->thread_user;?></a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
         <p><?echo mysql_fetch_object($result3)->thread_description;
