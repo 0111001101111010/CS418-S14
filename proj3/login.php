@@ -21,7 +21,7 @@ $_SESSION['authuser'] = 0;
 				<div class="checkbox"><input type="checkbox" value=1 name="checkbox" id="checkbox"> Remember Me</div>
 				<hr>
 				<div class="centerthing">
-				<a class="btn btn-blue" name="signup" href="index2.html">Sign Up</a>
+				<a class="btn btn-blue" name="signup" href="registration.php">Sign Up</a>
 				<button type="submit" class="btn btn-blue" name="submit">Submit</button></div>
 			</form>
 		</div>
