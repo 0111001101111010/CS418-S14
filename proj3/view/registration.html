@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-        <meta charset="utf-8">
-        <title>CS418 - Project 3: Registration</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="dist/css/bootstrap.css" rel="stylesheet">
-        <link href="dist/css/style.css" rel="stylesheet">
-        
-        <!--[if lt IE 9]>
-          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
-        <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+      <meta charset="utf-8">
+      <title>CS418 - Project 3: Registration</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <link href="dist/css/bootstrap.css" rel="stylesheet">
+      <link href="dist/css/style.css" rel="stylesheet">
+      
+      <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+      <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+      <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+      <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+      <script type='text/javascript' src="dist/js/livevalidation.js"></script>
 
 
 
@@ -50,13 +54,12 @@
             <h2>New User Registration:</h2><br>
             *Please fill out every field. We only accept ODU's CS email at this time.
             <hr>
-            <form class="form-horizontal" role="form" style="width:70%;">
-              <input type="text" class="form-control" id="inputEmail3" placeholder="User Name"><br>
-              <input type="text" class="form-control" id="inputEmail3" placeholder="Your Name"><br>
-              <input type="email" class="form-control" id="inputEmail3" placeholder="CS Email"><br>
-              <input type="password" class="form-control" id="inputPassword3" placeholder="Password"><br>
+            <form class="form-horizontal" role="form">
+              <input type="text" class="form-control" id="inputUsername" placeholder="User Name"><br>
+              <input class="form-control" id="inputEmail" placeholder="CS Email"><br>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password"><br>
 
-                <input type="radio" name="emailOptions" value="email1"> Recieve email as text/html<br>
+                <input type="radio" name="emailOptions" value="email1" checked="checked"> Recieve email as text/html<br>
                 <input type="radio" name="emailOptions" value="email2"> Recieve email as text/plain<br>
               
               <hr>
@@ -69,18 +72,25 @@
       </div>
 
       
-
-
-
-
-      <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-      <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-      
       <script type='text/javascript'>
-        $(document).ready(function() {
-          });
+        var inputUsername = new LiveValidation( "inputUsername", { validMessage: "Valid Username", wait: 500 } );
+        inputUsername.add( Validate.Presence, { failureMessage: "Username Required" } );
+        inputUsername.add( Validate.Length, { minimum: 6});
+
+        var inputEmail = new LiveValidation( "inputEmail", { validMessage: "Valid Email!", wait: 500 } );
+        inputEmail.add( Validate.Presence, { failureMessage: "Email Required" } );
+        inputEmail.add( Validate.Email, { failureMessage: "Invalid email address!" } );
+        inputEmail.add( Validate.Format, { pattern: /cs.odu.edu/i, failureMessage: "CS Email Only" } );
+
+        var inputPassword = new LiveValidation( "inputPassword", { validMessage: "Valid Password!", wait: 500 } );
+        inputPassword.add( Validate.Presence, { failureMessage: "Password Required" } );
+
       </script>
+
+
+
+
+      
         
     </body>
 </html>
