@@ -32,9 +32,9 @@ include 'include/connect_database.php';
     $result=mysql_query($query) or die ("Error in query:".mysql_error());
     $query2="DELETE FROM reply WHERE reply_thread_id={$_GET['thread_id']}";
     $result2=mysql_query($query2) or die ("Error in query: $query2");
-    var_dump($query2);
-    var_dump($result2);
-    die();
+    //var_dump($query2);
+    //var_dump($result2);
+    //die();
       //  die();
   }
 header('Location: ' . $_SERVER['HTTP_REFERER']);
