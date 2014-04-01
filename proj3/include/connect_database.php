@@ -14,10 +14,10 @@ date_default_timezone_set("UTC");
 vagrant/local version
 */
 //STWANLEY
-/*
+
 $username = "";
 $password = "";
-$localhost = "127.0.0.1";
+$localhost = "127.0.0.1:3306";
 
 /*
 production version
