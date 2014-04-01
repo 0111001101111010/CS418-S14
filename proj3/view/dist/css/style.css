@@ -259,3 +259,7 @@ textarea.LV_invalid_field:active {
 	display:inline-block;
 	margin:0 5px 15px 0;
 }
+
+.edituser{
+	margin-right:5px;
+}
