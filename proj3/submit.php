@@ -5,7 +5,15 @@
 session_start();
 $query = "SELECT * from reply where reply_thread_id =". $_REQUEST['id'];
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-
+//lets get the board id of the thread...
+//$_ID = thread
+$query2 = "SELECT * from thread where thread_id =". $_REQUEST['id'];
+$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
+$result2 = mysql_fetch_array($result2);
+$board_id = $result2["thread_board_id"];
+var_dump($result2);
+var_dump($board_id);
+//die();
 ?>
 
      <div class="thread_view">
@@ -27,8 +35,8 @@ echo "<br>";
 $user = $_COOKIE['user'];
 //print_r($_POST); //0,0
 $query ="
-INSERT INTO reply(reply_id,reply_user,reply_thread_id,reply_reply_id,reply_reply_to_id,reply_title,reply_post,reply_date)
-  values (null,'".$user."',".$_GET[id].",0,0,'".$_REQUEST['reply_title']."','".$_REQUEST['reply']."',NOW());";
+INSERT INTO reply(reply_id,reply_user,reply_thread_id,reply_reply_id,reply_reply_to_id,reply_title,reply_post,reply_date,reply_board_id)
+  values (null,'".$user."',".$_GET[id].",0,0,'".$_REQUEST['reply_title']."','".$_REQUEST['reply']."',NOW(),".$board_id.");";
 //var_dump($query);
 //die();
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
