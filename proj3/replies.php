@@ -43,8 +43,8 @@ $user = $_COOKIE['user'];
       <div class="post">
         <h3><?php echo $_REQUEST['thread']?></h3>
         <h6>OP: <a href="#"><?php echo mysql_fetch_object($result4)->thread_user;?></a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
-        <h2><?echo mysql_fetch_object($result3)->thread_description;
-        ?> </h2>
+        <p><?echo mysql_fetch_object($result3)->thread_description;
+        ?> </p>
       </div>
 
       <hr>
@@ -83,7 +83,7 @@ if (isset($_GET['page'])){
             echo "edited by ". $row['reply_editby'];
         }
 
-        echo'<div class="pull-right" style="font-size:20px">
+        echo'<div class="pull-right" style="font-size:20px; margin-top:-20px;">
           <a href="#"><i class="fa fa-reply"></i></a>';
 
         if ($user==$row['reply_user']){
@@ -105,14 +105,11 @@ EOD;
         echo "<h1>There are no replies yet, Add one now!</h1>";
     }
 
-echo'<div class="row"> <ul class="pagination">
-  <li><a href="#">
-    &laquo;
-  </a></li>';
+echo'<ul class="pagination">';
 for ($i = 0; $i < ($count/$page_setting); $i++) {
 echo '<li><a href="'.$url.'&page='.$i.'">'.$i.'</a></li>';
   }
-echo '<li><a href="#">&raquo;</a></li></ul></div>';
+echo '</ul>';
 /*
 echo $pagination = <<<EOD
 <div class="row">
