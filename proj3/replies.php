@@ -10,14 +10,18 @@ $result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
 $row5 = mysql_fetch_array($result5);
 $page_setting = $row5["setting_value"];
 
-$query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id'];
-$result = mysql_query($query) or die('Query failed: ' . mysql_error());
-
 //calculate num pages;
 //to and from
-$start =0;
+$start = $_GET[page]*$page_setting;
 $end   = $page_setting;
-$count = mysql_num_rows($result);
+
+$query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id']." limit ". $start.','.$end;
+$result = mysql_query($query) or die('Query failed: ' . mysql_error());
+var_dump($query);
+//die();
+$queryCount = "SELECT * from reply where reply_thread_id =".$_REQUEST['id'];
+$resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+$count = mysql_num_rows($resultCount);
 
 $query2 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
