@@ -10,7 +10,7 @@ UNIQUE INDEX 	user_name_unique (user_name),
 PRIMARY KEY 	(user_id)
 );
 
-//insert
+
 INSERT into users (user_id, user_name,user_password,user_email,user_date,user_suspended, user_preference) values (null,"admin","admin","admin@cs.odu.edu",NOW(),FALSE,"text/html");
 INSERT into users (user_id, user_name,user_password,user_email,user_date,user_suspended, user_preference) values (null,"user","user","user@cs.odu.edu",NOW(),FALSE,"text/html");
 INSERT into users (user_id, user_name,user_password,user_email,user_date,user_suspended, user_preference) values (null,"szheng","szheng","szheng@cs.odu.edu",NOW(),FALSE,"text/html");
