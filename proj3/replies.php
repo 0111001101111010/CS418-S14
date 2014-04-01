@@ -59,8 +59,12 @@ if (isset($_GET['page'])){
             <h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6>
             <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>
         <p>'.$row["reply_post"].'</p>
-        <br>
-        <div class="pull-right" style="font-size:20px">
+        <br>';
+        if ($row['reply_edited']==true){
+            echo "edited by ". $row['reply_editby'];
+        }
+
+        echo'<div class="pull-right" style="font-size:20px">
           <a href="#"><i class="fa fa-reply"></i></a>';
 
         if ($user==$row['reply_user']){
