@@ -29,12 +29,12 @@ $_SESSION['authuser'] = 0;
 # Filter through rows and echo desired information
 if ($result && $result2){
 echo '<h3>Users:</h3>
-	<ul class="users">';
+	<table class="users table table-striped"><tr><th>Username</th><th>Date Joined</th><th># Posts</th><th># Threads Created</th><th>Last Posted</th><th>Action</th></tr>';
 while ($row = mysql_fetch_object($result)) {
 	echo '';
-	echo '<li><span>'.$row->user_name.'</span><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i></li>';
+	echo '<tr><td><span>'.$row->user_name.'</span></td><td>Date Joined</td><td># Posts</td><td># Threads Created</td><td>Last Posted</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i><i class="fa fa-ban edituser"></i><i class="fa fa-trash-o edituser"></i></td></tr>';
 }
-echo '</ul></div></div>';
+echo '</table></div></div>';
 }
 else {
 		echo "crud";
@@ -63,7 +63,7 @@ else {
         <div class="modal-body">
           <h4>Board:</h4>
 			<form  method="post" action="updateadmin.php">
-      <input id="user" type="hidden" name="user" value="2" />
+      		<input id="user" type="hidden" name="user" value="2" />
 			<select name="board" class="form-control">
 				<?php
 					# Filter through rows and echo desired information
