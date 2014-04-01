@@ -26,7 +26,12 @@ $_SESSION['authuser'] = 0;
     $password = strip_tags($password);
 
     $email = $_POST['email'];
-
+    if ($_POST['emailOptions']=='email1')
+        $type  = "text/html";
+    else
+        $type  = "text/plain";
+      //  die();
+      //die();
 
     $sql = "SELECT user_id FROM users WHERE user_name='$username'"; // checking username already exists
     $qry = mysql_query($sql);
@@ -72,13 +77,19 @@ $_SESSION['authuser'] = 0;
         <div class="alert alert-success">
           Registration Successful ! please login to your account
         </div>';
+             if  ($type == "text/plain"){
+                    mail($email,
+                     "Welcome to HackChat!",
+                     "Congrats and junks...?");
+            }
+            else
+            {
+                    mail($email,
+                     "Welcome to HackChat!",
+                     "<h1>Congrats and junks...?</h1>");
+            }
+                    echo "Email sent woot.";
 
-        mail($email,
-         "Welcome to HackChat!",
-         "Congrats and junks...?");
-
-        echo "Email sent woot.";
-//
       }
       else {
 
