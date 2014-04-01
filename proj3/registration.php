@@ -88,7 +88,7 @@ $_SESSION['authuser'] = 0;
                      "Welcome to HackChat!",
                      "<h1>Congrats and junks...?</h1>");
             }
-                    echo "Email sent woot.";
+                    echo "<h2> Success!</h2>";
 
       }
       else {
@@ -134,7 +134,7 @@ $_SESSION['authuser'] = 0;
 <script type='text/javascript'>
   var inputUsername = new LiveValidation( "inputUsername", { validMessage: "Valid Username", wait: 500 } );
   inputUsername.add( Validate.Presence, { failureMessage: "Username Required" } );
-  inputUsername.add( Validate.Length, { minimum: 6});
+  inputUsername.add( Validate.Length, { minimum: 4});
 
   var inputEmail = new LiveValidation( "inputEmail", { validMessage: "Valid Email!", wait: 500 } );
   inputEmail.add( Validate.Presence, { failureMessage: "Email Required" } );
