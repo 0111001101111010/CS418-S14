@@ -11,6 +11,7 @@ $query3 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
 $query4 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
+$user = $_COOKIE['user'];
 ?>
 
   <div class="content">
@@ -61,12 +62,18 @@ if (isset($_GET['page'])){
         <br>
         <div class="pull-right" style="font-size:20px">
           <a href="#"><i class="fa fa-reply"></i></a>';
-echo $buttons = <<<EOD
-<a href=""><i class="fa fa-pencil"></i></a>
-<a href=delete.php?reply_id="$id"><i class="fa fa-times"></i></a>
-    </div>
-</div>
+
+        if ($user==$row['reply_user']){
+            echo $buttons = <<<EOD
+            <a href=""><i class="fa fa-pencil"></i></a>
+            <a href=delete.php?reply_id="$id"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
 EOD;
+        }
+        else{
+        echo "</div></div>";
+        }
 }
 
       }
