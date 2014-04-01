@@ -140,5 +140,24 @@ if (isset($_COOKIE['user'])){
 
 
 ?>
-
+  <!-- Modal for edit comments -->
+  <div class="modal fade" id="newboard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">New Thread</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="<?php echo 'insert.php?board_id='.$_GET["board_id"]; ?>">
+            <input name="thread_name" type="text" placeholder="Enter Title"></input><br>
+            <textarea name="thread_description" placeholder="Enter Description"></textarea>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-blue" value="Create"></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 <?php include 'include/footer.php';?>
