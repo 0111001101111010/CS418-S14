@@ -14,6 +14,7 @@ session_start();
 <link href="view/dist/css/style.css" rel="stylesheet">
 
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src="js/livevalidation.js"></script>
 </head>
 <body>
  <div class="navbar navbarBlue navbar-fixed-top">
