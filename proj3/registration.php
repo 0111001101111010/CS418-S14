@@ -64,10 +64,10 @@ $_SESSION['authuser'] = 0;
        $success = mysql_query($sql);
        // $qry = mysql_query($success);
        var_dump($sql);
-       var_dump($success) or die ("Error in query: $success. ".mysql_error());
+       var_dump($success);// or die ("Error in query: $success. ".mysql_error());
      //s  die();
        //messages if the new record is inserted or not
-      //if($success) {
+      if($success) {
         echo '
         <div class="alert alert-success">
           Registration Successful ! please login to your account
@@ -80,16 +80,16 @@ $_SESSION['authuser'] = 0;
         echo "Email sent woot.";
 //
       }
-    //   else {
+      else {
 
-    //     echo '
-    //     <div class="alert" id="3">
-    //       <button type="button" class="close" data-dismiss="alert">&times;</button>
-    //       <strong>Registration Unsuccessful! </strong> please try again
-    //     </div>
-    //     ';
-    //   }
-    // }
+        echo '
+        <div class="alert" id="3">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>Registration Unsuccessful! </strong> please try again
+        </div>
+        ';
+      }
+    }
   }
 
 ;?>
