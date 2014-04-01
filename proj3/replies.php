@@ -19,7 +19,7 @@ $user = $_COOKIE['user'];
 
       <div class="post">
         <h3><?php echo $_REQUEST['thread']?></h3>
-        <h6>OP: <a href="profile.html"><?php echo mysql_fetch_object($result4)->thread_user;?></a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
+        <h6>OP: <a href="#"><?php echo mysql_fetch_object($result4)->thread_user;?></a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
         <h2><?echo mysql_fetch_object($result3)->thread_description;
         ?> </h2>
       </div>
