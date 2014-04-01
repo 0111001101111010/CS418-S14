@@ -165,7 +165,12 @@ $js = <<< EOD
 EOD;
 echo $js;
 
-if (isset($_COOKIE['user'])){
+    $queryX="SELECT * from thread where thread_id ={$_GET['id']}";
+    $resultX = mysql_query($queryX);
+    $rowX = mysql_fetch_array($resultX);
+    $frozen = $rowX["thread_frozen"];
+
+if (isset($_COOKIE['user'])&& ($frozen==true)){
   echo '<hr>
         <form method="post" action="insert.php?replyto='.urldecode($_GET[thread]).'&id='.$_GET[id].'" class="response">
           <h3>Reply title: </h3>
