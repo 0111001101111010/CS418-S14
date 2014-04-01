@@ -12,22 +12,38 @@ $_SESSION['authuser'] = 0;
 
 <div class="content">
 	<div class="container">
-		<div class="login">
-            <form role="form" method="post" action="loginCheck.php">
-            	<div class="inputs">
-              		<input type="text" placeholder="Username" id="myusername"></input><br>
-              		<input type="password" placeholder="Password" =myuserid></input>
-            	</div>
-
-            	<div class="checkbox"><input type="checkbox" value=1 name="checkbox" id="checkbox"> Remember Me</div>
-            	<hr>
-            	<center>
-            		<a class="btn btn-blue" name="signup" href="registration.php" style="margin-right:20px">Sign up</a> <button type="submit" class="btn btn-blue" name="submit">Submit</button>
-            	<br><br>
-              	<a href="#" data-toggle="modal" data-target="#forgotpassword">Forgot your password?</a>
-            	</center>
-            </form>
+    <div class="login">
+      <form role="form" method="post" action="loginCheck.php">
+        <div class="centerthing">
+          <input type="text" id="username" placeholder="Enter your username" name="username">
+          <input type="password" id="password" placeholder="Password" name="password">
         </div>
+        <div class="checkbox"><input type="checkbox" value=1 name="checkbox" id="checkbox"> Remember Me</div>
+        <hr>
+        <div class="centerthing">
+        <a class="btn btn-blue" name="signup" href="registration.php">Sign Up</a>
+        <button type="submit" class="btn btn-blue" name="submit">Submit</button></div>
+      </form>
+      <br><br>
+            <a href="#" data-toggle="modal" data-target="#forgotpassword">Forgot your password?</a>
+    </div>
+    <!--
+		<div class="login">
+        <form role="form" method="post" action="loginCheck.php">
+        	<div class="inputs">
+          		<input type="text" placeholder="Username" id="myusername"></input><br>
+          		<input type="password" placeholder="Password" =myuserid></input>
+        	</div>
+
+        	<div class="checkbox"><input type="checkbox" value=1 name="checkbox" id="checkbox"> Remember Me</div>
+        	<hr>
+        	<center>
+        		<a class="btn btn-blue" name="signup" href="registration.php" style="margin-right:20px">Sign up</a> <button type="submit" class="btn btn-blue" name="submit">Submit</button>
+        	<br><br>
+          	<a href="#" data-toggle="modal" data-target="#forgotpassword">Forgot your password?</a>
+        	</center>
+        </form>
+    </div>-->
 
 
 	</div>
