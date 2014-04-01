@@ -8,13 +8,12 @@ $tbl_name = "moderator";
 $level = $_POST['level'];
 
 //delete it
-if (isset($_POST["adminTrue"])){
+if ($_POST["admin"]=="true"){
 //actually go to user and adjust their boolean user.user_admin = true;
-    $query="UPDATE users SET user_admin=true WHERE user_id='{$_POST['user']}'";
+    $query="UPDATE users SET user_admin=true WHERE user_name='{$_POST['user']}'";
     $result=mysql_query($query);
-    var_dump($result);
 }
-else if (isset($_POST["adminFalse"])){
+else if ($_POST["admin"]=="false"){
 //update to false
     $query="UPDATE users SET user_admin=false WHERE user_name='{$_POST['user']}'";
     $result=mysql_query($query);
@@ -27,7 +26,7 @@ $result=mysql_query($query);
 $query2 = "insert into $tbl_name (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,'{$_POST['user']}',{$_POST['board']},{$_POST['level']})";
 $result2=mysql_query($query2);
 }
-die();
+// die();
 //update
 /*
     $query="UPDATE $tbl_name SET moderator_user_level={$_POST['level']} WHERE       moderator_board_id={$_POST['board']} and moderator_name_id='{$_POST['user']}'";
