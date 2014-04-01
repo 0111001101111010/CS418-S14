@@ -42,7 +42,7 @@ $user = $_COOKIE['user'];
 
       <div class="post">
         <h3><?php echo $_REQUEST['thread']?></h3>
-        <h6>OP:
+        <h6>Original Poster:
           <?php
             // // if not admin or mod
             // if(){
