@@ -65,11 +65,11 @@ $_SESSION['authuser'] = 0;
 
     if ($flag == 0){
       // if username doesn't exist insert new records to database
-       $sql = "INSERT INTO users (user_id, user_name,user_password,user_email,user_date,user_suspended) values (null,'$username', '$password', '$email',NOW(),FALSE)";
+       $sql = "INSERT INTO users (user_id, user_name,user_password,user_email,user_date,user_suspended,user_preference) values (null,'$username', '$password', '$email',NOW(),FALSE,'$type')";
        $success = mysql_query($sql);
        // $qry = mysql_query($success);
-       var_dump($sql);
-       var_dump($success);// or die ("Error in query: $success. ".mysql_error());
+      // var_dump($sql);
+      // var_dump($success);// or die ("Error in query: $success. ".mysql_error());
      //s  die();
        //messages if the new record is inserted or not
       if($success) {
