@@ -93,19 +93,19 @@ $user = $_COOKIE['user'];
             }
             else {
               // if # of post is less than 10 -- user
-              if ($posts >0){
+             if ($posts >0 && $posts <10){
                 echo '<i class="fa fa-user"></i> ';
-              }
+             }
               // if # of post is between 10 and 50 -- coffee
-              else if($posts>1){
+              else if($posts>10 && $posts<50){
                 echo '<i class="fa fa-coffee"></i> ';
               }
               // if # of post is greater than 50 -- check
-              else if($posts>5){
+              else if($posts>50){
                 echo '<i class="fa fa-check-circle"></i> ';
               }
             }
-     echo $threadUser?> </a></h6><?php   echo $posts; ?> <h6>
+     echo $threadUser?> </a></h6><h6>
      <?php echo mysql_fetch_object($result2)->thread_date;?></h6>
         <p><?echo mysql_fetch_object($result3)->thread_description;
         ?> </p>
@@ -169,15 +169,15 @@ if (isset($_GET['page'])){
             }
             else {
               // if # of post is less than 10 -- user
-              if ($posts >0){
+              if ($posts >0 && $posts <10){
                 $icon ='<i class="fa fa-user"></i> ';
               }
               // if # of post is between 10 and 50 -- coffee
-              else if($posts>1){
+              else if($posts>10 && $posts<50){
                 $icon ='<i class="fa fa-coffee"></i> ';
               }
               // if # of post is greater than 50 -- check
-              else if($posts>5){
+              else if($posts>50){
                 $icon ='<i class="fa fa-check-circle"></i> ';
               }
             }
@@ -187,7 +187,7 @@ if (isset($_GET['page'])){
           echo '<div class="post">
             <h3>'.$row["reply_title"].'</h3>
             <h6>User: <a href="profile.html">'.$icon.$row["reply_user"].'</a>
-            '. "Posts:".$posts.'</h6>
+            </h6>
             <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>
         <p>'.$row["reply_post"].'</p>
         <br>';
