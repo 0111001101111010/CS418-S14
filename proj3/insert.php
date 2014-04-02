@@ -33,12 +33,9 @@ include 'include/connect_database.php';
 
     $tbl_name = "thread";
 //    $query="DELETE FROM thread WHERE thread_id={$_GET['thread_id']}";
-    $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_description, thread_date) values (null,'.$_REQUEST['board_id'].',"'
-          .$_REQUEST['thread_name'].'","'.$_REQUEST['thread_description'].'",NOW());';
+    $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_description, thread_date,thread_frozen) values (null,'.$_REQUEST['board_id'].',"'
+          .$_REQUEST['thread_name'].'","'.$_REQUEST['thread_description'].'",NOW(),true);';
     $result = mysql_query($query);
-// echo($query);
-// echo($result);
-// die();
 }
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 header('refresh:5;url= ' . $_SERVER['HTTP_REFERER']);
