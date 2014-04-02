@@ -1,9 +1,25 @@
 <?php //login
+include 'include/connect_database.php';
 session_start();
 $_SESSION['username'] = $_POST['user'];
 $_SESSION['userpass'] = $_POST['pass'];
 $_SESSION['authuser'] = 0;
 
+$user = $_COOKIE["user"];
+//check if they're an admin
+if(user){
+    $queryAdmin = "SELECT * from users where user_name=".'"'.$user."\";";
+    $resultAdmin = mysql_query($queryAdmin) or die('Query failed: ' . mysql_error());
+    $admin = mysql_fetch_object($resultAdmin)->user_admin;
+}
+
+
+ if (!$admin)
+	{ob_start();
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	header('refresh:5;url= ' . $_SERVER['HTTP_REFERER']);
+	ob_flush();
+	}
 
 ?>
 <?php include 'include/header.php';?>
@@ -25,7 +41,6 @@ $_SESSION['authuser'] = 0;
 		<h1>Admin Page</h1><hr>
 
 <?php
-
 # Filter through rows and echo desired information
 if ($result && $result2){
 
@@ -88,6 +103,7 @@ while ($row = mysql_fetch_object($result)) {
 else {
 		echo "crud";
 }
+
 ?>
 <!-- Modal -->
 <script>
