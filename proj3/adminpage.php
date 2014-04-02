@@ -70,7 +70,20 @@ while ($row = mysql_fetch_object($result)) {
 	<i class="fa fa-trash-o edituser"></i></a>
 	</td></tr>';
 }
-echo '</table></div></div>';
+	echo '</table><hr>';
+
+	echo '<h2>Posts Display:</h2><form action="HERE HERE" method="post">';
+	echo '<select name="pagination" class="form-control">
+ 	  		<option name="pagination" value="5">5 Posts</option>
+	  		<option name="pagination" value="10">10 Posts</option>
+	  		<option name="pagination" value="15">15 Posts</option>
+	  		<option name="pagination" value="20">20 Posts</option>
+	  	  </select>';
+
+	echo '<br><input type="submit" class="btn btn-blue" value="Update"></a>';
+
+	echo '</form></div></div>';
+
 }
 else {
 		echo "crud";
