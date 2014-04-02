@@ -13,7 +13,7 @@ INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moder
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",5,10);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"admin",6,10);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"mweigle",1,5);
-INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"mweigle",1,5);
+INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"TA",1,5);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"test",1,10);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",2,5);
 INSERT into moderator (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,"szheng",3,5);
