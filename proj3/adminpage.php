@@ -58,7 +58,12 @@ while ($row = mysql_fetch_object($result)) {
 	else
 		$time = "Not avaliable";
 
-	echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>'.$time.'</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i><i class="fa fa-ban edituser"></i><i class="fa fa-trash-o edituser"></i></td></tr>';
+	echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>'.$time.'</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i>
+	<a href="editUser.php?action=ban&user='.$row->user_id.'">
+	<i class="fa fa-ban edituser"></i></a>
+	<a href="editUser.php?action=delete&user='.$row->user_id.'">
+	<i class="fa fa-trash-o edituser"></i></a>
+	</td></tr>';
 }
 echo '</table></div></div>';
 }
