@@ -48,7 +48,7 @@ $user = $_COOKIE['user'];
   $returnResult4 = mysql_fetch_object($result4);
   $threadUser = $returnResult4->thread_user;
   $whichBoard = $returnResult4->thread_board_id;
-  var_dump($returnResult4);
+  // var_dump($returnResult4);
   //var_dump($threadUser);
  // var_dump($whichBoard);
   //die();
@@ -136,10 +136,58 @@ if (isset($_GET['page'])){
       for($num=$start; $num<$end;$num++) {
       $row = mysql_fetch_array($result);
       if ($row!=null){
+/**  row threads**/
+//calculate
+  /* AM I A MODERATOR OR ADMIN?*/
+    {//encapsulating
+    $queryModerator = "SELECT * from moderator where moderator_name_id='{$row['reply_user']}' and moderator_board_id ={$row['reply_board_id']}";
+    //var_dump($queryModerator);
+
+    $resultModerator = mysql_query($queryModerator) or die('Query failed: ' . mysql_error());
+    //$result3 = mysql_fetch_object($result3);
+    //#moderator number
+    //#is an ADMIN search ** this is different
+    $queryAdmin = "SELECT * from users where user_name='{$row['reply_user']}'";
+    $resultAdmin = mysql_query($queryAdmin) or die('Query failed: ' . mysql_error());
+    $admin = mysql_fetch_object($resultAdmin)->user_admin;
+
+    $user_level_array =mysql_fetch_object($resultModerator);
+    $permission=mysql_num_rows($resultModerator);
+   //var_dump($user_level_array);
+        // if($admin==1) //does it exist
+        //     $moderator=true;
+        //     echo '<i class="fa fa-star"></i> ';
+    }
+            // // if not admin or mod
+            // // if admin -- star
+            if ($admin==true){
+              $icon = '<i class="fa fa-star"></i> ';
+            }
+            // // if moderator -- bookmark
+            else if ($permission==true){
+               $icon ='<i class="fa fa-bookmark"></i>';
+            }
+            else {
+              // if # of post is less than 10 -- user
+              if ($posts >0){
+                $icon ='<i class="fa fa-user"></i> ';
+              }
+              // if # of post is between 10 and 50 -- coffee
+              else if($posts>1){
+                $icon ='<i class="fa fa-coffee"></i> ';
+              }
+              // if # of post is greater than 50 -- check
+              else if($posts>5){
+                $icon ='<i class="fa fa-check-circle"></i> ';
+              }
+            }
+
+
           $id = $row['reply_id'];
           echo '<div class="post">
             <h3>'.$row["reply_title"].'</h3>
-            <h6>OP: <a href="profile.html">'.$row["reply_user"].'</a></h6>
+            <h6>User: <a href="profile.html">'.$icon.$row["reply_user"].'</a>
+            '. "Posts:".$posts.'</h6>
             <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>
         <p>'.$row["reply_post"].'</p>
         <br>';
