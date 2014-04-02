@@ -22,6 +22,10 @@ a:hover, a:focus, a:active{
 	color:#39BFBD;
 }
 
+hr{
+	border-top: 1px solid #BEBEBE;
+}
+
 .navbarBlue{
 	background-color:#5CCDCC;
 	border-bottom:5px solid #39BFBD;
