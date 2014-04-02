@@ -24,7 +24,7 @@ if(isset($_POST['level'])){
 		//set your levelness
 		$query = "delete from $tbl_name where moderator_board_id={$_POST['board']} and moderator_name_id='{$_POST['user']}'";
 		$result = mysql_query($query);
-		
+
 		//insert it
 		$query2 = "insert into $tbl_name (moderator_id, moderator_name_id, moderator_board_id,moderator_user_level) values (null,'{$_POST['user']}',{$_POST['board']},{$_POST['level']})";
 		$result2 = mysql_query($query2);
