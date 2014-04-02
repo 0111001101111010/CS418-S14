@@ -29,48 +29,52 @@ $_SESSION['authuser'] = 0;
 # Filter through rows and echo desired information
 if ($result && $result2){
 
-	echo '<h3>Users:</h3>
-		<table class="users table table-striped"><tr><th>Username</th><th>
-		Date Joined
-		</th><th style="text-align:center"># Posts</th><th style="text-align:center"># Threads Created</th><th>Last Posted</th><th>Action</th></tr>';
-	while ($row = mysql_fetch_object($result)) {
-		# Perform database user boards
-		$query3 = "select * from reply where reply_user ='".$row->user_name."';";
-		$result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
-		$posts = mysql_num_rows($result3);
+echo '<h3>Users:</h3>
+	<table class="users table table-striped"><tr><th>Username</th><th>
+	Date Joined
+	</th><th style="text-align:center"># Posts</th><th style="text-align:center"># Threads Created</th><th>Last Posted</th><th>Action</th></tr>';
+while ($row = mysql_fetch_object($result)) {
+	# Perform database user boards
+	$query3 = "select * from reply where reply_user ='".$row->user_name."';";
+	$result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
+	$posts = mysql_num_rows($result3);
 
-		//threads
-		$query4 = "select * from thread where thread_user ='".$row->user_name."';";
-		$result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
-		$threads = mysql_num_rows($result4);
+	//threads
+	$query4 = "select * from thread where thread_user ='".$row->user_name."';";
+	$result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
+	$threads = mysql_num_rows($result4);
 
-		//date last time
-		$query5 = "select * from reply where reply_user ='".$row->user_name."' "."ORDER BY reply_date DESC;";
-		$result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
-		$lastTime = mysql_fetch_array($result5);
+	//date last time
+	$query5 = "select * from reply where reply_user ='".$row->user_name."' "."ORDER BY reply_date DESC;";
+	$result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
+	$lastTime = mysql_fetch_array($result5);
 
-		// var_dump($query5);
-		// var_dump($result5);
-		// var_dump($lastTime["reply_date"]);
-		//die();
-		if ($lastTime["reply_date"] !=NULL)
-			$time = $lastTime["reply_date"];
-		else
-			$time = "Not avaliable";
+	// var_dump($query5);
+	// var_dump($result5);
+	// var_dump($lastTime["reply_date"]);
+	//die();
+	if ($lastTime["reply_date"] !=NULL)
+		$time = $lastTime["reply_date"];
+	else
+		$time = "Not avaliable";
 
-		echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>'.$time.'</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i>
-		<a href="editUser.php?action=ban&user='.$row->user_id.'">
-		<i class="fa fa-ban edituser"></i></a>
-		<a href="editUser.php?action=delete&user='.$row->user_id.'">
-		<i class="fa fa-trash-o edituser"></i></a>
-		</td></tr>';
-	}
+	if ($row->user_suspended == true)
+		$prefix = "un";
+	else
+		$prefix = "";
 
+	echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>'.$time.'</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i>
+	<a href="editUser.php?action='.$prefix.'suspend&user='.$row->user_id.'">
+	<i class="fa fa-ban edituser"></i></a>
+	<a href="editUser.php?action=delete&user='.$row->user_id.'">
+	<i class="fa fa-trash-o edituser"></i></a>
+	</td></tr>';
+}
 	echo '</table><hr>';
 
 	echo '<h2>Posts Display:</h2><form action="HERE HERE" method="post">';
 	echo '<select name="pagination" class="form-control">
-	  		<option name="pagination" value="5">5 Posts</option>
+ 	  		<option name="pagination" value="5">5 Posts</option>
 	  		<option name="pagination" value="10">10 Posts</option>
 	  		<option name="pagination" value="15">15 Posts</option>
 	  		<option name="pagination" value="20">20 Posts</option>
@@ -79,12 +83,11 @@ if ($result && $result2){
 	echo '<br><input type="submit" class="btn btn-blue" value="Update"></a>';
 
 	echo '</form></div></div>';
-}
 
+}
 else {
-	echo "crud";
+		echo "crud";
 }
-
 ?>
 <!-- Modal -->
 <script>
@@ -139,4 +142,8 @@ else {
     </div>
   </div>
 
+
+<?php
+
+?>
 <?php include 'include/footer.php'; ?>
