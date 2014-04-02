@@ -48,59 +48,64 @@ $user = $_COOKIE['user'];
   $returnResult4 = mysql_fetch_object($result4);
   $threadUser = $returnResult4->thread_user;
   $whichBoard = $returnResult4->thread_board_id;
-  //var_dump($returnResult4);
-  // var_dump($threadUser);
-  // var_dump($whichBoard);
-  // die();
+  var_dump($returnResult4);
+  //var_dump($threadUser);
+ // var_dump($whichBoard);
+  //die();
   # Perform database count user  boards
   $queryCount = "select * from reply where reply_user ='".$threadUser."';";
   $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
   $posts = mysql_num_rows($resultCount);
   //var_dump($queryCount);
-  //die()
+  //die();
   /* AM I A MODERATOR OR ADMIN?*/
-    // {//encapsulating
-    // $queryModerator = "SELECT * from moderator where moderator_name_id=".'"'.$threadUser.'" and moderator_board_id ='.$whichBoard;//.$_GET['id'];
+    {//encapsulating
+    $queryModerator = "SELECT * from moderator where moderator_name_id=".'"'.$threadUser.'" and moderator_board_id ='.$whichBoard;//.$_GET['id'];
 
-    // $resultModerator = mysql_query($queryModerator) or die('Query failed: ' . mysql_error());
-    // //$result3 = mysql_fetch_object($result3);
-    // // Mysql_num_row is counting table row
-    // //moderator number
-    // $user_level_array =mysql_fetch_object($resultModerator);
-    // $permission=mysql_num_rows($resultModerator);
-    //     if($permission>1) //does it exist
-    //         $moderator=true;
-    //         echo '<i class="fa fa-star"></i> ';
-    // }
-    // //var_dump($user_level_array->moderator_user_level);
-    // $moderator=$user_level_array->moderator_user_level;
-    // //var_dump($queryModerator);
-    // var_dump($moderator);
-    //die();
+    $resultModerator = mysql_query($queryModerator) or die('Query failed: ' . mysql_error());
+    //$result3 = mysql_fetch_object($result3);
+    //#moderator number
+    //#is an ADMIN search ** this is different
+    $queryAdmin = "SELECT * from users where user_name=".'"'.$threadUser."\";";
+    $resultAdmin = mysql_query($queryAdmin) or die('Query failed: ' . mysql_error());
+    $admin = mysql_fetch_object($resultAdmin)->user_admin;
+
+    $user_level_array =mysql_fetch_object($resultModerator);
+    $permission=mysql_num_rows($resultModerator);
+        // if($admin==1) //does it exist
+        //     $moderator=true;
+        //     echo '<i class="fa fa-star"></i> ';
+    }
+    //var_dump($user_level_array->moderator_user_level);
+    $moderator=$user_level_array->moderator_user_level;
+    //var_dump($queryModerator);
+  //  var_dump($moderator);
+   // die();
+
             // // if not admin or mod
             // // if admin -- star
-            if ($moderator=="10"){
+            if ($admin==true){
               echo '<i class="fa fa-star"></i> ';
             }
             // // if moderator -- bookmark
-            else if ($moderator=="5"){
+            else if ($moderator==true){
                echo '<i class="fa fa-bookmark"></i> ';
             }
-            // else {
-            //   // if # of post is less than 10 -- user
-            //   if (){
-            //     echo '<i class="fa fa-user"></i> ';
-            //   }
-            //   // if # of post is between 10 and 50 -- coffee
-            //   else if(){
-            //     echo '<i class="fa fa-coffee"></i> ';
-            //   }
-            //   // if # of post is greater than 50 -- check
-            //   else if(){
-            //     echo '<i class="fa fa-check-circle"></i> ';
-            //   }
-            // }
-     echo $user?> </a></h6><?php   echo $posts; ?> <h6>
+            else {
+              // if # of post is less than 10 -- user
+              if ($posts >0){
+                echo '<i class="fa fa-user"></i> ';
+              }
+              // if # of post is between 10 and 50 -- coffee
+              else if($posts>1){
+                echo '<i class="fa fa-coffee"></i> ';
+              }
+              // if # of post is greater than 50 -- check
+              else if($posts>5){
+                echo '<i class="fa fa-check-circle"></i> ';
+              }
+            }
+     echo $threadUser?> </a></h6><?php   echo $posts; ?> <h6>
      <?php echo mysql_fetch_object($result2)->thread_date;?></h6>
         <p><?echo mysql_fetch_object($result3)->thread_description;
         ?> </p>
