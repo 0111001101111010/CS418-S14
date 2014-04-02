@@ -17,7 +17,7 @@ $end   = $page_setting;
 
 $query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id']." limit ". $start.','.$end;
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-var_dump($query);
+//var_dump($query);
 //die();
 $queryCount = "SELECT * from reply where reply_thread_id =".$_REQUEST['id'];
 $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
@@ -44,8 +44,49 @@ $user = $_COOKIE['user'];
         <h3><?php echo $_REQUEST['thread']?></h3>
         <h6>Original Poster:
           <?php
+            //count their number of posts
+  $returnResult4 = mysql_fetch_object($result4);
+  $threadUser = $returnResult4->thread_user;
+  $whichBoard = $returnResult4->thread_board_id;
+  //var_dump($returnResult4);
+  // var_dump($threadUser);
+  // var_dump($whichBoard);
+  // die();
+  # Perform database count user  boards
+  $queryCount = "select * from reply where reply_user ='".$threadUser."';";
+  $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+  $posts = mysql_num_rows($resultCount);
+  //var_dump($queryCount);
+  //die()
+  /* AM I A MODERATOR OR ADMIN?*/
+    // {//encapsulating
+    // $queryModerator = "SELECT * from moderator where moderator_name_id=".'"'.$threadUser.'" and moderator_board_id ='.$whichBoard;//.$_GET['id'];
+
+    // $resultModerator = mysql_query($queryModerator) or die('Query failed: ' . mysql_error());
+    // //$result3 = mysql_fetch_object($result3);
+    // // Mysql_num_row is counting table row
+    // //moderator number
+    // $user_level_array =mysql_fetch_object($resultModerator);
+    // $permission=mysql_num_rows($resultModerator);
+    //     if($permission>1) //does it exist
+    //         $moderator=true;
+    //         echo '<i class="fa fa-star"></i> ';
+    // }
+    // //var_dump($user_level_array->moderator_user_level);
+    // $moderator=$user_level_array->moderator_user_level;
+    // //var_dump($queryModerator);
+    // var_dump($moderator);
+    //die();
             // // if not admin or mod
-            // if(){
+            // // if admin -- star
+            if ($moderator=="10"){
+              echo '<i class="fa fa-star"></i> ';
+            }
+            // // if moderator -- bookmark
+            else if ($moderator=="5"){
+               echo '<i class="fa fa-bookmark"></i> ';
+            }
+            // else {
             //   // if # of post is less than 10 -- user
             //   if (){
             //     echo '<i class="fa fa-user"></i> ';
@@ -59,17 +100,8 @@ $user = $_COOKIE['user'];
             //     echo '<i class="fa fa-check-circle"></i> ';
             //   }
             // }
-            // // if admin -- star
-            // else if (){
-            //   echo '<i class="fa fa-star"></i> ';
-            // }
-            // // if moderator -- bookmark
-            // else if (){
-            //   echo '<i class="fa fa-bookmark"></i> ';
-            // }
-
-          ?>
-          <?php echo mysql_fetch_object($result4)->thread_user;?></a></h6> <h6><?php echo mysql_fetch_object($result2)->thread_date;?></h6>
+     echo $user?> </a></h6><?php   echo $posts; ?> <h6>
+     <?php echo mysql_fetch_object($result2)->thread_date;?></h6>
         <p><?echo mysql_fetch_object($result3)->thread_description;
         ?> </p>
       </div>
@@ -132,30 +164,15 @@ EOD;
         echo "<h1>There are no replies yet, Add one now!</h1>";
     }
 
+//paginatinn at the bottom
 echo'<ul class="pagination">';
 for ($i = 0; $i < ($count/$page_setting); $i++) {
 echo '<li><a href="'.$url.'&page='.$i.'">'.$i.'</a></li>';
   }
 echo '</ul>';
-/*
-echo $pagination = <<<EOD
-<div class="row">
-<ul class="pagination">
 
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
 
-</ul>
-</div>
-EOD;
-*/
-//print_r($_GET);
-//print_r($_POST);
+//javascript editor text
 $js = <<< EOD
 
   <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
@@ -165,6 +182,7 @@ $js = <<< EOD
 EOD;
 echo $js;
 
+//dont let people edit if its locked
     $queryX="SELECT * from thread where thread_id ={$_GET['id']}";
     $resultX = mysql_query($queryX);
     $rowX = mysql_fetch_array($resultX);
