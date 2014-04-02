@@ -57,20 +57,28 @@ echo "<h1>".$result2->board_title."</h1>";
 # Filter through rows and echo desired information
 if ($result){
   while ($row = mysql_fetch_object($result)) {
-      echo $thread=<<<EOD
+    if ($moderator){
+      // if thread is already locked, echo unlock icon
+      if ($row->thread_frozen == true){
+        echo $thread=<<<EOD
+
+        <div class="frozen">This thread is locked!</div>
         <div class="thread">
           <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id&page=0">$row->thread_name</a></h3>
           <h6>OP: <a href="profile.html">$row->thread_user</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
 EOD;
-    if ($moderator){
-      // if thread is already locked, echo unlock icon
-      if ($row->thread_frozen == true){
+
         echo'<div class="setting pull-right">
             <a href=freeze.php?thread_id='.$row->thread_id.'><i class="fa fa-unlock"></i></a>
             <a href=delete.php?thread_id="'.$row->thread_id.'"><i class="fa fa-times"></i></a></div>';
       }
       // else echo lock icon
       else{
+        echo $thread=<<<EOD
+        <div class="thread">
+          <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id&page=0">$row->thread_name</a></h3>
+          <h6>OP: <a href="profile.html">$row->thread_user</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
+EOD;
         echo'<div class="setting pull-right">
             <a href=freeze.php?thread_id='.$row->thread_id.'><i class="fa fa-lock"></i></a>
             <a href=delete.php?thread_id="'.$row->thread_id.'"><i class="fa fa-times"></i></a></div>';
