@@ -131,8 +131,8 @@ else {
 			  <option value="5">Moderator</option>
 	  </select>
 	  <br>
-        <input type="radio" name="admin" value="true" checked="checked"> Administrator Status:<b>True</b><br>
-        <input type="radio" name="admin" value="false"> Administrator Status:<b>False</b><br>
+        <input type="radio" name="admin" value="true"> Administrator Status:<b>True</b><br>
+        <input type="radio" name="admin" value="false" checked="checked"> Administrator Status:<b>False</b><br>
 		<div class="modal-footer">
 			<input type="submit" class="btn btn-blue" value="Update"></a>
 		</div>
