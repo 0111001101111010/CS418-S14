@@ -73,21 +73,25 @@ while ($row = mysql_fetch_object($result)) {
 	else
 		$time = "Not avaliable";
 
-	if ($row->user_suspended == true)
+	if ($row->user_suspended == true){
 		$prefix = "un";
-	else
+		$style  = 'style="color:red"';
+	}
+	else{
 		$prefix = "";
+		$style  = "";
+	}
 
 	echo '<tr><td><span>'.$row->user_name.'</span></td><td>'.$row->user_date.'</td><td style="text-align:center">'.$posts.'</td><td style="text-align:center">'.$threads.'</td><td>'.$time.'</td><td><i class="fa fa-pencil edituser" data-toggle="modal" data-target="#edituser" data-id="'.$row->user_name.'"></i>
 	<a href="editUser.php?action='.$prefix.'suspend&user='.$row->user_id.'">
-	<i class="fa fa-ban edituser"></i></a>
+	<i '.$style.' class="fa fa-ban edituser"></i></a>
 	<a href="editUser.php?action=delete&user='.$row->user_id.'">
 	<i class="fa fa-trash-o edituser"></i></a>
 	</td></tr>';
 }
 	echo '</table><hr>';
 
-	echo '<h2>Posts Display:</h2><form action="HERE HERE" method="post">';
+	echo '<h2>Posts Display:</h2><form action="editSettings.php" method="post">';
 	echo '<select name="pagination" class="form-control">
  	  		<option name="pagination" value="5">5 Posts</option>
 	  		<option name="pagination" value="10">10 Posts</option>
