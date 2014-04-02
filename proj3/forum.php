@@ -47,8 +47,9 @@ $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
 //$result3 = mysql_fetch_object($result3);
 // Mysql_num_row is counting table row
 $count=mysql_num_rows($result3);
-    if($count==1)
+    if($count==1){
         $moderator=true;
+    }
 }
 
 echo "<h1>".$result2->board_title."</h1>";
@@ -57,17 +58,15 @@ echo "<h1>".$result2->board_title."</h1>";
 # Filter through rows and echo desired information
 if ($result){
   while ($row = mysql_fetch_object($result)) {
-    if ($moderator){
+ //var_dump($row);
       // if thread is already locked, echo unlock icon
       if ($row->thread_frozen == false){
-        echo $thread=<<<EOD
-
+        echo $thread= <<< EOD
         <div class="frozen">This thread is locked!</div>
         <div class="thread">
           <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id&page=0">$row->thread_name</a></h3>
           <h6>OP: <a href="profile.html">$row->thread_user</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
 EOD;
-
         echo'<div class="setting pull-right">
             <a href=freeze.php?thread_id='.$row->thread_id.'><i class="fa fa-unlock"></i></a>
             <a href=delete.php?thread_id="'.$row->thread_id.'"><i class="fa fa-times"></i></a></div>';
@@ -84,7 +83,6 @@ EOD;
             <a href=delete.php?thread_id="'.$row->thread_id.'"><i class="fa fa-times"></i></a></div>';
       }
 
-    }
 echo'</div>';
 
 
@@ -99,8 +97,10 @@ else {
 
 ?>
 <?php
+if (isset($_COOKIE['user']))
+    $moderator=true;
 
-  if ($moderator)
+if ($moderator)
     echo '<button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >New Thread <i class="fa fa-plus-square"></i></button>';
 ?>
 

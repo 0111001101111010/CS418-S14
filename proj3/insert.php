@@ -39,7 +39,7 @@ include 'include/connect_database.php';
 // var_dump($_POST);
 // var_dump($query);
 //  var_dump($result);
-// die();
+//  die();
 }
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 header('refresh:5;url= ' . $_SERVER['HTTP_REFERER']);
