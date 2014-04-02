@@ -59,7 +59,7 @@ if ($result){
   while ($row = mysql_fetch_object($result)) {
     if ($moderator){
       // if thread is already locked, echo unlock icon
-      if ($row->thread_frozen == true){
+      if ($row->thread_frozen == false){
         echo $thread=<<<EOD
 
         <div class="frozen">This thread is locked!</div>
