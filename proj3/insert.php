@@ -30,12 +30,16 @@ include 'include/connect_database.php';
 //die();
     }
     else if(isset($_GET['board_id'])){
-
+    $user = $_COOKIE['user'];
     $tbl_name = "thread";
 //    $query="DELETE FROM thread WHERE thread_id={$_GET['thread_id']}";
-    $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_name,thread_description, thread_date,thread_frozen) values (null,'.$_REQUEST['board_id'].',"'
+    $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_user, thread_name,thread_description, thread_date,thread_frozen) values (null,'.$_REQUEST['board_id'].',"'.$user.'","'
           .$_REQUEST['thread_name'].'","'.$_REQUEST['thread_description'].'",NOW(),true);';
     $result = mysql_query($query);
+// var_dump($_POST);
+// var_dump($query);
+//  var_dump($result);
+// die();
 }
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 header('refresh:5;url= ' . $_SERVER['HTTP_REFERER']);
