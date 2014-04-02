@@ -263,3 +263,11 @@ textarea.LV_invalid_field:active {
 .edituser{
 	margin-right:5px;
 }
+
+.frozen{
+	padding-left:10px;
+	height:20px;
+	background-color:#5CCDCC;
+	color:#fff;
+	width:100%;
+}
