@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'include/connect_database.php';
 ?>
 <html>
 <html lang="en">
@@ -34,28 +35,36 @@ session_start();
           <li><a href="#contact">Contact</a></li>
         </ul>
         <?php
-        if ( isset( $_COOKIE['user'])&& $_COOKIE["user"]=="admin" ){
-          $user = $_COOKIE["user"];
+if (isset( $_COOKIE['user'])){
+    $user = $_COOKIE["user"];
+    //check if they're an admin
+    if(user){
+        $queryAdmin = "SELECT * from users where user_name=".'"'.$user."\";";
+        $resultAdmin = mysql_query($queryAdmin) or die('Query failed: ' . mysql_error());
+        $admin = mysql_fetch_object($resultAdmin)->user_admin;
+    }
+        if ($admin){
           echo '<ul class="nav navbar-nav navbar-right">
                     <a href="index.php">Welcome '. $user .'</a><br>
-                    <a href="adminpage.php" style="color:yellow">Admin Panel</a><br>
+                    <a href="adminpage.php" style="color:yellow">Admin Panel</a>
                     <a href="Logout.php">Logout</a>
                   </ul>
             </div>';
         }
-        else if ( isset( $_COOKIE['user']) ){
-          $user = $_COOKIE["user"];
+        else{
           echo '<ul class="nav navbar-nav navbar-right">
                     <a href="index.php">Welcome '. $user .'</a><br>
                     <a href="Logout.php">Logout</a>
                   </ul>
             </div>';
         }
+      }
         else {
           echo '<ul class="nav navbar-nav navbar-right">
             <a href="login.php">Log In</a>
                </ul>';
         }
+
             ?>
       </div><!--/.nav-collapse -->
     </div>
