@@ -88,7 +88,6 @@ $_SESSION['authuser'] = 0;
                      "Welcome to HackChat!",
                      "<h1>Congrats and junks...?</h1>");
             }
-                    echo "<h2> Success!</h2>";
 
       }
       else {

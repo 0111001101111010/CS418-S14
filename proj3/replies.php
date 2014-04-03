@@ -72,9 +72,6 @@ $user = $_COOKIE['user'];
 
     $user_level_array =mysql_fetch_object($resultModerator);
     $permission=mysql_num_rows($resultModerator);
-        // if($admin==1) //does it exist
-        //     $moderator=true;
-        //     echo '<i class="fa fa-star"></i> ';
     }
     //var_dump($user_level_array->moderator_user_level);
     $moderator=$user_level_array->moderator_user_level;
@@ -138,15 +135,15 @@ if ($result){
     if ($row!=null){
 if ($_GET['edit']==$row['reply_id']){
   //insert.php?replyto='.urldecode($_GET[thread]).'
-  echo '<div style="background:#9dc0ce;padding:20px;">
-  <form method="post" action=editReply.php?id='.$row['reply_id'].' class="response">
+  echo '<div style="background:#C2E1E0;padding:20px;border:1px solid #fff">
+  <form style="margin-bottom:50px" method="post" action=editReply.php?id='.$row['reply_id'].' class="response">
       <input id="url" type="hidden" name="url" value="'.$url.'" />
           <h3>Edit Title: </h3>
             <input type="text" name="reply_title" value="'.$row['reply_title'].'">
           <h3>Edit Comment: </h3>
             <textarea name="reply">'.$row['reply_post'].'</textarea><br><br>
             <a class="btn btn-blue pull-right" href="'.$url.'">Cancel</a>
-            <input type="submit" name="Submit" value="Edit" class="btn btn-blue pull-right">
+            <input style="margin-right:10px;" type="submit" name="Submit" value="Edit" class="btn btn-blue pull-right">
   </form></div>';
 }
 else{
@@ -223,24 +220,27 @@ else{
 
     $user_level_array =mysql_fetch_object($resultModerator);
     $permission=mysql_num_rows($resultModerator);
-        // if($admin==1) //does it exist
-        //     $moderator=true;
-        //     echo '<i class="fa fa-star"></i> ';
     }
-        echo'<div class="pull-right" style="font-size:20px; margin-top:-20px;">';
-        //   <a href="#"><i class="fa fa-reply"></i></a>';
-          if ($user==$row['reply_user'] || $moderator || $admin){
+    // check if person is logged in
+        if(isset($_COOKIE["user"])){
+          $user = $_COOKIE["user"];
+          // var_dump($moderator);
+          // var_dump($admin);
+          // var_dump($user==$row['reply_user'] );
+          // var_dump($user==$row['reply_user'] || $moderator || $admin );
+          if ($viewUser==$row['reply_user'] || $moderator || $admin){
               echo $buttons = <<<EOD
+              <div class="pull-right" style="font-size:20px; margin-top:-20px;">';
               <a href=$url&edit=$id><i class="fa fa-pencil"></i></a>
               <a href=delete.php?reply_id=$id><i class="fa fa-times"></i></a>
-                  </div>
               </div>
+
 EOD;
           }
-            else{
-            echo "</div></div>";
-            }
-           }//end of editlogic
+        }
+
+           }
+      echo '</div> <!-- end of post?? -->';//end of editlogic
           }//end of if($row)
         //if is $reply_id=edit
       }//end of $row for loop

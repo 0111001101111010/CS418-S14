@@ -62,6 +62,16 @@ EOD;
    echo '<button class="btn btn-blue pull-right" data-toggle="modal" data-target="#newboard" >Create Board <i class="fa fa-plus-square"></i></button>';
   }
 
+  $queryCount = "SELECT * from board";
+  $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+  $count = mysql_num_rows($resultCount);
+
+  echo'<ul class="pagination">';
+  for ($i = 0; $i < ($count/$page_setting); $i++) {
+  echo '<li><a href="index.php?page='.$i.'">'.$i.'</a></li>';
+    }
+  echo '</ul>';
+
 ?>
   <!-- Modal -->
   <div class="modal fade" id="newboard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -88,7 +98,7 @@ EOD;
 
   </div>
 </div>
-<?php
+<?php/*
 //paginatinn at the bottom
 $queryCount = "SELECT * from board";
 $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
@@ -98,7 +108,7 @@ echo'<ul class="pagination">';
 for ($i = 0; $i < ($count/$page_setting); $i++) {
 echo '<li><a href="index.php?page='.$i.'">'.$i.'</a></li>';
   }
-echo '</ul>';
+echo '</ul>';*/
+?>
 
-
- include 'include/footer.php';?>
+ <?php include 'include/footer.php';?>
