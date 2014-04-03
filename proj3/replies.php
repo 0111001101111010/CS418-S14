@@ -217,8 +217,8 @@ if (isset($_GET['page'])){
         //   <a href="#"><i class="fa fa-reply"></i></a>';
         if ($user==$row['reply_user'] || $moderator || $admin){
             echo $buttons = <<<EOD
-            <a href=editReply.php?reply_id="$id"><i class="fa fa-pencil"></i></a>
-            <a href=delete.php?reply_id="$id"><i class="fa fa-times"></i></a>
+            <a href=editReply.php?reply_id=$id><i class="fa fa-pencil"></i></a>
+            <a href=delete.php?reply_id=$id><i class="fa fa-times"></i></a>
                 </div>
             </div>
 EOD;
