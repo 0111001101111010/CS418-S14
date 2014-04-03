@@ -11,7 +11,6 @@ if(isset($_POST['level'])){
 
 	//delete it
 	if ($_POST["admin"]=="true"){
-		echo "yerb";
 		//actually go to user and adjust their boolean user.user_admin = true;
 	    $query = "UPDATE users SET user_admin=true WHERE user_name='{$_POST['user']}'";
 	    $result = mysql_query($query);
