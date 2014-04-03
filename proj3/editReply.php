@@ -27,7 +27,7 @@ include 'include/nav.php';
 echo '<div class="post">
         <br>
          <h1>Success!</h1>
-          <h2><a href="'.$_POST["url"].'">Return to Post</a></h2>";
+          <h2><a href="'.$_POST["url"].'">Return to Post</a></h2>
          <br></div>';
 }
 else{

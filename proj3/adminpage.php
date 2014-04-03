@@ -16,7 +16,7 @@ if(user){
 
  if (!$admin)
 	{ob_start();
-	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	header('Location: index.php');
 	header('refresh:5;url= ' . $_SERVER['HTTP_REFERER']);
 	ob_flush();
 	}
