@@ -28,24 +28,25 @@ $count=mysql_num_rows($result);
 // Register $myusername, $mypassword and redirect to file "login_success.php"
 if(($count==1 )&&(isset($_POST['checkbox']))){
       //rememberme
-      if ($row->user_suspended){
-      header('refresh:10;url=index.php');
-      include 'include/nav.php';
-      echo "fooey looks like you're suspended contact an admin at admin@cs.odu.edu if you think this is in error, redirecting in 10 seconds";
-      }
-      $_SESSION['myusername']=$myusername;
-      setcookie("remember", 1, time()+3600);
-      setcookie("user", $myusername, time()+3600);
-      header("location:index.php");
+            if ($row->user_suspended){
+            header('refresh:10;url=index.php');
+            echo "fooey looks like you're suspended contact an admin at admin@cs.odu.edu if you think this is in error, redirecting in 10 seconds";
+            }
+            else{
+            $_SESSION['myusername']=$myusername;
+            setcookie("remember", 1, time()+3600);
+            setcookie("user", $myusername, time()+3600);
+            header("location:index.php");
+            }
       }
 else if($count==1){
       //dont remember me
       //keep me logged in for 10 minutes
       if ($row->user_suspended){
       header('refresh:10;url=index.php');
-      include 'include/nav.php';
       echo "fooey looks like you're suspended contact an admin at admin@cs.odu.edu if you think this is in error, redirecting in 10 seconds";
       }
+      else{
       session_start();
       setcookie("remember", 1, time()+600);
       setcookie("user", $myusername, time()+600);
@@ -53,6 +54,7 @@ else if($count==1){
       //var_dump($_COOKIE["user"]);
       //die();
       header("location:index.php");
+      }
 }
 else {
       header( "refresh:5;url=login.php" );
