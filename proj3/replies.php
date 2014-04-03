@@ -145,8 +145,8 @@ if ($_GET['edit']==$row['reply_id']){
             <input type="text" name="reply_title" value="'.$row['reply_title'].'">
           <h3>Edit Comment: </h3>
             <textarea name="reply">'.$row['reply_post'].'</textarea><br><br>
+            <a class="btn btn-blue pull-right" href="'.$url.'">Cancel</a>
             <input type="submit" name="Submit" value="Edit" class="btn btn-blue pull-right">
-
         </form></div>';
 }
 else{
