@@ -139,7 +139,7 @@ if ($result){
 if ($_GET['edit']==$row['reply_id']){
   //insert.php?replyto='.urldecode($_GET[thread]).'
   echo '<div style="background:#9dc0ce;padding:20px;">
-  <form method="post" action=editReply.php?id="'.$_GET[id].'" class="response">
+  <form method="post" action=editReply.php?id='.$row['reply_id'].' class="response">
       <input id="url" type="hidden" name="url" value="'.$url.'" />
           <h3>Edit Title: </h3>
             <input type="text" name="reply_title" value="'.$row['reply_title'].'">
@@ -147,7 +147,7 @@ if ($_GET['edit']==$row['reply_id']){
             <textarea name="reply">'.$row['reply_post'].'</textarea><br><br>
             <a class="btn btn-blue pull-right" href="'.$url.'">Cancel</a>
             <input type="submit" name="Submit" value="Edit" class="btn btn-blue pull-right">
-        </form></div>';
+  </form></div>';
 }
 else{
 /**  row threads**/

@@ -12,9 +12,12 @@ if(isset($_GET['id'])){
     $row = mysql_fetch_array($result);
 
     // var_dump($row);
-    $query="UPDATE reply SET reply_title ='{$_POST['reply_title']}'
-            and reply_post = '{$_POST['reply']}' and reply_editby='{$user}'and reply_edited=true WHERE reply_id={$_GET['id']}";
-
+    $query='UPDATE reply SET
+            reply_title="'.$_POST["reply_title"].'",
+            reply_post = "'.$_POST["reply"].'",
+            reply_editby="'.$user.'",
+            reply_edited=true
+            WHERE reply_id='.$_GET["id"];
     $result=mysql_query($query) or die('Query failed: ' . mysql_error());
 var_dump($query);
 var_dump($result);
