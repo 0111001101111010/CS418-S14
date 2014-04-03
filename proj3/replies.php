@@ -194,13 +194,30 @@ if (isset($_GET['page'])){
         if ($row['reply_edited']==true){
             echo "edited by ". $row['reply_editby'];
         }
+  /* IS VIEWER*/
+    {//encapsulating
+    $viewUser = $_COOKIE["user"];
+    $queryModerator = "SELECT * from moderator where moderator_name_id=".'"'.$viewUser.'" and moderator_board_id ='.$whichBoard;//.$_GET['id'];
 
-        // echo'<div class="pull-right" style="font-size:20px; margin-top:-20px;">
+    $resultModerator = mysql_query($queryModerator) or die('Query failed: ' . mysql_error());
+    //$result3 = mysql_fetch_object($result3);
+    //#moderator number
+    //#is an ADMIN search ** this is different
+    $queryAdmin = "SELECT * from users where user_name=".'"'.$viewUser."\";";
+    $resultAdmin = mysql_query($queryAdmin) or die('Query failed: ' . mysql_error());
+    $admin = mysql_fetch_object($resultAdmin)->user_admin;
+
+    $user_level_array =mysql_fetch_object($resultModerator);
+    $permission=mysql_num_rows($resultModerator);
+        // if($admin==1) //does it exist
+        //     $moderator=true;
+        //     echo '<i class="fa fa-star"></i> ';
+    }
+        echo'<div class="pull-right" style="font-size:20px; margin-top:-20px;">';
         //   <a href="#"><i class="fa fa-reply"></i></a>';
-
-        if ($user==$row['reply_user']){
+        if ($user==$row['reply_user'] || $moderator || $admin){
             echo $buttons = <<<EOD
-            <a href=""><i class="fa fa-pencil"></i></a>
+            <a href=editReply.php?reply_id="$id"><i class="fa fa-pencil"></i></a>
             <a href=delete.php?reply_id="$id"><i class="fa fa-times"></i></a>
                 </div>
             </div>
