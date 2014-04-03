@@ -195,8 +195,8 @@ if (isset($_GET['page'])){
             echo "edited by ". $row['reply_editby'];
         }
 
-        echo'<div class="pull-right" style="font-size:20px; margin-top:-20px;">
-          <a href="#"><i class="fa fa-reply"></i></a>';
+        // echo'<div class="pull-right" style="font-size:20px; margin-top:-20px;">
+        //   <a href="#"><i class="fa fa-reply"></i></a>';
 
         if ($user==$row['reply_user']){
             echo $buttons = <<<EOD

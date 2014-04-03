@@ -37,7 +37,7 @@ EOD;
         echo '<div class="setting pull-right"><a href=""><i class="fa fa-pencil"></i></a> <a href=delete.php?board_id="'.$row->board_id.'"><i class="fa fa-times"></i></a></div>';
 
       echo "</div></div>";
-    } 
+    }
 
   }
 
