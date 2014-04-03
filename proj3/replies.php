@@ -197,7 +197,7 @@ else{
           $id = $row['reply_id'];
           echo '<div class="post">
             <h3>'.$row["reply_title"].'</h3>
-            <h6>User: <a href="profile.html">'.$icon.$row["reply_user"].'</a>
+            <h6>User: <a href="">'.$icon.$row["reply_user"].'</a>
             </h6>
             <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>
         <p>'.$row["reply_post"].'</p>
@@ -230,17 +230,16 @@ else{
           // var_dump($user==$row['reply_user'] || $moderator || $admin );
           if ($viewUser==$row['reply_user'] || $moderator || $admin){
               echo $buttons = <<<EOD
-              <div class="pull-right" style="font-size:20px; margin-top:-20px;">';
+              <div class="pull-right" style="font-size:20px; margin-top:-20px;">
               <a href=$url&edit=$id><i class="fa fa-pencil"></i></a>
               <a href=delete.php?reply_id=$id><i class="fa fa-times"></i></a>
               </div>
 
 EOD;
-          }
-        }
-
-           }
-      echo '</div> <!-- end of post?? -->';//end of editlogic
+                  }
+               }
+             }
+             echo '</div> <!-- end of post?? -->';//end of editlogic
           }//end of if($row)
         //if is $reply_id=edit
       }//end of $row for loop
