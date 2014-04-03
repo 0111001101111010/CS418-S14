@@ -5,6 +5,7 @@ ob_start();
 //deletings anything that is passed into thread_id
 
 if(isset($_GET['id'])){
+include 'include/nav.php';
     $user = $_COOKIE["user"];
     //    $query="DELETE FROM thread WHERE thread_id={$_GET['thread_id']}";
     $query="SELECT * from reply where reply_id ={$_GET['id']}";
@@ -19,8 +20,8 @@ if(isset($_GET['id'])){
             reply_edited=true
             WHERE reply_id='.$_GET["id"];
     $result=mysql_query($query) or die('Query failed: ' . mysql_error());
-var_dump($query);
-var_dump($result);
+// var_dump($query);
+// var_dump($result);
  // var_dump($_POST);
  // die();
     echo "success!";
