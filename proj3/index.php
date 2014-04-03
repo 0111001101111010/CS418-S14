@@ -6,8 +6,21 @@
   <div class="container">
 
 <?php
+
+  {  //get settings for pagination first encapsulate
+  $query5 = "SELECT * from settings";
+  $result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
+  $row5 = mysql_fetch_array($result5);
+  $page_setting = $row5["setting_value"];
+
+  //calculate num pages;
+  //to and from
+  $start = $_GET[page]*$page_setting;
+  $end   = $page_setting;
+  }
+
   # Perform database query
-  $query = "SELECT * from board";
+  $query = "SELECT * from board limit ". $start.','.$end;;
   $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
   //$stmt = $conn->prepare('SELECT * from thread');
@@ -75,4 +88,17 @@ EOD;
 
   </div>
 </div>
-<?php include 'include/footer.php';?>
+<?php
+//paginatinn at the bottom
+$queryCount = "SELECT * from board";
+$resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+$count = mysql_num_rows($resultCount);
+
+echo'<ul class="pagination">';
+for ($i = 0; $i < ($count/$page_setting); $i++) {
+echo '<li><a href="index.php?page='.$i.'">'.$i.'</a></li>';
+  }
+echo '</ul>';
+
+
+ include 'include/footer.php';?>
