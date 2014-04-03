@@ -137,16 +137,17 @@ if ($result){
     $row = mysql_fetch_array($result);
     if ($row!=null){
 if ($_GET['edit']==$row['reply_id']){
-  echo "foo";
-  echo '<form method="post" action="insert.php?replyto='.urldecode($_GET[thread]).'&id='.$_GET[id].'" class="response">
-          <h3>Reply title: </h3>
-            <input type="text" name="reply_title">
+  //insert.php?replyto='.urldecode($_GET[thread]).'
+  echo '<div style="background:#9dc0ce;padding:20px;">
+  <form method="post" action=editReply.php?id="'.$_GET[id].'" class="response">
+      <input id="url" type="hidden" name="url" value="'.$url.'" />
+          <h3>Edit Title: </h3>
+            <input type="text" name="reply_title" value="'.$row['reply_title'].'">
+          <h3>Edit Comment: </h3>
+            <textarea name="reply">'.$row['reply_post'].'</textarea><br><br>
+            <input type="submit" name="Submit" value="Edit" class="btn btn-blue pull-right">
 
-          <h3>Comment: </h3>
-            <textarea name="reply"></textarea><br><br>
-            <input type="submit" name="Submit" value="Submit" class="btn btn-blue pull-right">
-
-        </form>';
+        </form></div>';
 }
 else{
 /**  row threads**/
@@ -254,7 +255,6 @@ for ($i = 0; $i < ($count/$page_setting); $i++) {
 echo '<li><a href="'.$url.'&page='.$i.'">'.$i.'</a></li>';
   }
 echo '</ul>';
-
 
 //javascript editor text
 $js = <<< EOD
