@@ -63,12 +63,21 @@ if ($result){
   while ($row = mysql_fetch_object($result)) {
  //var_dump($row);
       // if thread is already locked, echo unlock icon
+//
+$replyQuery = "SELECT * from reply where reply_thread_id=".$row->thread_id;
+$replyResult = mysql_query($replyQuery) or die('Query failed: ' . mysql_error());
+$replyCount = mysql_num_rows($replyResult);
+
+if ($replyCount<2)
+    $threadSuffix= " Comment";
+else
+    $threadSuffix = " Comments";
       if ($row->thread_frozen == false){
         echo $thread= <<< EOD
         <div class="frozen">This thread is locked!</div>
         <div class="thread">
           <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id&page=0">$row->thread_name</a></h3>
-          <h6>OP: <a href="">$row->thread_user</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
+          <h6>OP: <a href="">$row->thread_user</a></h6> <h6>$replyCount $threadSuffix</h6> <h6>Posted on $row->thread_date</h6>
 EOD;
 if ($moderator){
         echo'<div class="setting pull-right">
@@ -81,7 +90,7 @@ if ($moderator){
         echo $thread=<<<EOD
         <div class="thread">
           <h3><a href="replies.php?&thread=$row->thread_name&id=$row->thread_id&page=0">$row->thread_name</a></h3>
-          <h6>OP: <a href="">$row->thread_user</a></h6> <h6>Comments: # of comments</h6> <h6>Posted on $row->thread_date</h6>
+          <h6>OP: <a href="">$row->thread_user</a></h6> <h6>$replyCount $threadSuffix</h6> <h6>Posted on $row->thread_date</h6>
 EOD;
 if ($moderator){
         echo'<div class="setting pull-right">
