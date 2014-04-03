@@ -132,10 +132,14 @@ if (isset($_GET['page'])){
   $end = $page_setting+ $_GET['page']*$page_setting;
 }
 # Filter through rows and echo desired information
-    if ($result){
-      for($num=$start; $num<$end;$num++) {
-      $row = mysql_fetch_array($result);
-      if ($row!=null){
+if ($result){
+  for($num=$start; $num<$end;$num++) {
+    $row = mysql_fetch_array($result);
+    if ($row!=null){
+if ($_GET['edit']==$row['reply_id']){
+  echo "foo";
+}
+else{
 /**  row threads**/
 //calculate
   /* AM I A MODERATOR OR ADMIN?*/
@@ -215,24 +219,25 @@ if (isset($_GET['page'])){
     }
         echo'<div class="pull-right" style="font-size:20px; margin-top:-20px;">';
         //   <a href="#"><i class="fa fa-reply"></i></a>';
-        if ($user==$row['reply_user'] || $moderator || $admin){
-            echo $buttons = <<<EOD
-            <a href=editReply.php?reply_id=$id><i class="fa fa-pencil"></i></a>
-            <a href=delete.php?reply_id=$id><i class="fa fa-times"></i></a>
-                </div>
-            </div>
+          if ($user==$row['reply_user'] || $moderator || $admin){
+              echo $buttons = <<<EOD
+              <a href=$url&edit=$id><i class="fa fa-pencil"></i></a>
+              <a href=delete.php?reply_id=$id><i class="fa fa-times"></i></a>
+                  </div>
+              </div>
 EOD;
-        }
-        else{
-        echo "</div></div>";
-        }
+          }
+            else{
+            echo "</div></div>";
+            }
+           }//end of editlogic
+          }//end of if($row)
+        //if is $reply_id=edit
+      }//end of $row for loop
+    }//end of if result
+else {
+    echo "<h1>There are no replies yet, Add one now!</h1>";
 }
-
-      }
-    }
-    else {
-        echo "<h1>There are no replies yet, Add one now!</h1>";
-    }
 
 //paginatinn at the bottom
 echo'<ul class="pagination">';
