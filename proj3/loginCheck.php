@@ -17,16 +17,22 @@ $myusername = mysql_real_escape_string($myusername);
 $mypassword = mysql_real_escape_string($mypassword);
 $sql="SELECT * FROM $tbl_name WHERE user_name='$myusername' and user_password='$mypassword'";
 $result=mysql_query($sql);
-
+$row = mysql_fetch_object($result);
+//var_dump($row);
+//var_dump($row->user_suspended);
 
 // Mysql_num_row is counting table row
 $count=mysql_num_rows($result);
 
 // If result matched $myusername and $mypassword, table row must be 1 row
 // Register $myusername, $mypassword and redirect to file "login_success.php"
-
 if(($count==1 )&&(isset($_POST['checkbox']))){
       //rememberme
+      if ($row->user_suspended){
+      header('refresh:10;url=index.php');
+      include 'include/nav.php';
+      echo "fooey looks like you're suspended contact an admin at admin@cs.odu.edu if you think this is in error, redirecting in 10 seconds";
+      }
       $_SESSION['myusername']=$myusername;
       setcookie("remember", 1, time()+3600);
       setcookie("user", $myusername, time()+3600);
@@ -35,6 +41,11 @@ if(($count==1 )&&(isset($_POST['checkbox']))){
 else if($count==1){
       //dont remember me
       //keep me logged in for 10 minutes
+      if ($row->user_suspended){
+      header('refresh:10;url=index.php');
+      include 'include/nav.php';
+      echo "fooey looks like you're suspended contact an admin at admin@cs.odu.edu if you think this is in error, redirecting in 10 seconds";
+      }
       session_start();
       setcookie("remember", 1, time()+600);
       setcookie("user", $myusername, time()+600);
