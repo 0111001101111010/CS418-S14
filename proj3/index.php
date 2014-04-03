@@ -20,7 +20,7 @@
   }
 
   # Perform database query
-  $query = "SELECT * from board limit ". $start.','.$end;;
+  $query = "SELECT * from board limit ". $start.','.$end;
   $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
   //$stmt = $conn->prepare('SELECT * from thread');

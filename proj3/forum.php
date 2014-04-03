@@ -19,17 +19,20 @@ $board_id = $_GET['board_id'];
   <div class="container">
 
 <?php
-/*
-$thread = 10;
-for ($i=0; $i < 5; $i++) {
-	# code...
+  {  //get settings for pagination first encapsulate
+  $query5 = "SELECT * from settings";
+  $result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
+  $row5 = mysql_fetch_array($result5);
+  $page_setting = $row5["setting_value"];
 
-	echo '<p>Forum Item '.$i.'</p>';
-  	echo "<a href='thread.php?thread=$thread'>$i</a>";
-}
-*/
+  //calculate num pages;
+  //to and from
+  $start = $_GET[page]*$page_setting;
+  $end   = $page_setting;
+  }
+
 # Perform database query
-$query = "SELECT * from thread where thread_board_id=".$board_id." order by thread_id DESC";
+$query = "SELECT * from thread where thread_board_id=".$board_id." order by thread_id DESC limit ". $start.','.$end;
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 //$stmt = $conn->prepare('SELECT * from thread');
@@ -101,6 +104,16 @@ else {
 
 ?>
 <?php
+//paginatinn at the bottom
+$queryCount = "SELECT * from thread where thread_board_id=".$board_id;
+$resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+$count = mysql_num_rows($resultCount);
+
+echo'<ul class="pagination">';
+for ($i = 0; $i < ($count/$page_setting); $i++) {
+echo '<li><a href="forum.php?board_id='.$board_id.'&page='.$i.'">'.$i.'</a></li>';
+  }
+echo '</ul>';
 if (isset($_COOKIE['user']))
     $moderator=true;
 
