@@ -13,47 +13,56 @@ $board_id = $_GET['board_id'];
 
 ?>
 
-<!-- Needs to spit these out -->
-<!-- Main unit for the board -->
 <div class="content">
   <div class="container">
 
 <?php
-  {  //get settings for pagination first encapsulate
-  $query5 = "SELECT * from settings";
-  $result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
-  $row5 = mysql_fetch_array($result5);
-  $page_setting = $row5["setting_value"];
+    {  //get settings for pagination first encapsulate
+    $query5 = "SELECT * from settings";
+    $result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
+    $row5 = mysql_fetch_array($result5);
+    $page_setting = $row5["setting_value"];
 
-  //calculate num pages;
-  //to and from
-  $start = $_GET[page]*$page_setting;
-  $end   = $page_setting;
-  }
-
-# Perform database query
-$query = "SELECT * from thread where thread_board_id=".$board_id." order by thread_id DESC limit ". $start.','.$end;
-$result = mysql_query($query) or die('Query failed: ' . mysql_error());
-
-//$stmt = $conn->prepare('SELECT * from thread');
-//$stmt->execute();
-$query2 = "SELECT * from board where board_id=".$board_id;
-$result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
-$result2 = mysql_fetch_object($result2);
-
-
-//Am I a moderator or admin?
-if ( isset( $_COOKIE['user']) ){
-$query3 = "SELECT * from moderator where moderator_name_id=".'"'.$_COOKIE['user'].'" and moderator_board_id ='.$board_id;
-
-$result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
-//$result3 = mysql_fetch_object($result3);
-// Mysql_num_row is counting table row
-$count=mysql_num_rows($result3);
-    if($count==1){
-        $moderator=true;
+    //calculate num pages;
+    //to and from
+    $start = $_GET[page]*$page_setting;
+    $end   = $page_setting;
     }
+
+    # Perform database query
+    $query = "SELECT * from thread where thread_board_id=".$board_id." order by thread_id DESC limit ". $start.','.$end;
+    $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+
+    //$stmt = $conn->prepare('SELECT * from thread');
+    //$stmt->execute();
+    $query2 = "SELECT * from board where board_id=".$board_id;
+    $result2 = mysql_query($query2) or die('Query failed: ' . mysql_error());
+    $result2 = mysql_fetch_object($result2);
+
+
+    //Am I a moderator or admin?
+    if ( isset( $_COOKIE['user']) ){
+    $query3 = "SELECT * from moderator where moderator_name_id=".'"'.$_COOKIE['user'].'" and moderator_board_id ='.$board_id;
+
+    $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
+    //$result3 = mysql_fetch_object($result3);
+    // Mysql_num_row is counting table row
+    $count=mysql_num_rows($result3);
+        if($count==1){
+            $moderator=true;
+        }
 }
+//Bread Crumb
+echo $breadcrumb= <<< EOD
+<h2>
+  <a href=index.php>HackChat</a>->
+  <a href=forum.php?board_id=$board_id>$result2->board_title</a>
+</h2>
+EOD;
+
+/*
+echo "<h2><a href='index.php'>HackChat</a>-><a href='forum.php?board_id='".$board_id."'>".$result2->board_title."</a></h2>";
+*/
 
 echo "<h1>".$result2->board_title."</h1>";
 

@@ -31,8 +31,10 @@ $result3 = mysql_query($query3) or die('Query failed: ' . mysql_error());
 //get thread ID
 $query4 = "SELECT * from thread where thread_id =".$_REQUEST['id'];
 $result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
+
+$query5 = "SELECT * from board where board_id =".$_GET['id'];
+$result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
 // var_dump($row5);
-// var_dump($page_setting);
 // die();
 $user = $_COOKIE['user'];
 ?>
@@ -40,12 +42,31 @@ $user = $_COOKIE['user'];
   <div class="content">
     <div class="container">
 
+<?php
+var_dump($_GET[thread]);
+$returnResult4 = mysql_fetch_object($result4);
+//var_dump(mysql_fetch_object($result3)->thread_description);
+
+//mysql_fetch_object($result3)->thread_description
+$title = urldecode(mysql_fetch_object($result3)->thread_description);
+$whichBoard = $returnResult4->thread_board_id;
+$theThread=$_GET["id"];
+$urltitle= urlencode($_GET[thread]);
+echo $breadcrumb= <<< EOD
+<h2>
+  <a href=index.php>HackChat</a>->
+  <a href=forum.php?board_id=$returnResult4->thread_board_id>..</a>->
+  <a href=replies.php?$urltitle&thread=$urltitle&id=$theThread&page=0>$_GET[thread]</a>
+</h2>
+EOD;
+
+?>
       <div class="post">
         <h3><?php echo $_REQUEST['thread']?></h3>
         <h6>Original Poster:
           <?php
             //count their number of posts
-  $returnResult4 = mysql_fetch_object($result4);
+  //$returnResult4 = mysql_fetch_object($result4);//Removed and moved up
   $threadUser = $returnResult4->thread_user;
   $whichBoard = $returnResult4->thread_board_id;
   // var_dump($returnResult4);
@@ -116,7 +137,7 @@ $user = $_COOKIE['user'];
 
 //print_r(mysql_fetch_array($result));
 //die();
-$url = "replies.php?thread=".urlencode($_GET[thread]).'&id='.$_GET[id];
+$url = "replies.php?thread=".urldecode($_GET[thread]).'&id='.$_GET[id];
 
 //var_dump(mysql_fetch_object($result));
 //die();
