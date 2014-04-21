@@ -15,7 +15,7 @@ vagrant/local version
 */
 //STWANLEY
 
-$username = "";
+$username = "root";
 $password = "";
 $localhost = "127.0.0.1:3306";
 
@@ -30,6 +30,6 @@ $localhost = "localhost";
 
 # Connect
 mysql_connect($localhost, $username, $password) or die('Could not connect: ' . mysql_error());
-mysql_select_db('test') or die('Could not select database');
+mysql_select_db('proj4') or die('Could not select database');
 
 ?>

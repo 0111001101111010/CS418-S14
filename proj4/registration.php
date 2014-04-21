@@ -67,11 +67,30 @@ $_SESSION['authuser'] = 0;
       // if username doesn't exist insert new records to database
        $sql = "INSERT INTO users (user_id, user_name,user_password,user_email,user_date,user_suspended,user_preference) values (null,'$username', '$password', '$email',NOW(),FALSE,'$type')";
        $success = mysql_query($sql);
-       // $qry = mysql_query($success);
-      // var_dump($sql);
-      // var_dump($success);// or die ("Error in query: $success. ".mysql_error());
-     //s  die();
+
        //messages if the new record is inserted or not
+       /* picture upload*/
+if ($_FILES["image"]["error"] > 0)
+  {
+     echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
+     echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
+   }
+   else
+   {
+     move_uploaded_file($_FILES["image"]["tmp_name"],"uploads/" . $_FILES["image"]["name"]);
+     echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
+
+     $file="uploads/".$_FILES["image"]["name"];
+     $sql="INSERT INTO image (image_id,auxon, path) VALUES (null,'','$file')";
+
+     if (!mysql_query($sql))
+     {
+        die('Error: ' . mysql_error());
+     }
+     echo "<font size = '5'><font color=\"#0CF44A\">SAVED TO DATABASE";
+
+   }
+
       if($success) {
         echo '
         <div class="alert alert-success">
@@ -111,11 +130,13 @@ $_SESSION['authuser'] = 0;
       <h2>New User Registration:</h2><br>
       *Please fill out every field. We only accept ODU's CS email at this time.
       <hr>
-      <form method="POST" class="form-horizontal" role="form" action="registration.php?register=1">
+      <form method="POST" class="form-horizontal" role="form" action="registration.php?register=1"  enctype="multipart/form-data">
         <input type="text" name="username" class="form-control" id="inputUsername" placeholder="User Name"><br>
         <input class="form-control" name="email" id="inputEmail" placeholder="CS Email"><br>
         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password"><br>
         <input type="password" class="form-control" id="inputPassword_confirm" placeholder="Confirm Password"><br>
+        <label name="Profile picture" value = "profile"> profile picture </label>
+        <input name="image" type="file" id="image">
 
         <input type="radio" name="emailOptions" value="email1" checked="checked"> Recieve email as text/html<br>
         <input type="radio" name="emailOptions" value="email2"> Recieve email as text/plain<br>
