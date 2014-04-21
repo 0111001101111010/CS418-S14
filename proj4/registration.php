@@ -68,33 +68,33 @@ $_SESSION['authuser'] = 0;
        $sql = "INSERT INTO users (user_id, user_name,user_password,user_email,user_date,user_suspended,user_preference) values (null,'$username', '$password', '$email',NOW(),FALSE,'$type')";
        $success = mysql_query($sql);
 
-       //messages if the new record is inserted or not
-       /* picture upload*/
-if ($_FILES["image"]["error"] > 0)
-  {
-     echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
-     echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
-   }
-   else
-   {
-     move_uploaded_file($_FILES["image"]["tmp_name"],"uploads/" . $_FILES["image"]["name"]);
-     echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
-
-     $file="uploads/".$_FILES["image"]["name"];
-     $sql="INSERT INTO image (image_id,auxon, path) VALUES (null,'','$file')";
-
-     if (!mysql_query($sql))
-     {
-        die('Error: ' . mysql_error());
-     }
-     echo "<font size = '5'><font color=\"#0CF44A\">SAVED TO DATABASE";
-
-   }
-
       if($success) {
+            //messages if the new record is inserted or not
+            /* picture upload*/
+     if ($_FILES["image"]["error"] > 0)
+       {
+          echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
+          echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
+        }
+        else
+        {
+        $ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+        $file="uploads/".$username.'.'.$ext;//.$_FILES["image"]["name"];
+          move_uploaded_file($_FILES["image"]["tmp_name"],$file);
+          echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br></font>";
+          //extention
+          $sql="INSERT INTO image (image_id,auxon, path) VALUES (null,'','$file')";
+
+          if (!mysql_query($sql))
+          {
+             die('Error: ' . mysql_error());
+          }
+          //echo "<font size = '5'><font color=\"#0CF44A\">SAVED TO DATABASE</font>";
+
+        }
         echo '
         <div class="alert alert-success">
-          Registration Successful ! please login to your account
+          Registration Successful! please login to your account
         </div>';
              if  ($type == "text/plain"){
                     mail($email,
@@ -135,8 +135,8 @@ if ($_FILES["image"]["error"] > 0)
         <input class="form-control" name="email" id="inputEmail" placeholder="CS Email"><br>
         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password"><br>
         <input type="password" class="form-control" id="inputPassword_confirm" placeholder="Confirm Password"><br>
-        <label name="Profile picture" value = "profile"> profile picture </label>
-        <input name="image" type="file" id="image">
+        <label name="Profile picture" value = "profile"> profile picture, PNG only please. </label>
+        <input name="image" type="file" id="image" accept="image/png" >
 
         <input type="radio" name="emailOptions" value="email1" checked="checked"> Recieve email as text/html<br>
         <input type="radio" name="emailOptions" value="email2"> Recieve email as text/plain<br>
