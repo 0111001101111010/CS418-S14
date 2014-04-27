@@ -9,7 +9,7 @@ $_SESSION['authuser'] = 0;
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
-
+<?php include 'util/resize.php';?>
 <?php
   $register = $_GET['register'];
 //var_dump(!empty($_POST));
@@ -83,8 +83,8 @@ $_SESSION['authuser'] = 0;
           move_uploaded_file($_FILES["image"]["tmp_name"],$file);
           echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br></font>";
           //extention
-          $sql="INSERT INTO image (image_id,auxon, path) VALUES (null,'','$file')";
-
+          $sql="INSERT INTO image (image_id, user, path) VALUES (null,'$username','$file')";
+          $img = create_cropped_thumbnail($file, 200, 200,'');
           if (!mysql_query($sql))
           {
              die('Error: ' . mysql_error());
@@ -135,8 +135,8 @@ $_SESSION['authuser'] = 0;
         <input class="form-control" name="email" id="inputEmail" placeholder="CS Email"><br>
         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password"><br>
         <input type="password" class="form-control" id="inputPassword_confirm" placeholder="Confirm Password"><br>
-        <label name="Profile picture" value = "profile"> profile picture, PNG only please. </label>
-        <input name="image" type="file" id="image" accept="image/png" >
+        <label name="Profile picture" value = "profile"> profile picture, JPG, GIF, or PNG only please. </label>
+        <input name="image" type="file" id="image" accept="image/gif,image/jpeg,image/png">
 
         <input type="radio" name="emailOptions" value="email1" checked="checked"> Recieve email as text/html<br>
         <input type="radio" name="emailOptions" value="email2"> Recieve email as text/plain<br>
