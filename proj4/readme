@@ -5,6 +5,9 @@ Flow
 index -> forum -> replies -> replyTo -> replies
 
 
+add all the sql files.
+---
+cat *.sql | sudo  mysql -f --socket=/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock -D proj4
 
 Files
 ---
