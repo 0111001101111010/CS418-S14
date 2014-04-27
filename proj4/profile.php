@@ -1,56 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-      <meta charset="utf-8">
-      <title>CS418 - Project 4: Profile Page</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-      <link href="dist/css/bootstrap.css" rel="stylesheet">
-      <link href="dist/css/style.css" rel="stylesheet">
-      
-      <!--[if lt IE 9]>
-        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <![endif]-->
-      <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
-      <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
-      <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
-      <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-      <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-      <script type='text/javascript' src="dist/js/livevalidation.js"></script>
-      <script type='text/javascript' src="../js/dropzone.js"></script>
+<?php //login
+session_start();
+$_SESSION['username'] = $_POST['user'];
+$_SESSION['userpass'] = $_POST['pass'];
+$_SESSION['authuser'] = 0;
 
 
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
+?>
+<?php include 'include/header.php';?>
+<?php include 'include/nav.php';?>
+<?php include 'include/connect_database.php';?>
 
 
     </head>
-    
+
     <body>
-      <div class="navbar navbarBlue navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="logo_white_30.png" >HackChat</a>
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <a href="#"><img src="tinyprofileimage.png" class="img-circle" style="margin-top:5px"></a>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
 
       <div class="content">
         <div class="container">
@@ -58,7 +21,7 @@
             <h3 style="display:inline">cosmicmeow</h3> >> <a href="registration.html"><h4 style="display:inline">Edit Profile</h4></a>
             <hr>
             <div class="userbasic" style="padding:20px;background-color:#f4f4f4;margin-bottom:20px">
-              <img src="default.png" style="border:3px solid #5CCDCC;vertical-align:top">
+              <img src="img/default.png" style="border:3px solid #5CCDCC;vertical-align:top">
               <div class="info" style="display:inline-block;margin-left:10px">
                 <h3 style="margin:0"><i class="fa fa-bookmark"></i> cosmicmeow</h3>
                 <h6 style="margin-top:0">Joined on Feb 3, 2014 | Total Posts: 15</h6>
@@ -120,41 +83,7 @@
         </div>
       </div>
 
-      
-      <script type='text/javascript'>
-        var inputUsername = new LiveValidation( "inputUsername", { validMessage: "Valid Username", wait: 500 } );
-        inputUsername.add( Validate.Presence, { failureMessage: "Username Required" } );
-        inputUsername.add( Validate.Length, { minimum: 6});
-
-        var inputEmail = new LiveValidation( "inputEmail", { validMessage: "Valid Email!", wait: 500 } );
-        inputEmail.add( Validate.Presence, { failureMessage: "Email Required" } );
-        inputEmail.add( Validate.Email, { failureMessage: "Invalid email address!" } );
-        inputEmail.add( Validate.Format, { pattern: /cs.odu.edu/i, failureMessage: "CS Email Only" } );
-
-        var inputPassword = new LiveValidation( "inputPassword", { validMessage: "Valid Password!", wait: 500 } );
-        inputPassword.add( Validate.Presence, { failureMessage: "Password Required" } );
-
-        function readURL(input) {
-          if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-              $('#blah').attr('src', e.target.result);
-            }
-              reader.readAsDataURL(input.files[0]);
-          }
-        }
-
-        $("#imgInp").change(function(){
-          readURL(this);
-        });
-
-      </script>
-
-
-
-
-      
-        
     </body>
 </html>
+
+<?php include 'include/footer.php'; ?>
