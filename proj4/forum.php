@@ -10,7 +10,7 @@
 //var_dump($_POST);
 //die();
 $board_id = $_GET['board_id'];
-
+$moderator = false;
 ?>
 
 <div class="content">
@@ -48,7 +48,7 @@ $board_id = $_GET['board_id'];
     //$result3 = mysql_fetch_object($result3);
     // Mysql_num_row is counting table row
     $count=mysql_num_rows($result3);
-        if($count==1){
+        if($count>0){
             $moderator=true;
         }
 }
