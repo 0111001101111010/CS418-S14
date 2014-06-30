@@ -9,7 +9,9 @@ $_SESSION['authuser'] = 0;
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
-
+<?
+  $user = $_GET['user'];
+?>
 
     </head>
 
@@ -21,7 +23,7 @@ $_SESSION['authuser'] = 0;
             <h3 style="display:inline">cosmicmeow</h3> >> <a href="registration.html"><h4 style="display:inline">Edit Profile</h4></a>
             <hr>
             <div class="userbasic" style="padding:20px;background-color:#f4f4f4;margin-bottom:20px">
-              <img src="img/default.png" style="border:3px solid #5CCDCC;vertical-align:top">
+              <img src="uploads/<?php echo $user;?>"style="border:3px solid #5CCDCC;vertical-align:top">
               <div class="info" style="display:inline-block;margin-left:10px">
                 <h3 style="margin:0"><i class="fa fa-bookmark"></i> cosmicmeow</h3>
                 <h6 style="margin-top:0">Joined on Feb 3, 2014 | Total Posts: 15</h6>

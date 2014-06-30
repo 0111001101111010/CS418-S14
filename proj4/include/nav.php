@@ -46,7 +46,7 @@ if (isset( $_COOKIE['user'])){
     }
         if ($admin){
           echo '<ul class="nav navbar-nav navbar-right">
-                    <a href="index.php">Welcome '. $user .'</a><br>
+                    <a href="profile.php?user='.$user.'">Welcome '. $user .'</a><br>
                     <a href="adminpage.php" style="color:yellow">Admin Panel</a>
                     <a href="Logout.php">Logout</a>
                   </ul>
@@ -54,7 +54,7 @@ if (isset( $_COOKIE['user'])){
         }
         else{
           echo '<ul class="nav navbar-nav navbar-right">
-                    <a href="index.php">Welcome '. $user .'</a><br>
+                    <a href="profile.php?user='.$user.'">Welcome '. $user .'</a><br>
                     <a href="Logout.php">Logout</a>
                   </ul>
             </div>';
