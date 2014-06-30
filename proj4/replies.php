@@ -43,7 +43,6 @@ session_start();
   <div class="container">
 
 <?php
-  var_dump($_GET[thread]);
   $returnResult4 = mysql_fetch_object($result4);
   //var_dump(mysql_fetch_object($result3)->thread_description);
 
