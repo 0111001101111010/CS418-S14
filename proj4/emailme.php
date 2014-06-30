@@ -26,9 +26,12 @@ include 'include/connect_database.php';
             }
             else
             {
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
             mail($email,
              "Forgot Password  to HackChat!",
-            "<h1><b>Your password was " .$row['user_password']."</b></h1>" );
+            "<h1><b>Your password was " .$row['user_password']."</b></h1>",$headers );
             }
     }
 
