@@ -12,6 +12,17 @@ $_SESSION['authuser'] = 0;
 <?
   $user = $_GET['user'];
 
+  //get # of posts
+  # Perform database count user  boards
+  $queryCount = "select * from reply where reply_user ='".$user."';";
+  $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+  $posts = mysql_num_rows($resultCount);
+
+  //date joined
+  $queryDate = "SELECT * from users where user_name=".'"'.$user."\";";
+  $resultDate = mysql_query($queryDate) or die('Query failed: ' . mysql_error());
+  $date = mysql_fetch_object($resultDate)->user_date;
+
   if(!empty($_POST)){ // Checks if the form is submitted or not
      unlink("uploads/".$user.".jpg");
      $ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -41,7 +52,7 @@ $_SESSION['authuser'] = 0;
               <img src="uploads/<?php echo $user?>"style="border:3px solid #5CCDCC;vertical-align:top">
               <div class="info" style="display:inline-block;margin-left:10px">
                 <h3 style="margin:0"></i> <?php echo $user ?></h3>
-                <h6 style="margin-top:0">Joined on Feb 3, 2014 | Total Posts: 15</h6>
+                <h6 style="margin-top:0"> <?php echo "Joined ".$date." |  Total Posts: ".$posts;  ?></h6>
                 <?php
 if($_COOKIE["user"]==$user){
 echo $breadcrumb = <<< EOD
