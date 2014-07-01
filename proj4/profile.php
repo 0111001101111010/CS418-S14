@@ -69,16 +69,33 @@ EOD;
 
             <h3 style="display:inline">Recent Posts</h3> <hr>
             <div class="recentposts" style="height:300px;overflow:auto;border:1px solid #d4d4d4;">
-              <div style="background-color:#fff;padding:12px;">
-                <a href="">FriendFinder for ODU students</a>
-                <h6 style="margin-top:0">Original Posts: <a href="">szheng</a> | Posted on April 1, 2014 | Board: <a href="">Cool Ideas</a></h6>
-                <p>Sounds like a great idea!</p>
-              </div>
-              <div style="background-color:#eee;padding:12px;">
-                <a href="">FriendFinder for ODU students</a>
-                <h6 style="margin-top:0">Original Posts: <a href="">szheng</a> | Posted on April 1, 2014 | Board: <a href="">Cool Ideas</a></h6>
-                <p>Sounds like a great idea!</p>
-              </div>
+              <?php
+$query = "SELECT * from reply where reply_user ='".$user."'";
+$result = mysql_query($query) or die('Query failed: ' . mysql_error());
+
+//echo out the replies
+if (mysql_num_rows($result)!=0){
+while ($row = mysql_fetch_object($result)) {
+  $row = mysql_fetch_array($result);
+  var_dump($row);
+  if ($row!=null){
+              echo '<div class="post">
+              <h3>'.$row["reply_title"].'</h3>
+                <h6>User: <a href="">'.$icon.$row["reply_user"].'</a>
+                </h6>
+              <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>
+                  <p>'.$row["reply_post"].'</p>
+                  <br>';
+                }
+              }
+}
+else{
+  echo '<div style="background-color:#eee;padding:12px;">
+    <h6 style="margin-top:0">Original Posts:</h6>
+    <p>No posts made yet, please check back later</p>
+  </div>';
+  }
+              ?>
             </div>
           </div>
 
