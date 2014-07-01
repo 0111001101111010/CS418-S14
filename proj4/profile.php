@@ -75,25 +75,24 @@ $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 //echo out the replies
 if (mysql_num_rows($result)!=0){
-while ($row = mysql_fetch_object($result)) {
-  $row = mysql_fetch_array($result);
-  var_dump($row);
+while ($row = mysql_fetch_array($result)) {
   if ($row!=null){
               echo '<div class="post">
+              <div class="post"><div style="background-color:#eee;">
               <h3>'.$row["reply_title"].'</h3>
                 <h6>User: <a href="">'.$icon.$row["reply_user"].'</a>
                 </h6>
               <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>
-                  <p>'.$row["reply_post"].'</p>
-                  <br>';
+                  <br>'.$row["reply_post"].'
+                  </div>';
                 }
               }
 }
 else{
-  echo '<div style="background-color:#eee;padding:12px;">
+  echo '<div class="post"><div style="background-color:#eee;padding:12px;">
     <h6 style="margin-top:0">Original Posts:</h6>
     <p>No posts made yet, please check back later</p>
-  </div>';
+  </div></div>';
   }
               ?>
             </div>
