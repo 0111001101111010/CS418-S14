@@ -253,37 +253,6 @@ echo '<li><a href="'.$url.'&page='.$i.'">'.$i.'</a></li>';
   }
 echo '</ul>';
 
-//javascript editor text
-$js = <<< EOD
-
-  <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
-  <script>
-          tinymce.init({selector:'textarea'});
-  </script>
-EOD;
-echo $js;
-
-//dont let people edit if its locked
-    $queryX="SELECT * from thread where thread_id ={$_GET['id']}";
-    $resultX = mysql_query($queryX);
-    $rowX = mysql_fetch_array($resultX);
-    $frozen = $rowX["thread_frozen"];
-
-if (isset($_COOKIE['user'])&& ($frozen==true) && !$_GET['edit']){
-  echo '<hr>
-        <form method="post" action="insert.php?replyto='.urldecode($_GET[thread]).'&id='.$_GET[id].'" class="response">
-          <h3>Reply title: </h3>
-            <input type="text" name="reply_title">
-
-          <h3>Comment: </h3>
-            <textarea name="reply"></textarea><br><br>
-            <input type="submit" name="Submit" value="Submit" class="btn btn-blue pull-right">
-
-        </form>
-
-      </div>
-    </div>';
-}
 
 
 ?>
