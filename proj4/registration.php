@@ -74,7 +74,7 @@ $_SESSION['authuser'] = 0;
      if ($_FILES["image"]["error"] > 0)
        {
           echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
-          echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
+          echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED</p>";
         }
         else
         {
@@ -123,6 +123,7 @@ $_SESSION['authuser'] = 0;
 
 ;?>
 
+<script type="text/javascript" src="js/jquery.clientsidecaptcha.js"></script>
 
 <div class="content">
   <div class="container">
@@ -140,7 +141,8 @@ $_SESSION['authuser'] = 0;
 
         <input type="radio" name="emailOptions" value="email1" checked="checked"> Recieve email as text/html<br>
         <input type="radio" name="emailOptions" value="email2"> Recieve email as text/plain<br>
-
+        <p><label>Enter the text shown below: <input type="text" id="captchaText" /></label></p>
+			<p id="captcha"></p>
         <hr>
         <button type="submit" class="btn btn-blue">Submit</button>
       </form>
@@ -167,6 +169,18 @@ $_SESSION['authuser'] = 0;
   var inputPassword_confirm = new LiveValidation( "inputPassword_confirm", { validMessage: "Valid Password!", wait: 500 } );
   inputPassword_confirm.add( Validate.Presence, { failureMessage: "Password Comfirmation Required" } );
   inputPassword_confirm.add( Validate.Comfirmation, {match: 'inputPassword'});
+
+</script>
+
+<script type="text/javascript">
+//added captcha
+	$("form").clientSideCaptcha({
+		input: "#captchaText",
+		display: "#captcha",
+		fail : function() {
+			$("form").append("<p style='color:red'>Try again!</p>")
+		return false; }
+	});
 
 </script>
 
