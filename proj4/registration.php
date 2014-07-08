@@ -73,8 +73,8 @@ $_SESSION['authuser'] = 0;
             /* picture upload*/
      if ($_FILES["image"]["error"] > 0)
        {
-          echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
-          echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED</p> ";
+          // echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
+          // echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED</p> ";
         }
         else
         {
