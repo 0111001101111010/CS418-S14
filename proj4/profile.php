@@ -9,6 +9,7 @@ $_SESSION['authuser'] = 0;
 <?php include 'include/header.php';?>
 <?php include 'include/nav.php';?>
 <?php include 'include/connect_database.php';?>
+<?php include 'util/resize.php';?>
 <?
   $user = $_GET['user'];
 
@@ -22,15 +23,16 @@ $_SESSION['authuser'] = 0;
   $queryDate = "SELECT * from users where user_name=".'"'.$user."\";";
   $resultDate = mysql_query($queryDate) or die('Query failed: ' . mysql_error());
   $date = mysql_fetch_object($resultDate)->user_date;
+  var_dump($_POST);
+  if(isset($_GET['upload'])){ // Checks if the form is submitted or not
 
-  if(!empty($_POST)){ // Checks if the form is submitted or not
      unlink("uploads/".$user.".jpg");
      $ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
      $file="uploads/".$user.'.'.$ext;//.$_FILES["image"]["name"];
        move_uploaded_file($_FILES["image"]["tmp_name"],$file);
        echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br></font>";
        //extention
-       $sql="INSERT INTO image (image_id, user, path) VALUES (null,'$username','$file')" or die('Error: ' . mysql_error());;
+       $sql="INSERT INTO image (image_id, user, path) VALUES (null,'$user','$file')" or die('Error: ' . mysql_error());;
        $img = create_cropped_thumbnail($file, 200, 200,'');
        if (!mysql_query($sql))
        {
@@ -56,7 +58,7 @@ $_SESSION['authuser'] = 0;
                 <?php
 if($_COOKIE["user"]==$user){
 echo $breadcrumb = <<< EOD
-<form method="POST" class="form-horizontal" role="form" action="profile.php?&user=$user"  enctype="multipart/form-data">
+<form method="POST" class="form-horizontal" role="form" action="profile.php?upload=1&user=$user"  enctype="multipart/form-data">
   <label name="Profile picture" value = "profile"> profile picture, JPG, GIF, or PNG only please. </label>
   <input name="image" type="file" id="image" accept="image/gif,image/jpeg,image/png">
   <button type="submit" class="btn">Submit</button>
