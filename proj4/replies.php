@@ -173,6 +173,11 @@ else{
     }
 // // if not admin or mod
 // // if admin -- star
+# Perform database count user  boards
+//count for thread person
+$queryCount = "select * from reply where reply_user ='{$row['reply_user']}'";
+$resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+$posts = mysql_num_rows($resultCount);
 if ($admin==true){
   $icon = '<i class="fa fa-star"></i> ';
 }
@@ -182,15 +187,15 @@ else if ($permission==true){
 }
 else {
   // if # of post is less than 10 -- user
-  if ($posts >0 && $posts <10){
+  if ($posts >0 && $posts <5){
     $icon ='<i class="fa fa-user"></i> ';
   }
   // if # of post is between 10 and 50 -- coffee
-  else if($posts>10 && $posts<50){
+  else if($posts>6 && $posts<9){
     $icon ='<i class="fa fa-coffee"></i> ';
   }
   // if # of post is greater than 50 -- check
-  else if($posts>50){
+  else if($posts>10){
     $icon ='<i class="fa fa-check-circle"></i> ';
   }
 }
