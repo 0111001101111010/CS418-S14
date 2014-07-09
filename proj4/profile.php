@@ -80,7 +80,7 @@ if (mysql_num_rows($result)!=0){
 while ($row = mysql_fetch_array($result)) {
   if ($row!=null){
               echo '<div class="post"><div style="background-color:#eee;">
-              <h3>'.$row["reply_title"].'</h3>
+              <a href=""<h3>'.$row["reply_title"].'</h3>
                 <h6>User: <a href="">'.$icon.$row["reply_user"].'</a>
                 </h6>
               <h6>Posted on '. date("\n l F jS Y @\t\t g:ia",strtotime("-45 minutes",strtotime($row["reply_date"]))) .'</h6>

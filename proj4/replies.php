@@ -33,7 +33,7 @@ session_start();
   $result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
 
   $query5 = "SELECT * from board where board_id =".$_GET['id'];
-  $result4 = mysql_query($query4) or die('Query failed: ' . mysql_error());
+  $result5 = mysql_query($query5) or die('Query failed: ' . mysql_error());
   // var_dump($row5);
   // die();
   $user = $_COOKIE['user'];
@@ -49,13 +49,13 @@ session_start();
   //mysql_fetch_object($result3)->thread_description
   $title = urldecode(mysql_fetch_object($result3)->thread_description);
   $whichBoard = $returnResult4->thread_board_id;
-  $theThread=$_GET["id"];
+  $theThread=$returnResult4->thread_id;
   $urltitle= urlencode($_GET[thread]);
   echo $breadcrumb= <<< EOD
 <h2>
   <a href=index.php>HackChat</a>->
   <a href=forum.php?board_id=$returnResult4->thread_board_id>..</a>->
-  <a href=replies.php?$urltitle&thread=$urltitle&id=$theThread&page=0>$_GET[thread]</a>
+  <a href=replies.php?$urltitle&thread=$urltitle&id=$theThread&page=0>$returnResult4->thread_name</a>
 </h2>
 EOD;
 
@@ -102,15 +102,15 @@ $moderator=$user_level_array->moderator_user_level;
   }
   else {
     // if # of post is less than 10 -- user
-   if ($posts >0 && $posts <10){
+   if ($posts >0 && $posts <5){
       echo '<i class="fa fa-user"></i> ';
    }
     // if # of post is between 10 and 50 -- coffee
-    else if($posts>10 && $posts<50){
+    else if($posts>6 && $posts<9){
       echo '<i class="fa fa-coffee"></i> ';
     }
     // if # of post is greater than 50 -- check
-    else if($posts>50){
+    else if($posts>10){
       echo '<i class="fa fa-check-circle"></i> ';
     }
   }
