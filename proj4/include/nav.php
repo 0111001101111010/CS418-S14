@@ -30,12 +30,17 @@ include 'include/connect_database.php';
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-        <!--
+                 <!--
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>-->
         </ul>
         <?php
+echo '<ul class="nav navbar-nav navbar-right">';
+echo '<form action="search.php" method="POST">
+  <input type="text" id="search" placeholder="Enter your Search" name="search">
+  <input type="submit" class="btn" value="search"></a>
+</form>';
 if (isset( $_COOKIE['user'])){
     $user = $_COOKIE["user"];
     //check if they're an admin
@@ -45,8 +50,8 @@ if (isset( $_COOKIE['user'])){
         $admin = mysql_fetch_object($resultAdmin)->user_admin;
     }
         if ($admin){
-          echo '<ul class="nav navbar-nav navbar-right">
-                    <a href="profile.php?user='.$user.'">Welcome '. $user .'</a><br>
+
+          echo      '<a href="profile.php?user='.$user.'">Welcome '. $user .'</a><br>
                     <a href="adminpage.php" style="color:yellow">Admin Panel</a>
                     <a href="Logout.php">Logout</a>
                   </ul>
