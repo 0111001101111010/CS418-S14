@@ -2,7 +2,11 @@
 <?php include 'include/connect_database.php';?>
 <?php include 'include/nav.php';?>
 
-
+<br>
+<br>
+<br>
+<br>
+<h1> Search Results </h1>
 <div class="content">
   <div class="container">
 
@@ -20,6 +24,22 @@ session_start();
   $start = $_GET[page]*$page_setting;
   $end   = $page_setting;
   $user = $_COOKIE['user'];
+  $url = "search.php";
+
+//get query
+  $queryCount = "SELECT * from thread where MATCH(thread_name) AGAINST('".$_POST['search']."') ORDER BY thread_name DESC";
+//  var_dump($queryCount);
+echo "\n\n\n";
+  $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error());
+  // $resultSearch = mysql_fetch_object($resultCount);
+  // var_dump($resultSearch);
+  $counting = 1;
+  while ($row = mysql_fetch_object($resultCount)) {
+    echo "<h2>".$counting.". <a href=replies.php?&thread=".urlencode($row->thread_name)."&id=".$row->thread_id."&page=0>".$row->thread_name."->".$row->thread_description."</a></h2><br>";
+    $counting++;
+  }
+  $count = mysql_num_rows($resultCount);
+
 
   // $query = "SELECT * from reply where reply_thread_id =".$_REQUEST['id']." limit ". $start.','.$end;
   // $result = mysql_query($query) or die('Query failed: ' . mysql_error());
