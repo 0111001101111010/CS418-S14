@@ -24,6 +24,7 @@ include 'util/resize.php';
 // var_dump($_POST["pics0"]);
 echo isset($FILE["pics0"]["name"]);
 $images = "<br>";
+//image one
     if(isset($_FILES["pics0"]["name"])){ // Checks if the form is submitted or not
 echo "TESTTESTTEST";
       //$ext = pathinfo($_POST["pics0"], PATHINFO_EXTENSION);
@@ -40,7 +41,48 @@ echo "TESTTESTTEST";
         {
            die('Error: ' . mysql_error());
          }
-      $images = $images.'<img src="uploads/'.$file_alias.'"/><br>';
+      $images = $images.'<img src="uploads/'.$file_alias.'"/>';
+
+    }
+//image two
+    if(isset($_FILES["pics1"]["name"])){ // Checks if the form is submitted or not
+echo "TESTTESTTEST";
+      //$ext = pathinfo($_POST["pics0"], PATHINFO_EXTENSION);
+      $ext = pathinfo($_FILES["pics1"]["name"], PATHINFO_EXTENSION);
+      $file="uploads/".$_FILES["pics1"]["name"];//.$_FILES["image"]["name"];
+      $file_alias = $_FILES["pics1"]["name"];
+        move_uploaded_file($_FILES["pics1"]["tmp_name"],$file);
+        echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br></font>";
+        //extention
+
+        $sql="INSERT INTO image (image_id, user, path) VALUES (null,'$user','$file')" or die('Error: ' . mysql_error());;
+        $img = create_cropped_thumbnail($file, 200, 200,'');
+        if (!mysql_query($sql))
+        {
+           die('Error: ' . mysql_error());
+         }
+      $images = $images.'<img src="uploads/'.$file_alias.'"/>';
+
+    }
+//image three
+//image two
+    if(isset($_FILES["pics2"]["name"])){ // Checks if the form is submitted or not
+echo "TESTTESTTEST";
+      //$ext = pathinfo($_POST["pics0"], PATHINFO_EXTENSION);
+      $ext = pathinfo($_FILES["pics2"]["name"], PATHINFO_EXTENSION);
+      $file="uploads/".$_FILES["pics2"]["name"];//.$_FILES["image"]["name"];
+      $file_alias = $_FILES["pics2"]["name"];
+        move_uploaded_file($_FILES["pics2"]["tmp_name"],$file);
+        echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br></font>";
+        //extention
+
+        $sql="INSERT INTO image (image_id, user, path) VALUES (null,'$user','$file')" or die('Error: ' . mysql_error());;
+        $img = create_cropped_thumbnail($file, 200, 200,'');
+        if (!mysql_query($sql))
+        {
+           die('Error: ' . mysql_error());
+         }
+      $images = $images.'<img src="uploads/'.$file_alias.'"/>';
 
     }
     //lets get the board id of the thread...
