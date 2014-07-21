@@ -180,23 +180,28 @@ $resultCount = mysql_query($queryCount) or die('Query failed: ' . mysql_error())
 $posts = mysql_num_rows($resultCount);
 if ($admin==true){
   $icon = '<i class="fa fa-star"></i> ';
+  $level = 3;
 }
 // // if moderator -- bookmark
 else if ($permission==true){
    $icon ='<i class="fa fa-bookmark"></i>';
+   $level = 3;
 }
 else {
   // if # of post is less than 10 -- user
   if ($posts >0 && $posts <5){
     $icon ='<i class="fa fa-user"></i> ';
+    $level = 1;
   }
   // if # of post is between 10 and 50 -- coffee
   else if($posts>6 && $posts<9){
     $icon ='<i class="fa fa-coffee"></i> ';
+    $level = 2;
   }
   // if # of post is greater than 50 -- check
   else if($posts>10){
     $icon ='<i class="fa fa-check-circle"></i> ';
+    $level = 3;
   }
 }
 
@@ -276,15 +281,24 @@ echo $js;
 
 if (isset($_COOKIE['user'])&& ($frozen==true) && !$_GET['edit']){
   echo '<hr>
-        <form method="post" action="insert.php?replyto='.urldecode($_GET[thread]).'&id='.$_GET[id].'" class="response">
+        <form method="post" action="insert.php?replyto='.urldecode($_GET[thread]).'&id='.$_GET[id].'" class="response" enctype="multipart/form-data" role="form">
           <h3>Reply title: </h3>
             <input type="text" name="reply_title">
 
           <h3>Comment: </h3>
             <textarea name="reply"></textarea><br><br>
             <input type="submit" name="Submit" value="Submit" class="btn btn-blue pull-right">
+';
+for ($i=0; $i<$level; $i++){
+$images = <<< EOD
+  <label name="pics$i" value = $i> profile picture, JPG, GIF, or PNG only please. </label>
+  <input name="pics$i" type="file" id="pics$i" accept="image/gif,image/jpeg,image/png">
+EOD;
 
-        </form>
+echo $images;
+}
+
+echo '        </form>
 
       </div>
     </div>';
