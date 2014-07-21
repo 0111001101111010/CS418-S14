@@ -113,8 +113,6 @@ echo "TESTTESTTEST";
     $query = 'INSERT INTO thread (thread_id, thread_board_id, thread_user, thread_name,thread_description, thread_date,thread_frozen) values (null,'.$_REQUEST['board_id'].',"'.$user.'","'
           .$_REQUEST['thread_name'].'","'.$_REQUEST['thread_description'].'",NOW(),true);';
     $result = mysql_query($query);
-    var_dump($query);
-    die();
 
 }
 
